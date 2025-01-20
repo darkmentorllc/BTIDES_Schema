@@ -15,10 +15,10 @@
             "$ref": "#/definitions/LMP_NAME_REQ2"
           },
           {
-            "$ref": "#/definitions/LMP_NAME_RSP"
+            "$ref": "#/definitions/LMP_NAME_RES"
           },
           {
-            "$ref": "#/definitions/LMP_NAME_RSP2"
+            "$ref": "#/definitions/LMP_NAME_RES2"
           },
           {
             "$ref": "#/definitions/LMP_VERSION_REQ"
@@ -27,10 +27,10 @@
             "$ref": "#/definitions/LMP_VERSION_REQ2"
           },
           {
-            "$ref": "#/definitions/LMP_VERSION_RSP"
+            "$ref": "#/definitions/LMP_VERSION_RES"
           },
           {
-            "$ref": "#/definitions/LMP_VERSION_RSP2"
+            "$ref": "#/definitions/LMP_VERSION_RES2"
           },
           {
             "$ref": "#/definitions/LMP_FEATURES_REQ"
@@ -39,10 +39,10 @@
             "$ref": "#/definitions/LMP_FEATURES_REQ2"
           },
           {
-            "$ref": "#/definitions/LMP_FEATURES_RSP"
+            "$ref": "#/definitions/LMP_FEATURES_RES"
           },
           {
-            "$ref": "#/definitions/LMP_FEATURES_RSP2"
+            "$ref": "#/definitions/LMP_FEATURES_RES2"
           }
         ]
       }
@@ -102,9 +102,9 @@
         }
       }
     },
-    "LMP_NAME_RSP": {
+    "LMP_NAME_RES": {
       "type": "object",
-      "description": "Structure for LMP\\_NAME\\_RSP packet.",
+      "description": "Structure for LMP\\_NAME\\_RES packet.",
       "required": [
         "opcode",
         "name_offset",
@@ -118,7 +118,7 @@
         "opcode_str": {
           "description": "This optional field is just for if you don't care about json file size and you want more human-readable JSON output.",
           "type": "string",
-          "const": "LMP_NAME_RSP"
+          "const": "LMP_NAME_RES"
         },
         "opcode": {
           "description": "This should always be 2. This is required to differentiate from other data types in an array.",
@@ -142,9 +142,9 @@
         }
       }
     },
-    "LMP_NAME_RSP2": {
+    "LMP_NAME_RES2": {
       "type": "object",
-      "description": "Structure for LMP\\_NAME\\_RSP packet, as single raw hex string.",
+      "description": "Structure for LMP\\_NAME\\_RES packet, as single raw hex string.",
       "required": [
         "opcode",
         "full_pkt_hex_str"
@@ -156,7 +156,7 @@
         "opcode_str": {
           "description": "This optional field is just for if you don't care about json file size and you want more human-readable JSON output.",
           "type": "string",
-          "const": "LMP_NAME_RSP"
+          "const": "LMP_NAME_RES"
         },
         "opcode": {
           "description": "This should always be 2. This is required to differentiate from other data types in an array.",
@@ -225,9 +225,9 @@
         }
       }
     },
-    "LMP_VERSION_RSP": {
+    "LMP_VERSION_RES": {
       "type": "object",
-      "description": "Structure for LMP\\_VERSION\\_RSP packet.",
+      "description": "Structure for LMP\\_VERSION\\_RES packet.",
       "required": [
         "opcode",
         "version",
@@ -241,7 +241,7 @@
         "opcode_str": {
           "description": "This optional field is just for if you don't care about json file size and you want more human-readable JSON output.",
           "type": "string",
-          "const": "LMP_VERSION_RSP"
+          "const": "LMP_VERSION_RES"
         },
         "opcode": {
           "description": "This should always be 38. This is required to differentiate from other data types in an array.",
@@ -258,9 +258,9 @@
         }
       }
     },
-    "LMP_VERSION_RSP2": {
+    "LMP_VERSION_RES2": {
       "type": "object",
-      "description": "Structure for LMP\\_VERSION\\_RSP packet, as single raw hex string.",
+      "description": "Structure for LMP\\_VERSION\\_RES packet, as single raw hex string.",
       "required": [
         "opcode",
         "full_pkt_hex_str"
@@ -272,7 +272,7 @@
         "opcode_str": {
           "description": "This optional field is just for if you don't care about json file size and you want more human-readable JSON output.",
           "type": "string",
-          "const": "LMP_VERSION_RSP"
+          "const": "LMP_VERSION_RES"
         },
         "opcode": {
           "description": "This should always be 38. This is required to differentiate from other data types in an array.",
@@ -339,9 +339,9 @@
         }
       }
     },
-    "LMP_FEATURES_RSP": {
+    "LMP_FEATURES_RES": {
       "type": "object",
-      "description": "Structure for LMP\\_FEATURES\\_RSP packet.",
+      "description": "Structure for LMP\\_FEATURES\\_RES packet.",
       "required": [
         "opcode",
         "lmp_features_hex_str"
@@ -353,10 +353,10 @@
         "opcode_str": {
           "description": "This optional field is just for if you don't care about json file size and you want more human-readable JSON output.",
           "type": "string",
-          "const": "LMP_FEATURES_RSP"
+          "const": "LMP_FEATURES_RES"
         },
         "opcode": {
-          "description": "This should always be 38. This is required to differentiate from other data types in an array.",
+          "description": "This should always be 40. This is required to differentiate from other data types in an array.",
           "const": 40
         },
         "lmp_features_hex_str": {
@@ -364,9 +364,9 @@
         }
       }
     },
-    "LMP_FEATURES_RSP2": {
+    "LMP_FEATURES_RES2": {
       "type": "object",
-      "description": "Structure for LMP\\_FEATURES\\_RSP packet, as single raw hex string.",
+      "description": "Structure for LMP\\_FEATURES\\_RES packet, as single raw hex string.",
       "required": [
         "opcode",
         "full_pkt_hex_str"
@@ -378,11 +378,81 @@
         "opcode_str": {
           "description": "This optional field is just for if you don't care about json file size and you want more human-readable JSON output.",
           "type": "string",
-          "const": "LMP_FEATURES_RSP"
+          "const": "LMP_FEATURES_RES"
         },
         "opcode": {
           "description": "This should always be 40. This is required to differentiate from other data types in an array.",
           "const": 40
+        },
+        "full_pkt_hex_str": {
+          "$ref": "BTIDES_base.json#/definitions/full_pkt_hex_str"
+        }
+      }
+    },
+    "LMP_FEATURES_RES_EXT": {
+      "type": "object",
+      "description": "Structure for LMP\\_FEATURES\\_RES\\_EXT packet.",
+      "required": [
+        "opcode",
+        "extended_opcode",
+        "page",
+        "max_page",
+        "lmp_features_hex_str"
+      ],
+      "properties": {
+        "std_optional_fields": {
+          "$ref": "BTIDES_base.json#/definitions/std_optional_fields"
+        },
+        "opcode_str": {
+          "description": "This optional field is just for if you don't care about json file size and you want more human-readable JSON output.",
+          "type": "string",
+          "const": "LMP_FEATURES_RES_EXT"
+        },
+        "opcode": {
+          "description": "This should always be 127. This is required to differentiate from other data types in an array.",
+          "const": 127
+        },
+        "extended_opcode": {
+          "description": "This should always be 4. This is required to differentiate from other data types in an array.",
+          "const": 4
+        },
+        "page": {
+          "description": "Which page of features this corresponds to.",
+          "type": "integer"
+        },
+        "max_page": {
+          "description": "The maximum supported page (64-bit chunk) which contains non-zero features.",
+          "type": "integer"
+        },
+        "lmp_features_hex_str": {
+          "$ref": "#/definitions/lmp_features_hex_str"
+        }
+      }
+    },
+    "LMP_FEATURES_RES_EXT2": {
+      "type": "object",
+      "description": "Structure for LMP\\_FEATURES\\_RES\\_EXT packet.",
+      "required": [
+        "opcode",
+        "extended_opcode",
+        "full_pkt_hex_str"
+      ],
+      "properties": {
+        "std_optional_fields": {
+          "$ref": "BTIDES_base.json#/definitions/std_optional_fields"
+        },
+        "opcode_str": {
+          "description": "This optional field is just for if you don't care about json file size and you want more human-readable JSON output.",
+          "type": "string",
+          "const": "LMP_FEATURES_RES_EXT"
+        },
+        "opcode": {
+          "description": "This should always be 127. This is required to differentiate from other data types in an array.",
+          "const": 127
+        },
+        "extended_opcode": {
+          "description": "This should always be 4. This is required to differentiate from other data types in an array.",
+          "const": 4
         },
         "full_pkt_hex_str": {
           "$ref": "BTIDES_base.json#/definitions/full_pkt_hex_str"
