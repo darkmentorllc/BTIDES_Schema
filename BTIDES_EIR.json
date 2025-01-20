@@ -59,8 +59,8 @@
           "$ref": "BTIDES_base.json#/definitions/std_optional_fields"
         },
         "type": {
-          "description": "This should always be 1. This is required to differentiate from other data types in an array.",
-          "const": 1
+          "description": "This should always be 2. This is required to differentiate from other data types in an array.",
+          "const": 2
         },
         "CoD_hex_str": {
           "$ref": "BTIDES_AdvData.json#/definitions/CoD_hex_str"
