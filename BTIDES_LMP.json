@@ -43,6 +43,12 @@
           },
           {
             "$ref": "#/definitions/LMP_FEATURES_RES2"
+          },
+          {
+            "$ref": "#/definitions/LMP_FEATURES_RES_EXT"
+          },
+          {
+            "$ref": "#/definitions/LMP_FEATURES_RES_EXT2"
           }
         ]
       }
