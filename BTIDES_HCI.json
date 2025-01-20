@@ -24,7 +24,7 @@
       "required": [
         "event_code",
         "status",
-        "remote_name"
+        "remote_name_hex_str"
       ],
       "properties": {
         "std_optional_fields": {
@@ -44,8 +44,8 @@
           "minimum": 0,
           "maximum": 255
         },
-        "remote_name": {
-          "description": "The full device name, without fragmentation.",
+        "remote_name_hex_str": {
+          "description": "The full device name, without fragmentation, as a hex string.",
           "type": "string"
         }
       }
