@@ -134,6 +134,9 @@
                 "$ref": "#/definitions/AdvertisingInterval"
               },
               {
+                "$ref": "#/definitions/LEBDADDR"
+              },
+              {
                 "$ref": "#/definitions/URI"
               },
               {
@@ -918,13 +921,50 @@
         }
       }
     },
+    "LEBDADDR": {
+      "type": "object",
+      "description": "Structure for AdvData of type 0x1B = \"LE Bluetooth Device Address\".",
+      "required": [
+        "type",
+        "length",
+        "bdaddr_type",
+        "le_bdaddr"
+      ],
+      "properties": {
+        "type_str": {
+          "description": "This optional field is just for if you don't care about json file size and you want more human-readable JSON output.",
+          "type": "string",
+          "const": "LEBDADDR"
+        },
+        "type": {
+          "description": "This should always be exactly == 0x1B (27). (Per the assigned numbers document, \"Common Data Type\" table.)",
+          "type": "integer",
+          "const": 27
+        },
+        "length": {
+          "description": "You should store whatever value actually came in from the device, because they could be sending malformed data, and if so, you want to capture that.",
+          "type": "integer"
+        },
+        "bdaddr_type": {
+          "description": "0 for public, 1 for random",
+          "type": "integer",
+          "enum": [
+            0,
+            1
+          ]
+        },
+        "le_bdaddr": {
+          "$ref": "BTIDES_base.json#/definitions/bdaddr"
+        }
+      }
+    },
     "URI": {
       "type": "object",
       "description": "Structure for AdvData of type 0x24 = \"URI\" (Uniform Resource Identifier).",
       "required": [
         "type",
         "length",
-        "URI_hex_str"
+        "uri_hex_str"
       ],
       "properties": {
         "type_str": {
@@ -941,7 +981,7 @@
           "description": "You should store whatever value actually came in from the device, because they could be sending malformed data, and if so, you want to capture that.",
           "type": "integer"
         },
-        "URI_hex_str": {
+        "uri_hex_str": {
           "description": "URI as hex string. Note, there are some encoding rules for shortening the URL, so this can't just be used as a plain UTF-8 string and yield an accurate result.",
           "type": "string"
         }
