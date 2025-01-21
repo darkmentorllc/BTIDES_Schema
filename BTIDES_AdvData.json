@@ -134,7 +134,10 @@
                 "$ref": "#/definitions/AdvertisingInterval"
               },
               {
-                "$ref": "#/definitions/LEBDADDR"
+                "$ref": "#/definitions/LE_BDADDR"
+              },
+              {
+                "$ref": "#/definitions/LE_Role"
               },
               {
                 "$ref": "#/definitions/URI"
@@ -921,7 +924,7 @@
         }
       }
     },
-    "LEBDADDR": {
+    "LE_BDADDR": {
       "type": "object",
       "description": "Structure for AdvData of type 0x1B = \"LE Bluetooth Device Address\".",
       "required": [
@@ -934,7 +937,7 @@
         "type_str": {
           "description": "This optional field is just for if you don't care about json file size and you want more human-readable JSON output.",
           "type": "string",
-          "const": "LEBDADDR"
+          "const": "LE_BDADDR"
         },
         "type": {
           "description": "This should always be exactly == 0x1B (27). (Per the assigned numbers document, \"Common Data Type\" table.)",
@@ -955,6 +958,41 @@
         },
         "le_bdaddr": {
           "$ref": "BTIDES_base.json#/definitions/bdaddr"
+        }
+      }
+    },
+    "LE_Role": {
+      "type": "object",
+      "description": "Structure for AdvData of type 0x1C = \"LE Role\". According to the spec this should only occur in OOB data, but we've seen devices using it for OTA data.",
+      "required": [
+        "type",
+        "length",
+        "role"
+      ],
+      "properties": {
+        "type_str": {
+          "description": "This optional field is just for if you don't care about json file size and you want more human-readable JSON output.",
+          "type": "string",
+          "const": "LE_Role"
+        },
+        "type": {
+          "description": "This should always be exactly == 0x1C (28). (Per the assigned numbers document, \"Common Data Type\" table.)",
+          "type": "integer",
+          "const": 28
+        },
+        "length": {
+          "description": "You should store whatever value actually came in from the device, because they could be sending malformed data, and if so, you want to capture that.",
+          "type": "integer"
+        },
+        "role": {
+          "description": "See the CSS for the definition of the 4 possible values.",
+          "type": "integer",
+          "enum": [
+            0,
+            1,
+            2,
+            3
+          ]
         }
       }
     },
