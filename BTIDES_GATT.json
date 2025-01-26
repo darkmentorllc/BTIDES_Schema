@@ -198,16 +198,20 @@
       "type": "object",
       "description": "Structure for GATT Characteristic (\"attribute type\" UUID always 0x2803). Optional io_array captures input/output seen to/from this Characteristic Value.",
       "properties": {
+        "required": [
+          "handle",
+          "value_uuid"
+        ],
         "handle": {
           "description": "2-byte ATT handle number of the \"Characteristic\" attribute itself.",
           "type": "integer",
           "minimum": 1,
           "maximum": 65535
         },
-        "uuid_hex_str": {
+        "value_uuid": {
           "$comment": "While it could be argued that it's redundant to include this UUID in both the Characteristic and the Characteristic Value, in reality the particular way that GATT is enumerated could mean you have the value for one field but not the other.\n E.g. if gatttool did a ATT\\_READ\\_BY\\_TYPE\\_REQ for type 0x2803 (Characteristic), and it succeeded, you would have it for the Characteristic level but not yet the Characteristic Value level. And gattool could then error out so it never gets further information.\n On the other hand, a tool could do a ATT\\_FIND\\_INFORMATION\\_REQ-based enumeration of all handles, and it would have the handle and this uuid\\_hex\\_str value (and it could furthermore infer some information about the enclosing Characteristic), but it wouldn't have *all* the Characteristic information. So for now, for flexibility I recommend keeping the information in both places, but making it optional here, to support the maximum types and strategies of data collection.",
-          "description": "2-byte UUID for this \"Characteristic Value\" attribute, as a hex string.",
-          "type": "string"
+          "description": "UUID for this \"Characteristic Value\" attribute, as a hex string.",
+          "$ref": "BTIDES_base.json#/definitions/UUID"
         },
         "io_array": {
           "description": "This optional field is used if you want to capture a log of all the values you've seen for intput/output via reads, writes, notification, indication, or broadcast.",
@@ -230,6 +234,7 @@
           "description": "Optional field to make JSON more human-readable.",
           "type": "string",
           "enum": [
+            "Error - ATT_ERROR_RSP",
             "Read - ATT_FIND_INFORMATION_RSP",
             "Read - ATT_FIND_BY_TYPE_VALUE_RSP",
             "Read - ATT_READ_BY_TYPE_RSP",
@@ -248,9 +253,10 @@
           ]
         },
         "io_type": {
-          "description": "What type of IO does this value correspond to? Using the ATT opcode values (and grouping according to the strings for Read vs. Write with response, etc).",
+          "description": "What type of IO does this value correspond to? Using the ATT opcode values for the non-error values (and grouping according to the strings for Read vs. Write with response, etc).",
           "type": "integer",
           "enum": [
+            1,
             5,
             7,
             9,
@@ -284,6 +290,11 @@
         "extended_properties"
       ],
       "properties": {
+        "type_str": {
+          "description": "Optional field to make JSON instance more readable",
+          "type": "string",
+          "const": "Characteristic Descriptor: Characteristic Extended Properties"
+        },
         "UUID": {
           "description": "This is just here to make it more clear which object this in the Characteristic->descriptors array.",
           "type": "string",
@@ -313,6 +324,11 @@
         "user_description"
       ],
       "properties": {
+        "type_str": {
+          "description": "Optional field to make JSON instance more readable",
+          "type": "string",
+          "const": "Characteristic Descriptor: Characteristic User Description"
+        },
         "UUID": {
           "description": "This is just here to make it more clear which object this in the Characteristic->descriptors array.",
           "type": "string",
@@ -340,6 +356,11 @@
         "config_bits"
       ],
       "properties": {
+        "type_str": {
+          "description": "Optional field to make JSON instance more readable",
+          "type": "string",
+          "const": "Characteristic Descriptor: Client Characteristic Configuration"
+        },
         "UUID": {
           "description": "This is just here to make it more clear which object this in the Characteristic->descriptors array.",
           "type": "string",
@@ -369,6 +390,11 @@
         "config_bits"
       ],
       "properties": {
+        "type_str": {
+          "description": "Optional field to make JSON instance more readable",
+          "type": "string",
+          "const": "Characteristic Descriptor: Server Characteristic Configuration"
+        },
         "UUID": {
           "description": "This is just here to make it more clear which object this in the Characteristic->descriptors array.",
           "type": "string",
@@ -402,6 +428,11 @@
         "description"
       ],
       "properties": {
+        "type_str": {
+          "description": "Optional field to make JSON instance more readable",
+          "type": "string",
+          "const": "Characteristic Descriptor: Characteristic Presentation Format"
+        },
         "UUID": {
           "description": "This is just here to make it more clear which object this in the Characteristic->descriptors array.",
           "type": "string",
@@ -455,6 +486,11 @@
         "attribute_handles_list"
       ],
       "properties": {
+        "type_str": {
+          "description": "Optional field to make JSON instance more readable",
+          "type": "string",
+          "const": "Characteristic Descriptor: Characteristic Aggregate Format"
+        },
         "UUID": {
           "description": "This is just here to make it more clear which object this in the Characteristic->descriptors array.",
           "type": "string",
