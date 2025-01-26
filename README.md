@@ -31,13 +31,13 @@ source ./venv/bin/activate
 pip3 install json-schema-for-humans
 ```
 
-Documentation using online Javascript:  
-`generate-schema-doc BTIDES_base.json BTIDES.html`  
+Documentation using online Javascript:
+`generate-schema-doc BTIDES_base.json BTIDES.html`
 
-Documentation using offline/local Javascript:  
-`generate-schema-doc BTIDES_base.json --config  template_name=js_offline BTIDES.html`  
+Documentation using offline/local Javascript:
+`generate-schema-doc BTIDES_base.json --config  template_name=js_offline BTIDES.html`
 
-Documentation using Markdown:  
+Documentation using Markdown:
 `generate-schema-doc BTIDES_base.json --config  template_name=md BTIDES.md`
 
 We prefer the collapsible HTML/JS formatting, therefore the latest copy of that documentation will always be mirroed to [https://darkmentor.com/BTIDES_base/BTIDES.html](https://darkmentor.com/BTIDES_base/BTIDES.html).
@@ -82,7 +82,7 @@ def write_BTIDES(out_filename):
     # Sanity check the BTIDES data against the schema before export, to not write garbage
     # Import all the local BTIDES json schema files, so that we don't hit the website all the time
     all_schemas = []
-    required_version = "0.1.0"
+    required_version = "0.2.1"
 
     def version_tuple(v):
         return tuple(map(int, (v.split("."))))
@@ -91,7 +91,7 @@ def write_BTIDES(out_filename):
         with open(f"./BTIDES_Schema/{file}", 'r') as f:
             s = json.load(f)
             if file == "BTIDES_base.json":
-                schema_version = s.get("version", "0.1.0")
+                schema_version = s.get("version", "0.2.1")
                 if version_tuple(schema_version) < version_tuple(required_version):
                     raise ValueError(f"Schema version {schema_version} is less than the required version {required_version}")
             schema = Resource.from_contents(s)

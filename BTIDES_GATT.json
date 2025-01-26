@@ -230,22 +230,42 @@
           "description": "Optional field to make JSON more human-readable.",
           "type": "string",
           "enum": [
-            "Read",
-            "Write with response",
-            "Write without response",
-            "Notification",
-            "Indication"
+            "Read - ATT_FIND_INFORMATION_RSP",
+            "Read - ATT_FIND_BY_TYPE_VALUE_RSP",
+            "Read - ATT_READ_BY_TYPE_RSP",
+            "Read - ATT_READ_RSP",
+            "Read - ATT_READ_BLOB_RSP",
+            "Read - ATT_READ_MULTIPLE_RSP",
+            "Read - ATT_READ_BY_GROUP_TYPE_RSP",
+            "Read - ATT_READ_MULTIPLE_VARIABLE_RSP",
+            "Write with response - ATT_WRITE_REQ",
+            "Write with response - ATT_PREPARE_WRITE_REQ",
+            "Write without response - ATT_WRITE_CMD",
+            "Write without response - ATT_SIGNED_WRITE_CMD",
+            "Notification - ATT_HANDLE_VALUE_NTF",
+            "Notification - ATT_MULTIPLE_HANDLE_VALUE_NTF",
+            "Indication - ATT_HANDLE_VALUE_IND"
           ]
         },
         "io_type": {
-          "description": "What type of IO does this value correspond to? \n 0 = Read (e.g. via ATT\\_FIND\\_INFORMATION\\_REQ or ATT\\_READ\\_RSP or ATT\\_READ\\_BLOB\\_RSP) \n 1 = Write with notification (e.g. via ATT\\_WRITE\\_REQ)\n 2 = Write without notification (e.g. via ATT\\_WRITE\\_CMD)\n 3 = Notification (e.g. via ATT\\_HANDLE\\_VALUE\\_NTF)\n 4 = Indication (e.g. via ATT\\_HANDLE\\_VALUE\\_IND)",
+          "description": "What type of IO does this value correspond to? Using the ATT opcode values (and grouping according to the strings for Read vs. Write with response, etc).",
           "type": "integer",
           "enum": [
-            0,
-            1,
-            2,
-            3,
-            4
+            5,
+            7,
+            9,
+            11,
+            13,
+            15,
+            17,
+            33,
+            18,
+            22,
+            82,
+            210,
+            27,
+            35,
+            29
           ]
         },
         "value_hex_str": {
