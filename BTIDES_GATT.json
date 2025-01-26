@@ -230,6 +230,31 @@
         "value_hex_str"
       ],
       "properties": {
+        "io_error_str": {
+          "description": "Optional field to make JSON more human-readable if the io_type is 1(ATT_ERROR_RSP) ",
+          "type": "string",
+          "enum": [
+            "Invalid Handle",
+            "Read Not Permitted",
+            "Write Not Permitted",
+            "Invalid PDU",
+            "Insufficient Authentication",
+            "Request Not Supported",
+            "Invalid Offset",
+            "Insufficient Authorization",
+            "Prepare Queue Full",
+            "Attribute Not Found",
+            "Attribute Not Long",
+            "Encryption Key Size Too Short",
+            "Invalid Attribute Value Length",
+            "Unlikely Error",
+            "Insufficient Encryption",
+            "Unsupported Group Type",
+            "Insufficient Resources",
+            "Database Out of Sync",
+            "Value Not Allowed"
+          ]
+        },
         "io_type_str": {
           "description": "Optional field to make JSON more human-readable.",
           "type": "string",
