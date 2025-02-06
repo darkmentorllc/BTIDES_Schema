@@ -418,7 +418,7 @@
           "type": "string",
           "$comment": "The extended advertisements can have larger lengths to work with, so I'm just putting a simple, possibly-incorrect, sanity check on the length to warn of possible future errors",
           "minLength": 0,
-          "maxLength": 255
+          "maxLength": 512
         }
       }
     },
@@ -460,7 +460,7 @@
           "type": "string",
           "$comment": "The extended advertisements can have larger lengths to work with, so I'm just putting a simple, possibly-incorrect, sanity check on the length to warn of possible future errors",
           "minLength": 0,
-          "maxLength": 255
+          "maxLength": 512
         }
       }
     },

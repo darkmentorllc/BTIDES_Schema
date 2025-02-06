@@ -332,10 +332,10 @@
           "maximum": 65535
         },
         "extended_properties": {
-          "description": "1-byte \"Characteristic Properties\", which encodes characteristic permission and properties in bits.\n bit 0 = Reliable Write \n bit 1 = Writable Auxilaries.\n",
+          "description": "2-byte \"Characteristic Properties\", which encodes characteristic permission and properties in bits.\n bit 0 = Reliable Write \n bit 1 = Writable Auxilaries.",
           "type": "integer",
           "minimum": 0,
-          "maximum": 255
+          "maximum": 65535
         }
       }
     },
