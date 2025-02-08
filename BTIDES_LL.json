@@ -69,6 +69,12 @@
             "$ref": "#/definitions/LL_VERSION_IND2"
           },
           {
+            "$ref": "#/definitions/LL_REJECT_IND"
+          },
+          {
+            "$ref": "#/definitions/LL_REJECT_IND2"
+          },
+          {
             "$ref": "#/definitions/LL_PERIPHERAL_FEATURE_REQ"
           },
           {
@@ -85,6 +91,12 @@
           },
           {
             "$ref": "#/definitions/LL_CONNECTION_PARAM_RSP2"
+          },
+          {
+            "$ref": "#/definitions/LL_REJECT_EXT_IND"
+          },
+          {
+            "$ref": "#/definitions/LL_REJECT_EXT_IND2"
           },
           {
             "$ref": "#/definitions/LL_PING_REQ"
@@ -819,6 +831,71 @@
         }
       }
     },
+    "LL_REJECT_IND": {
+      "type": "object",
+      "description": "Structure for LL\\_REJECT\\_IND packet, as single raw hex string.",
+      "required": [
+        "direction",
+        "opcode",
+        "error_code"
+      ],
+      "properties": {
+        "std_optional_fields": {
+          "$ref": "BTIDES_base.json#/definitions/std_optional_fields"
+        },
+        "direction": {
+          "$ref": "BTIDES_base.json#/definitions/direction"
+        },
+        "error_str": {
+          "description": "Optional human-readable string describing the error.",
+          "type": "string"
+        },
+        "opcode_str": {
+          "description": "This optional field is just for if you don't care about json file size and you want more human-readable JSON output.",
+          "type": "string",
+          "const": "LL_REJECT_IND"
+        },
+        "opcode": {
+          "description": "This should always be 13. This is required to differentiate from other data types in an array.",
+          "const": 13
+        },
+        "error_code": {
+          "description": "One byte value indicating the reason for rejection.",
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 255
+        }
+      }
+    },
+    "LL_REJECT_IND2": {
+      "type": "object",
+      "description": "Structure for LL\\_REJECT\\_IND packet, as single raw hex string.",
+      "required": [
+        "direction",
+        "opcode",
+        "full_pkt_hex_str"
+      ],
+      "properties": {
+        "std_optional_fields": {
+          "$ref": "BTIDES_base.json#/definitions/std_optional_fields"
+        },
+        "direction": {
+          "$ref": "BTIDES_base.json#/definitions/direction"
+        },
+        "opcode_str": {
+          "description": "This optional field is just for if you don't care about json file size and you want more human-readable JSON output.",
+          "type": "string",
+          "const": "LL_REJECT_IND"
+        },
+        "opcode": {
+          "description": "This should always be 13. This is required to differentiate from other data types in an array.",
+          "const": 13
+        },
+        "full_pkt_hex_str": {
+          "$ref": "BTIDES_base.json#/definitions/full_pkt_hex_str"
+        }
+      }
+    },
     "LL_PERIPHERAL_FEATURE_REQ": {
       "type": "object",
       "description": "Structure for LL\\_PERIPHERAL\\_FEATURE\\_REQ packet.",
@@ -1147,6 +1224,78 @@
         "opcode": {
           "description": "This should always be 16. This is required to differentiate from other data types in an array.",
           "const": 16
+        },
+        "full_pkt_hex_str": {
+          "$ref": "BTIDES_base.json#/definitions/full_pkt_hex_str"
+        }
+      }
+    },
+    "LL_REJECT_EXT_IND": {
+      "type": "object",
+      "description": "Structure for LL\\_REJECT\\_EXT\\_IND packet, as single raw hex string.",
+      "required": [
+        "direction",
+        "opcode",
+        "reject_opcode",
+        "error_code"
+      ],
+      "properties": {
+        "std_optional_fields": {
+          "$ref": "BTIDES_base.json#/definitions/std_optional_fields"
+        },
+        "direction": {
+          "$ref": "BTIDES_base.json#/definitions/direction"
+        },
+        "error_str": {
+          "description": "Optional human-readable string describing the error.",
+          "type": "string"
+        },
+        "opcode_str": {
+          "description": "This optional field is just for if you don't care about json file size and you want more human-readable JSON output.",
+          "type": "string",
+          "const": "LL_REJECT_EXT_IND"
+        },
+        "opcode": {
+          "description": "This should always be 17. This is required to differentiate from other data types in an array.",
+          "const": 17
+        },
+        "reject_opcode": {
+          "description": "The LL opcode that was rejected.",
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 255
+        },
+        "error_code": {
+          "description": "One byte value indicating the reason for termination.",
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 255
+        }
+      }
+    },
+    "LL_REJECT_EXT_IND2": {
+      "type": "object",
+      "description": "Structure for LL\\_REJECT\\_EXT\\_IND packet, as single raw hex string.",
+      "required": [
+        "direction",
+        "opcode",
+        "full_pkt_hex_str"
+      ],
+      "properties": {
+        "std_optional_fields": {
+          "$ref": "BTIDES_base.json#/definitions/std_optional_fields"
+        },
+        "direction": {
+          "$ref": "BTIDES_base.json#/definitions/direction"
+        },
+        "opcode_str": {
+          "description": "This optional field is just for if you don't care about json file size and you want more human-readable JSON output.",
+          "type": "string",
+          "const": "LL_REJECT_EXT_IND"
+        },
+        "opcode": {
+          "description": "This should always be 2. This is required to differentiate from other data types in an array.",
+          "const": 17
         },
         "full_pkt_hex_str": {
           "$ref": "BTIDES_base.json#/definitions/full_pkt_hex_str"
