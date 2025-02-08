@@ -27,6 +27,18 @@
             "$ref": "#/definitions/LL_TERMINATE_IND2"
           },
           {
+            "$ref": "#/definitions/LL_ENC_REQ"
+          },
+          {
+            "$ref": "#/definitions/LL_ENC_REQ2"
+          },
+          {
+            "$ref": "#/definitions/LL_ENC_RSP"
+          },
+          {
+            "$ref": "#/definitions/LL_ENC_RSP2"
+          },
+          {
             "$ref": "#/definitions/LL_UNKNOWN_RSP"
           },
           {
@@ -314,6 +326,156 @@
         "opcode": {
           "description": "This should always be 2. This is required to differentiate from other data types in an array.",
           "const": 2
+        },
+        "full_pkt_hex_str": {
+          "$ref": "BTIDES_base.json#/definitions/full_pkt_hex_str"
+        }
+      }
+    },
+    "LL_ENC_REQ": {
+      "type": "object",
+      "description": "Structure for LL\\_ENC\\_REQ packet.",
+      "required": [
+        "direction",
+        "opcode",
+        "rand",
+        "ediv",
+        "skd_c",
+        "iv_c"
+      ],
+      "properties": {
+        "std_optional_fields": {
+          "$ref": "BTIDES_base.json#/definitions/std_optional_fields"
+        },
+        "direction": {
+          "$ref": "BTIDES_base.json#/definitions/direction"
+        },
+        "opcode_str": {
+          "description": "This optional field is just for if you don't care about json file size and you want more human-readable JSON output.",
+          "type": "string",
+          "const": "LL_ENC_REQ"
+        },
+        "opcode": {
+          "description": "This should always be 3. This is required to differentiate from other data types in an array.",
+          "const": 3
+        },
+        "rand": {
+          "description": "8 byte random value provided by host.",
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 18446744073709551615
+        },
+        "ediv": {
+          "description": "2 byte encrypted diversifier.",
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 65535
+        },
+        "skd_c": {
+          "description": "8 byte session key diversifier from Central.",
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 18446744073709551615
+        },
+        "iv_c": {
+          "description": "4 byte initialization vector from Central.",
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 4294967295
+        }
+      }
+    },
+    "LL_ENC_REQ2": {
+      "type": "object",
+      "description": "Structure for LL\\_ENC\\_REQ packet.",
+      "required": [
+        "direction",
+        "opcode",
+        "full_pkt_hex_str"
+      ],
+      "properties": {
+        "std_optional_fields": {
+          "$ref": "BTIDES_base.json#/definitions/std_optional_fields"
+        },
+        "direction": {
+          "$ref": "BTIDES_base.json#/definitions/direction"
+        },
+        "opcode_str": {
+          "description": "This optional field is just for if you don't care about json file size and you want more human-readable JSON output.",
+          "type": "string",
+          "const": "LL_ENC_REQ"
+        },
+        "opcode": {
+          "description": "This should always be 3. This is required to differentiate from other data types in an array.",
+          "const": 3
+        },
+        "full_pkt_hex_str": {
+          "$ref": "BTIDES_base.json#/definitions/full_pkt_hex_str"
+        }
+      }
+    },
+    "LL_ENC_RSP": {
+      "type": "object",
+      "description": "Structure for LL\\_ENC\\_RSP packet.",
+      "required": [
+        "direction",
+        "opcode",
+        "skd_p",
+        "iv_p"
+      ],
+      "properties": {
+        "std_optional_fields": {
+          "$ref": "BTIDES_base.json#/definitions/std_optional_fields"
+        },
+        "direction": {
+          "$ref": "BTIDES_base.json#/definitions/direction"
+        },
+        "opcode_str": {
+          "description": "This optional field is just for if you don't care about json file size and you want more human-readable JSON output.",
+          "type": "string",
+          "const": "LL_ENC_RSP"
+        },
+        "opcode": {
+          "description": "This should always be 4. This is required to differentiate from other data types in an array.",
+          "const": 4
+        },
+        "skd_p": {
+          "description": "8 byte session key diversifier from Perpheral.",
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 18446744073709551615
+        },
+        "iv_p": {
+          "description": "4 byte initialization vector from Perpheral.",
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 4294967295
+        }
+      }
+    },
+    "LL_ENC_RSP2": {
+      "type": "object",
+      "description": "Structure for LL\\_ENC\\_RSP packet.",
+      "required": [
+        "direction",
+        "opcode",
+        "full_pkt_hex_str"
+      ],
+      "properties": {
+        "std_optional_fields": {
+          "$ref": "BTIDES_base.json#/definitions/std_optional_fields"
+        },
+        "direction": {
+          "$ref": "BTIDES_base.json#/definitions/direction"
+        },
+        "opcode_str": {
+          "description": "This optional field is just for if you don't care about json file size and you want more human-readable JSON output.",
+          "type": "string",
+          "const": "LL_ENC_RSP"
+        },
+        "opcode": {
+          "description": "This should always be 4. This is required to differentiate from other data types in an array.",
+          "const": 4
         },
         "full_pkt_hex_str": {
           "$ref": "BTIDES_base.json#/definitions/full_pkt_hex_str"
