@@ -39,6 +39,12 @@
             "$ref": "#/definitions/LL_ENC_RSP2"
           },
           {
+            "$ref": "#/definitions/LL_START_ENC_REQ"
+          },
+          {
+            "$ref": "#/definitions/LL_START_ENC_RSP"
+          },
+          {
             "$ref": "#/definitions/LL_UNKNOWN_RSP"
           },
           {
@@ -109,6 +115,12 @@
           },
           {
             "$ref": "#/definitions/LL_PHY_RSP2"
+          },
+          {
+            "$ref": "#/definitions/LL_PHY_UPDATE_IND"
+          },
+          {
+            "$ref": "#/definitions/LL_PHY_UPDATE_IND2"
           }
         ]
       }
@@ -491,6 +503,56 @@
         },
         "full_pkt_hex_str": {
           "$ref": "BTIDES_base.json#/definitions/full_pkt_hex_str"
+        }
+      }
+    },
+    "LL_START_ENC_REQ": {
+      "type": "object",
+      "description": "Structure for LL\\_START\\_ENC\\_REQ packet. (This has no payload, only the opcode.)",
+      "required": [
+        "direction",
+        "opcode"
+      ],
+      "properties": {
+        "std_optional_fields": {
+          "$ref": "BTIDES_base.json#/definitions/std_optional_fields"
+        },
+        "direction": {
+          "$ref": "BTIDES_base.json#/definitions/direction"
+        },
+        "opcode_str": {
+          "description": "This optional field is just for if you don't care about json file size and you want more human-readable JSON output.",
+          "type": "string",
+          "const": "LL_START_ENC_REQ"
+        },
+        "opcode": {
+          "description": "This should always be 5. This is required to differentiate from other data types in an array.",
+          "const": 5
+        }
+      }
+    },
+    "LL_START_ENC_RSP": {
+      "type": "object",
+      "description": "Structure for LL\\_START\\_ENC\\_RSP packet. (This has no payload, only the opcode.)",
+      "required": [
+        "direction",
+        "opcode"
+      ],
+      "properties": {
+        "std_optional_fields": {
+          "$ref": "BTIDES_base.json#/definitions/std_optional_fields"
+        },
+        "direction": {
+          "$ref": "BTIDES_base.json#/definitions/direction"
+        },
+        "opcode_str": {
+          "description": "This optional field is just for if you don't care about json file size and you want more human-readable JSON output.",
+          "type": "string",
+          "const": "LL_START_ENC_RSP"
+        },
+        "opcode": {
+          "description": "This should always be 6. This is required to differentiate from other data types in an array.",
+          "const": 6
         }
       }
     },
@@ -1435,6 +1497,81 @@
         "opcode": {
           "description": "This should always be 23. This is required to differentiate from other data types in an array.",
           "const": 23
+        },
+        "full_pkt_hex_str": {
+          "$ref": "BTIDES_base.json#/definitions/full_pkt_hex_str"
+        }
+      }
+    },
+    "LL_PHY_UPDATE_IND": {
+      "type": "object",
+      "description": "Structure for LL\\_PHY\\_UPDATE\\_IND packet.",
+      "required": [
+        "direction",
+        "opcode",
+        "phy_c_to_p",
+        "phy_p_to_c",
+        "instant"
+      ],
+      "properties": {
+        "std_optional_fields": {
+          "$ref": "BTIDES_base.json#/definitions/std_optional_fields"
+        },
+        "direction": {
+          "$ref": "BTIDES_base.json#/definitions/direction"
+        },
+        "opcode_str": {
+          "description": "This optional field is just for if you don't care about json file size and you want more human-readable JSON output.",
+          "type": "string",
+          "const": "LL_PHY_UPDATE_IND"
+        },
+        "opcode": {
+          "description": "This should always be 24. This is required to differentiate from other data types in an array.",
+          "const": 24
+        },
+        "phy_c_to_p": {
+          "description": "'PHY_C_TO_P shall be set to indicate the PHY that shall be used for packets sent from the Central to the Peripheral.'",
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 255
+        },
+        "phy_p_to_c": {
+          "description": "'PHY_P_TO_C shall be set to indicate the PHY that shall be used for packets sent from the Peripheral to the Central.'",
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 255
+        },
+        "instant": {
+          "description": "What instant (connection event from start of connection, indexed from 0) the update will occur at.",
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 65535
+        }
+      }
+    },
+    "LL_PHY_UPDATE_IND2": {
+      "type": "object",
+      "description": "Structure for LL\\_PHY\\_UPDATE\\_IND packet.",
+      "required": [
+        "direction",
+        "opcode",
+        "full_pkt_hex_str"
+      ],
+      "properties": {
+        "std_optional_fields": {
+          "$ref": "BTIDES_base.json#/definitions/std_optional_fields"
+        },
+        "direction": {
+          "$ref": "BTIDES_base.json#/definitions/direction"
+        },
+        "opcode_str": {
+          "description": "This optional field is just for if you don't care about json file size and you want more human-readable JSON output.",
+          "type": "string",
+          "const": "LL_PHY_UPDATE_IND"
+        },
+        "opcode": {
+          "description": "This should always be 24. This is required to differentiate from other data types in an array.",
+          "const": 24
         },
         "full_pkt_hex_str": {
           "$ref": "BTIDES_base.json#/definitions/full_pkt_hex_str"
