@@ -132,7 +132,7 @@
           "maximum": 65535
         },
         "latency": {
-          "description": "The slave latency used in the CONNECT_IND packet. \"The value of connSubrateFactor shall be in the range 1 to 500 and shall be set to 1 for a new connection\" to be valid according to the spec, but put whatever value was actually found in the packet.",
+          "description": "The peripheral latency used in the CONNECT_IND packet. \"The value of connSubrateFactor shall be in the range 1 to 500 and shall be set to 1 for a new connection\" to be valid according to the spec, but put whatever value was actually found in the packet.",
           "type": "integer",
           "minimum": 0,
           "maximum": 65535
