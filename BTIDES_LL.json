@@ -69,6 +69,18 @@
             "$ref": "#/definitions/LL_PERIPHERAL_FEATURE_REQ2"
           },
           {
+            "$ref": "#/definitions/LL_CONNECTION_PARAM_REQ"
+          },
+          {
+            "$ref": "#/definitions/LL_CONNECTION_PARAM_REQ2"
+          },
+          {
+            "$ref": "#/definitions/LL_CONNECTION_PARAM_RSP"
+          },
+          {
+            "$ref": "#/definitions/LL_CONNECTION_PARAM_RSP2"
+          },
+          {
             "$ref": "#/definitions/LL_PING_REQ"
           },
           {
@@ -151,7 +163,7 @@
           "maximum": 65535
         },
         "latency": {
-          "description": "The peripheral latency used in the CONNECT_IND packet. \"The value of connSubrateFactor shall be in the range 1 to 500 and shall be set to 1 for a new connection\" to be valid according to the spec, but put whatever value was actually found in the packet.",
+          "description": "The Peripheral latency used in the CONNECT_IND packet. \"The value of connSubrateFactor shall be in the range 1 to 500 and shall be set to 1 for a new connection\" to be valid according to the spec, but put whatever value was actually found in the packet.",
           "type": "integer",
           "minimum": 0,
           "maximum": 65535
@@ -703,6 +715,48 @@
         }
       }
     },
+    "version": {
+      "description": "One byte value indicating version of the BT Core Specification that this device comforms to.\n e.g. 0x06 = 4.0, 0x08 = 4.2, 0x09 = 5.0, 0x0D = 5.4 etc. See Assigned Numbers document. \n Only setting an upper bound to enforce sanity checking that this is a single byte value.",
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 255
+    },
+    "company_id": {
+      "description": "Company ID as assigned by Bluetooth SIG. See assigned\\_numbers/company\\_identifiers/company\\_identifiers.yaml from https://bitbucket.org/bluetooth-SIG/public. \n Only setting an upper bound to enforce sanity checking that this is a two-byte value.",
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 65535
+    },
+    "subversion": {
+      "description": "This is nominally the sub-version of the BT controller itself (i.e. hardware). This value is arbitrary, and picked by the hardware maker. \n The correspondance of certain values to certain hardware is known for some vendors like Broadcom, but is unknown for most vendors.\n Only setting an upper bound to enforce sanity checking that this is a two-byte value.",
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 65535
+    },
+    "LL_VERSION_IND2": {
+      "type": "object",
+      "description": "Structure for LL\\_VERSION\\_IND packet, as single raw hex string.",
+      "required": [
+        "direction",
+        "opcode",
+        "full_pkt_hex_str"
+      ],
+      "properties": {
+        "std_optional_fields": {
+          "$ref": "BTIDES_base.json#/definitions/std_optional_fields"
+        },
+        "direction": {
+          "$ref": "BTIDES_base.json#/definitions/direction"
+        },
+        "opcode": {
+          "description": "This should always be 12. This is required to differentiate from other data types in an array.",
+          "const": 12
+        },
+        "full_pkt_hex_str": {
+          "$ref": "BTIDES_base.json#/definitions/full_pkt_hex_str"
+        }
+      }
+    },
     "LL_PERIPHERAL_FEATURE_REQ": {
       "type": "object",
       "description": "Structure for LL\\_PERIPHERAL\\_FEATURE\\_REQ packet.",
@@ -761,27 +815,118 @@
         }
       }
     },
-    "version": {
-      "description": "One byte value indicating version of the BT Core Specification that this device comforms to.\n e.g. 0x06 = 4.0, 0x08 = 4.2, 0x09 = 5.0, 0x0D = 5.4 etc. See Assigned Numbers document. \n Only setting an upper bound to enforce sanity checking that this is a single byte value.",
-      "type": "integer",
-      "minimum": 0,
-      "maximum": 255
-    },
-    "company_id": {
-      "description": "Company ID as assigned by Bluetooth SIG. See assigned\\_numbers/company\\_identifiers/company\\_identifiers.yaml from https://bitbucket.org/bluetooth-SIG/public. \n Only setting an upper bound to enforce sanity checking that this is a two-byte value.",
-      "type": "integer",
-      "minimum": 0,
-      "maximum": 65535
-    },
-    "subversion": {
-      "description": "This is nominally the sub-version of the BT controller itself (i.e. hardware). This value is arbitrary, and picked by the hardware maker. \n The correspondance of certain values to certain hardware is known for some vendors like Broadcom, but is unknown for most vendors.\n Only setting an upper bound to enforce sanity checking that this is a two-byte value.",
-      "type": "integer",
-      "minimum": 0,
-      "maximum": 65535
-    },
-    "LL_VERSION_IND2": {
+    "LL_CONNECTION_PARAM_REQ": {
       "type": "object",
-      "description": "Structure for LL\\_VERSION\\_IND packet, as single raw hex string.",
+      "description": "Structure for LL\\_CONNECTION\\_PARAM\\_REQ packet.",
+      "required": [
+        "direction",
+        "opcode",
+        "interval_min",
+        "interval_max",
+        "latency",
+        "timeout",
+        "preferred_periodicity",
+        "reference_conneventcount",
+        "offset0",
+        "offset1",
+        "offset2",
+        "offset3",
+        "offset4",
+        "offset5"
+      ],
+      "properties": {
+        "std_optional_fields": {
+          "$ref": "BTIDES_base.json#/definitions/std_optional_fields"
+        },
+        "direction": {
+          "$ref": "BTIDES_base.json#/definitions/direction"
+        },
+        "opcode_str": {
+          "description": "This optional field is just for if you don't care about json file size and you want more human-readable JSON output.",
+          "type": "string",
+          "const": "LL_CONNECTION_PARAM_REQ"
+        },
+        "opcode": {
+          "description": "This should always be 15. This is required to differentiate from other data types in an array.",
+          "const": 15
+        },
+        "interval_min": {
+          "description": "The minimum connection interval. (Multiplied by 1.25ms). This should technically be only between 7.5ms to 4.0s (6-3200) according to the spec, but put in whatever was actually used.",
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 65535
+        },
+        "interval_max": {
+          "description": "The maximum connection interval. (Multiplied by 1.25ms). This should technically be only between 7.5ms to 4.0s (6-3200) according to the spec, but put in whatever was actually used.",
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 65535
+        },
+        "latency": {
+          "description": "The Peripheral latency (how many connection events the Peripheral can skip replying to.). \"The value of connSubrateFactor shall be in the range 1 to 500 and shall be set to 1 for a new connection\" to be valid according to the spec, but put whatever value was actually found in the packet.",
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 65535
+        },
+        "timeout": {
+          "description": "The connection timeout. (Multiplied by 10ms). \"The connSupervisionTimeout shall be a multiple of 10 ms in the range 100 ms to 32.0s and it shall be larger than (1 + connPeripheralLatency) × connSubrateFactor × connInterval × 2.\" (so 1-3200)according to the spec, but put in whatever was actually used.",
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 65535
+        },
+        "preferred_periodicity": {
+          "description": "Multiplied by 1.25ms. 'The PreferredPeriodicity field shall be set to indicate a value the connInterval is preferred to be a multiple of.'",
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 255
+        },
+        "reference_conneventcount": {
+          "description": "'The ReferenceConnEventCount field shall be set to indicate the value of the connEventCounter relative to which all the valid Offset0 to Offset5 fields have been calculated.'",
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 65535
+        },
+        "offset0": {
+          "description": "'The Offset0, Offset1, Offset2, Offset3, Offset4, and Offset5 fields shall be set to indicate the possible values of the position of the anchor points of the LE connection with the updated connection parameters relative to the ReferenceConnEventCount.' + 'A value of 0xFFFF means not valid.'",
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 65535
+        },
+        "offset1": {
+          "description": "'The Offset0, Offset1, Offset2, Offset3, Offset4, and Offset5 fields shall be set to indicate the possible values of the position of the anchor points of the LE connection with the updated connection parameters relative to the ReferenceConnEventCount.' + 'A value of 0xFFFF means not valid.'",
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 65535
+        },
+        "offset2": {
+          "description": "'The Offset0, Offset1, Offset2, Offset3, Offset4, and Offset5 fields shall be set to indicate the possible values of the position of the anchor points of the LE connection with the updated connection parameters relative to the ReferenceConnEventCount.' + 'A value of 0xFFFF means not valid.'",
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 65535
+        },
+        "offset3": {
+          "description": "'The Offset0, Offset1, Offset2, Offset3, Offset4, and Offset5 fields shall be set to indicate the possible values of the position of the anchor points of the LE connection with the updated connection parameters relative to the ReferenceConnEventCount.' + 'A value of 0xFFFF means not valid.'",
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 65535
+        },
+        "offset4": {
+          "description": "'The Offset0, Offset1, Offset2, Offset3, Offset4, and Offset5 fields shall be set to indicate the possible values of the position of the anchor points of the LE connection with the updated connection parameters relative to the ReferenceConnEventCount.' + 'A value of 0xFFFF means not valid.'",
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 65535
+        },
+        "offset5": {
+          "description": "'The Offset0, Offset1, Offset2, Offset3, Offset4, and Offset5 fields shall be set to indicate the possible values of the position of the anchor points of the LE connection with the updated connection parameters relative to the ReferenceConnEventCount.' + 'A value of 0xFFFF means not valid.'",
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 65535
+        }
+      }
+    },
+    "LL_CONNECTION_PARAM_REQ2": {
+      "type": "object",
+      "description": "Structure for LL\\_CONNECTION\\_PARAM\\_REQ packet.",
       "required": [
         "direction",
         "opcode",
@@ -794,9 +939,152 @@
         "direction": {
           "$ref": "BTIDES_base.json#/definitions/direction"
         },
+        "opcode_str": {
+          "description": "This optional field is just for if you don't care about json file size and you want more human-readable JSON output.",
+          "type": "string",
+          "const": "LL_PERIPHERAL_FEATURE_REQ"
+        },
         "opcode": {
-          "description": "This should always be 12. This is required to differentiate from other data types in an array.",
-          "const": 12
+          "description": "This should always be 15. This is required to differentiate from other data types in an array.",
+          "const": 15
+        },
+        "full_pkt_hex_str": {
+          "$ref": "BTIDES_base.json#/definitions/full_pkt_hex_str"
+        }
+      }
+    },
+    "LL_CONNECTION_PARAM_RSP": {
+      "type": "object",
+      "description": "Structure for LL\\_CONNECTION\\_PARAM\\_RSP packet.",
+      "required": [
+        "direction",
+        "opcode",
+        "interval_min",
+        "interval_max",
+        "latency",
+        "timeout",
+        "preferred_periodicity",
+        "reference_conneventcount",
+        "offset0",
+        "offset1",
+        "offset2",
+        "offset3",
+        "offset4",
+        "offset5"
+      ],
+      "properties": {
+        "std_optional_fields": {
+          "$ref": "BTIDES_base.json#/definitions/std_optional_fields"
+        },
+        "direction": {
+          "$ref": "BTIDES_base.json#/definitions/direction"
+        },
+        "opcode_str": {
+          "description": "This optional field is just for if you don't care about json file size and you want more human-readable JSON output.",
+          "type": "string",
+          "const": "LL_CONNECTION_PARAM_RSP"
+        },
+        "opcode": {
+          "description": "This should always be 16. This is required to differentiate from other data types in an array.",
+          "const": 16
+        },
+        "interval_min": {
+          "description": "The minimum connection interval. (Multiplied by 1.25ms). This should technically be only between 7.5ms to 4.0s (6-3200) according to the spec, but put in whatever was actually used.",
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 65535
+        },
+        "interval_max": {
+          "description": "The maximum connection interval. (Multiplied by 1.25ms). This should technically be only between 7.5ms to 4.0s (6-3200) according to the spec, but put in whatever was actually used.",
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 65535
+        },
+        "latency": {
+          "description": "The Peripheral latency (how many connection events the Peripheral can skip replying to.). \"The value of connSubrateFactor shall be in the range 1 to 500 and shall be set to 1 for a new connection\" to be valid according to the spec, but put whatever value was actually found in the packet.",
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 65535
+        },
+        "timeout": {
+          "description": "The connection timeout. (Multiplied by 10ms). \"The connSupervisionTimeout shall be a multiple of 10 ms in the range 100 ms to 32.0s and it shall be larger than (1 + connPeripheralLatency) × connSubrateFactor × connInterval × 2.\" (so 1-3200)according to the spec, but put in whatever was actually used.",
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 65535
+        },
+        "preferred_periodicity": {
+          "description": "Multiplied by 1.25ms. 'The PreferredPeriodicity field shall be set to indicate a value the connInterval is preferred to be a multiple of.'",
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 255
+        },
+        "reference_conneventcount": {
+          "description": "'The ReferenceConnEventCount field shall be set to indicate the value of the connEventCounter relative to which all the valid Offset0 to Offset5 fields have been calculated.'",
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 65535
+        },
+        "offset0": {
+          "description": "'The Offset0, Offset1, Offset2, Offset3, Offset4, and Offset5 fields shall be set to indicate the possible values of the position of the anchor points of the LE connection with the updated connection parameters relative to the ReferenceConnEventCount.' + 'A value of 0xFFFF means not valid.'",
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 65535
+        },
+        "offset1": {
+          "description": "'The Offset0, Offset1, Offset2, Offset3, Offset4, and Offset5 fields shall be set to indicate the possible values of the position of the anchor points of the LE connection with the updated connection parameters relative to the ReferenceConnEventCount.' + 'A value of 0xFFFF means not valid.'",
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 65535
+        },
+        "offset2": {
+          "description": "'The Offset0, Offset1, Offset2, Offset3, Offset4, and Offset5 fields shall be set to indicate the possible values of the position of the anchor points of the LE connection with the updated connection parameters relative to the ReferenceConnEventCount.' + 'A value of 0xFFFF means not valid.'",
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 65535
+        },
+        "offset3": {
+          "description": "'The Offset0, Offset1, Offset2, Offset3, Offset4, and Offset5 fields shall be set to indicate the possible values of the position of the anchor points of the LE connection with the updated connection parameters relative to the ReferenceConnEventCount.' + 'A value of 0xFFFF means not valid.'",
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 65535
+        },
+        "offset4": {
+          "description": "'The Offset0, Offset1, Offset2, Offset3, Offset4, and Offset5 fields shall be set to indicate the possible values of the position of the anchor points of the LE connection with the updated connection parameters relative to the ReferenceConnEventCount.' + 'A value of 0xFFFF means not valid.'",
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 65535
+        },
+        "offset5": {
+          "description": "'The Offset0, Offset1, Offset2, Offset3, Offset4, and Offset5 fields shall be set to indicate the possible values of the position of the anchor points of the LE connection with the updated connection parameters relative to the ReferenceConnEventCount.' + 'A value of 0xFFFF means not valid.'",
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 65535
+        }
+      }
+    },
+    "LL_CONNECTION_PARAM_RSP2": {
+      "type": "object",
+      "description": "Structure for LL\\_CONNECTION\\_PARAM\\_RSP packet.",
+      "required": [
+        "direction",
+        "opcode",
+        "full_pkt_hex_str"
+      ],
+      "properties": {
+        "std_optional_fields": {
+          "$ref": "BTIDES_base.json#/definitions/std_optional_fields"
+        },
+        "direction": {
+          "$ref": "BTIDES_base.json#/definitions/direction"
+        },
+        "opcode_str": {
+          "description": "This optional field is just for if you don't care about json file size and you want more human-readable JSON output.",
+          "type": "string",
+          "const": "LL_PERIPHERAL_FEATURE_RSP"
+        },
+        "opcode": {
+          "description": "This should always be 16. This is required to differentiate from other data types in an array.",
+          "const": 16
         },
         "full_pkt_hex_str": {
           "$ref": "BTIDES_base.json#/definitions/full_pkt_hex_str"
