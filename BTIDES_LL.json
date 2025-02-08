@@ -9,6 +9,12 @@
       "items": {
         "anyOf": [
           {
+            "$ref": "#/definitions/LL_CONNECTION_UPDATE_IND"
+          },
+          {
+            "$ref": "#/definitions/LL_CONNECTION_UPDATE_IND2"
+          },
+          {
             "$ref": "#/definitions/LL_TERMINATE_IND"
           },
           {
@@ -79,6 +85,106 @@
     }
   },
   "definitions": {
+    "LL_CONNECTION_UPDATE_IND": {
+      "type": "object",
+      "description": "Structure for LL\\_CONNECTION\\_UPDATE\\_IND packet.",
+      "required": [
+        "direction",
+        "opcode",
+        "winsize",
+        "winoffset",
+        "interval",
+        "latency",
+        "timeout",
+        "instant"
+      ],
+      "properties": {
+        "std_optional_fields": {
+          "$ref": "BTIDES_base.json#/definitions/std_optional_fields"
+        },
+        "direction": {
+          "$ref": "BTIDES_base.json#/definitions/direction"
+        },
+        "error_str": {
+          "description": "Optional human-readable string describing the error.",
+          "type": "string"
+        },
+        "opcode_str": {
+          "description": "This optional field is just for if you don't care about json file size and you want more human-readable JSON output.",
+          "type": "string",
+          "const": "LL_CONNECTION_UPDATE_IND"
+        },
+        "opcode": {
+          "description": "This should always be 0. This is required to differentiate from other data types in an array.",
+          "const": 0
+        },
+        "winsize": {
+          "description": "WinSize * 1.25ms = transmit window, which is how long the central and peripheral communicate back and forth in a simplex manner.",
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 255
+        },
+        "winoffset": {
+          "description": "WinOffset * 1.25ms = transmit window offset (when it starts after CONNECT_IND received + T_IFS + transmitWindowDelay).",
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 65535
+        },
+        "interval": {
+          "description": "Interval * 1.25ms = connection interval, which is how long a connection event lasts (i.e. how long the peripheral and central stay on the same channel before moving to a new data channel).",
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 65535
+        },
+        "latency": {
+          "description": "Peripheral latency - How many connection events the peripheral can skip before it must reply.",
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 65535
+        },
+        "timeout": {
+          "description": "Timeout * 10ms = connection timeout, which is how long the peripheral will wait for a response from the central before it considers the connection lost.",
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 65535
+        },
+        "instant": {
+          "description": "What instant (connection event from start of connection, indexed from 0) the update will occur at.",
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 65535
+        }
+      }
+    },
+    "LL_CONNECTION_UPDATE_IND2": {
+      "type": "object",
+      "description": "Structure for LL\\_CONNECTION\\_UPDATE\\_IND packet.",
+      "required": [
+        "direction",
+        "opcode",
+        "full_pkt_hex_str"
+      ],
+      "properties": {
+        "std_optional_fields": {
+          "$ref": "BTIDES_base.json#/definitions/std_optional_fields"
+        },
+        "direction": {
+          "$ref": "BTIDES_base.json#/definitions/direction"
+        },
+        "opcode_str": {
+          "description": "This optional field is just for if you don't care about json file size and you want more human-readable JSON output.",
+          "type": "string",
+          "const": "LL_CONNECTION_UPDATE_IND"
+        },
+        "opcode": {
+          "description": "This should always be 0. This is required to differentiate from other data types in an array.",
+          "const": 0
+        },
+        "full_pkt_hex_str": {
+          "$ref": "BTIDES_base.json#/definitions/full_pkt_hex_str"
+        }
+      }
+    },
     "LL_TERMINATE_IND": {
       "type": "object",
       "description": "Structure for LL\\_TERMINATE\\_IND packet.",
