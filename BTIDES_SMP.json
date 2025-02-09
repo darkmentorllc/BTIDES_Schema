@@ -54,6 +54,8 @@
       "type": "object",
       "description": "Structure for SMP Pairing Request packet.",
       "required": [
+        "opcode",
+        "direction",
         "io_cap",
         "oob_data",
         "auth_req",
@@ -62,12 +64,20 @@
         "responder_key_dist"
       ],
       "properties": {
+        "std_optional_fields": {
+          "$ref": "BTIDES_base.json#/definitions/std_optional_fields"
+        },
+        "opcode_str": {
+          "description": "This optional field is just for if you don't care about json file size and you want more human-readable JSON output.",
+          "type": "string",
+          "const": "Pairing Request"
+        },
         "opcode": {
           "description": "Optional field just if you don't want to look up the opcode for this packet type.",
           "const": 1
         },
-        "std_optional_fields": {
-          "$ref": "BTIDES_base.json#/definitions/std_optional_fields"
+        "direction": {
+          "$ref": "BTIDES_base.json#/definitions/direction"
         },
         "io_cap": {
           "$ref": "#/definitions/io_cap"
@@ -99,6 +109,8 @@
       "type": "object",
       "description": "Structure for SMP Pairing Response packet.",
       "required": [
+        "opcode",
+        "direction",
         "io_cap",
         "oob_data",
         "auth_req",
@@ -107,12 +119,20 @@
         "responder_key_dist"
       ],
       "properties": {
-        "opcode": {
-          "description": "Optional field just if you don't want to look up the opcode for this packet type.",
-          "const": 2
-        },
         "std_optional_fields": {
           "$ref": "BTIDES_base.json#/definitions/std_optional_fields"
+        },
+        "opcode_str": {
+          "description": "This optional field is just for if you don't care about json file size and you want more human-readable JSON output.",
+          "type": "string",
+          "const": "Pairing Response"
+        },
+        "opcode": {
+          "description": "The SMP opcode for this packet type. Must always be 2.",
+          "const": 2
+        },
+        "direction": {
+          "$ref": "BTIDES_base.json#/definitions/direction"
         },
         "io_cap": {
           "$ref": "#/definitions/io_cap"
