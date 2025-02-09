@@ -9,30 +9,143 @@
       "items": {
         "anyOf": [
           {
-            "$ref": "#/definitions/L2CAP_LE_CREDIT_BASED_CONNECTION_REQ"
+            "$ref": "#/definitions/0x0A_L2CAP_INFORMATION_REQ"
           },
           {
-            "$ref": "#/definitions/L2CAP_LE_CREDIT_BASED_CONNECTION_REQ2"
+            "$ref": "#/definitions/0x0B_L2CAP_INFORMATION_RSP"
+          },
+          {
+            "$ref": "#/definitions/0x14_L2CAP_LE_CREDIT_BASED_CONNECTION_REQ"
           }
         ]
       }
     }
   },
   "definitions": {
-    "L2CAP_LE_CREDIT_BASED_CONNECTION_REQ": {
+    "0x0A_L2CAP_INFORMATION_REQ": {
       "type": "object",
-      "description": "Structure for L2CAP\\_LE\\_CREDIT\\_BASED\\_CONNECTION\\_REQ packet.",
+      "description": "Structure for L2CAP\\_INFORMATION\\_REQ packet.",
       "required": [
-        "asdf"
+        "code",
+        "id",
+        "data_len",
+        "info_type"
       ],
       "properties": {
         "std_optional_fields": {
           "$ref": "BTIDES_base.json#/definitions/std_optional_fields"
         },
+        "code_str": {
+          "description": "This optional field is just for if you don't care about json file size and you want more human-readable JSON output.",
+          "type": "string",
+          "const": "L2CAP_INFORMATION_REQ"
+        },
+        "code": {
+          "description": "The L2CAP code for this packet type. Must always be 10.",
+          "type": "integer",
+          "const": 10
+        },
+        "id": {
+          "description": "1-byte \"identifier\" field from spec. Arbitrary value, just used to match requests to responses.",
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 255
+        },
+        "data_len": {
+          "description": "2-byte \"Data Length\" field from spec.",
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 65535
+        },
+        "info_type": {
+          "description": "2-byte \"InfoType\" field from spec. Technically only values 1-3 are defined (as \"Connectionless MTU\", \"Extended features supported\", and \"Fixed channels supported over BR/EDR\"), but allow capturing any value so we can capture invalid packets which may be used in the wild.",
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 65535
+        }
+      }
+    },
+    "0x0B_L2CAP_INFORMATION_RSP": {
+      "type": "object",
+      "description": "Structure for L2CAP\\_INFORMATION\\_RSP packet.",
+      "required": [
+        "code",
+        "id",
+        "data_len",
+        "info_type",
+        "result"
+      ],
+      "properties": {
+        "std_optional_fields": {
+          "$ref": "BTIDES_base.json#/definitions/std_optional_fields"
+        },
+        "code_str": {
+          "description": "This optional field is just for if you don't care about json file size and you want more human-readable JSON output.",
+          "type": "string",
+          "const": "L2CAP_INFORMATION_RSP"
+        },
+        "code": {
+          "description": "The L2CAP code for this packet type. Must always be 11.",
+          "type": "integer",
+          "const": 11
+        },
+        "id": {
+          "description": "1-byte \"identifier\" field from spec. Arbitrary value, just used to match requests to responses.",
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 255
+        },
+        "data_len": {
+          "description": "2-byte \"Data Length\" field from spec.",
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 65535
+        },
+        "info_type": {
+          "description": "2-byte \"InfoType\" field from spec. Technically only values 1-3 are defined, but allow capturing any value so we can capture invalid packets which may be used in the wild.",
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 65535
+        },
+        "result": {
+          "description": "2-byte \"Result\" field from spec. 'The Result contains information about the success of the request. If result is \"Success\" the data field contains the information as specified in Table 4.11.' (Based on Core Spec v5.4)",
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 65535
+        },
+        "info_hex_str": {
+          "description": "The \"Info\" field could be absent / 0 bytes (if result is not \"Success\"), or 2 bytes if InfoType = 0x0001 (Connectionless MTU), or 4 bytes if InfoType = 0x0002 (Extended Features Mask), or 8 bytes if InfoType = 0x0003 (Fixed Channels Supported). Then maxLength is that * 2 for hex_str encoding.",
+          "type": "string",
+          "minLength": 4,
+          "maxLength": 16
+        }
+      }
+    },
+    "0x14_L2CAP_LE_CREDIT_BASED_CONNECTION_REQ": {
+      "type": "object",
+      "description": "Structure for L2CAP\\_LE\\_CREDIT\\_BASED\\_CONNECTION\\_REQ packet.",
+      "required": [
+        "id",
+        "data_len",
+        "spsm",
+        "src_cid",
+        "mtu",
+        "mps",
+        "initial_credits"
+      ],
+      "properties": {
+        "std_optional_fields": {
+          "$ref": "BTIDES_base.json#/definitions/std_optional_fields"
+        },
+        "code_str": {
+          "description": "This optional field is just for if you don't care about json file size and you want more human-readable JSON output.",
+          "type": "string",
+          "const": "L2CAP_LE_CREDIT_BASED_CONNECTION_REQ"
+        },
         "code": {
           "description": "Optional field just if you don't want to look up the \"code\" (term used in the spec, rather than opcode) for this packet type.",
           "type": "integer",
-          "enum": 20
+          "const": 20
         },
         "id": {
           "description": "1-byte \"identifier\" field from spec. Arbitrary value, just used to match requests to responses.",
@@ -75,18 +188,6 @@
           "type": "integer",
           "minimum": 0,
           "maximum": 65535
-        }
-      }
-    },
-    "L2CAP_LE_CREDIT_BASED_CONNECTION_REQ2": {
-      "type": "object",
-      "description": "Structure for L2CAP\\_LE\\_CREDIT\\_BASED\\_CONNECTION\\_REQ packet, as single raw hex string.",
-      "required": [
-        "full_pkt_hex_str"
-      ],
-      "properties": {
-        "full_pkt_hex_str": {
-          "$ref": "BTIDES_base.json#/definitions/full_pkt_hex_str"
         }
       }
     }

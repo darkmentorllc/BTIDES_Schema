@@ -9,31 +9,31 @@
       "items": {
         "anyOf": [
           {
-            "$ref": "#/definitions/SMP_0x01_Pairing_Request"
+            "$ref": "#/definitions/0x01_SMP_Pairing_Request"
           },
           {
-            "$ref": "#/definitions/SMP_0x02_Pairing_Response"
+            "$ref": "#/definitions/0x02_SMP_Pairing_Response"
           },
           {
-            "$ref": "#/definitions/SMP_0x03_Pairing_Confirm"
+            "$ref": "#/definitions/0x03_SMP_Pairing_Confirm"
           },
           {
-            "$ref": "#/definitions/SMP_0x04_Pairing_Random"
+            "$ref": "#/definitions/0x04_SMP_Pairing_Random"
           },
           {
-            "$ref": "#/definitions/SMP_0x05_Pairing_Failed"
+            "$ref": "#/definitions/0x05_SMP_Pairing_Failed"
           },
           {
-            "$ref": "#/definitions/SMP_0x0B_Security_Request"
+            "$ref": "#/definitions/0x0B_SMP_Security_Request"
           },
           {
-            "$ref": "#/definitions/SMP_0x0C_Pairing_Public_Key"
+            "$ref": "#/definitions/0x0C_SMP_Pairing_Public_Key"
           },
           {
-            "$ref": "#/definitions/SMP_0x0D_Pairing_DHKey_Check"
+            "$ref": "#/definitions/0x0D_SMP_Pairing_DHKey_Check"
           },
           {
-            "$ref": "#/definitions/SMP_0x0E_Pairing_Keypress_Notification"
+            "$ref": "#/definitions/0x0E_SMP_Pairing_Keypress_Notification"
           }
         ]
       }
@@ -71,7 +71,7 @@
       "minimum": 0,
       "maximum": 255
     },
-    "SMP_0x01_Pairing_Request": {
+    "0x01_SMP_Pairing_Request": {
       "type": "object",
       "description": "Structure for SMP Pairing Request packet.",
       "required": [
@@ -94,7 +94,7 @@
           "const": "Pairing Request"
         },
         "opcode": {
-          "description": "Optional field just if you don't want to look up the opcode for this packet type.",
+          "description": "The SMP opcode for this packet type. Must always be 1.",
           "const": 1
         },
         "direction": {
@@ -126,7 +126,7 @@
         }
       }
     },
-    "SMP_0x02_Pairing_Response": {
+    "0x02_SMP_Pairing_Response": {
       "type": "object",
       "description": "Structure for SMP Pairing Response packet.",
       "required": [
@@ -181,7 +181,7 @@
         }
       }
     },
-    "SMP_0x03_Pairing_Confirm": {
+    "0x03_SMP_Pairing_Confirm": {
       "type": "object",
       "description": "Structure for SMP Pairing Confirm packet.",
       "required": [
@@ -213,7 +213,7 @@
         }
       }
     },
-    "SMP_0x04_Pairing_Random": {
+    "0x04_SMP_Pairing_Random": {
       "type": "object",
       "description": "Structure for SMP Pairing Random packet.",
       "required": [
@@ -245,7 +245,7 @@
         }
       }
     },
-    "SMP_0x05_Pairing_Failed": {
+    "0x05_SMP_Pairing_Failed": {
       "type": "object",
       "description": "Structure for SMP Pairing Failed packet.",
       "required": [
@@ -281,7 +281,7 @@
         }
       }
     },
-    "SMP_0x0B_Security_Request": {
+    "0x0B_SMP_Security_Request": {
       "type": "object",
       "description": "Structure for SMP Security Request packet.",
       "required": [
@@ -310,7 +310,7 @@
         }
       }
     },
-    "SMP_0x0C_Pairing_Public_Key": {
+    "0x0C_SMP_Pairing_Public_Key": {
       "type": "object",
       "description": "Structure for SMP Pairing Public Key packet.",
       "required": [
@@ -349,7 +349,7 @@
         }
       }
     },
-    "SMP_0x0D_Pairing_DHKey_Check": {
+    "0x0D_SMP_Pairing_DHKey_Check": {
       "type": "object",
       "description": "Structure for SMP Pairing DHKey Check packet.",
       "required": [
@@ -381,7 +381,7 @@
         }
       }
     },
-    "SMP_0x0E_Pairing_Keypress_Notification": {
+    "0x0E_SMP_Pairing_Keypress_Notification": {
       "type": "object",
       "description": "Structure for SMP Pairing Keypress Notification packet.",
       "required": [
