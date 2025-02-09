@@ -9,16 +9,10 @@
       "items": {
         "anyOf": [
           {
-            "$ref": "#/definitions/Pairing_Request"
+            "$ref": "#/definitions/SMP_0x01_Pairing_Request"
           },
           {
-            "$ref": "#/definitions/Pairing_Request2"
-          },
-          {
-            "$ref": "#/definitions/Pairing_Response"
-          },
-          {
-            "$ref": "#/definitions/Pairing_Response2"
+            "$ref": "#/definitions/SMP_0x02_Pairing_Response"
           }
         ]
       }
@@ -56,7 +50,7 @@
       "minimum": 0,
       "maximum": 255
     },
-    "Pairing_Request": {
+    "SMP_0x01_Pairing_Request": {
       "type": "object",
       "description": "Structure for SMP Pairing Request packet.",
       "required": [
@@ -101,26 +95,7 @@
         }
       }
     },
-    "Pairing_Request2": {
-      "type": "object",
-      "description": "Structure for SMP Pairing Request packet, as single raw hex string.",
-      "required": [
-        "full_pkt_hex_str"
-      ],
-      "properties": {
-        "std_optional_fields": {
-          "$ref": "BTIDES_base.json#/definitions/std_optional_fields"
-        },
-        "opcode": {
-          "description": "Optional field just if you don't want to look up the opcode for this packet type.",
-          "const": 1
-        },
-        "full_pkt_hex_str": {
-          "$ref": "BTIDES_base.json#/definitions/full_pkt_hex_str"
-        }
-      }
-    },
-    "Pairing_Response": {
+    "SMP_0x02_Pairing_Response": {
       "type": "object",
       "description": "Structure for SMP Pairing Response packet.",
       "required": [
@@ -162,25 +137,6 @@
           "type": "integer",
           "minimum": 0,
           "maximum": 255
-        }
-      }
-    },
-    "Pairing_Response2": {
-      "type": "object",
-      "description": "Structure for SMP Pairing Response packet, as single raw hex string.",
-      "required": [
-        "full_pkt_hex_str"
-      ],
-      "properties": {
-        "std_optional_fields": {
-          "$ref": "BTIDES_base.json#/definitions/std_optional_fields"
-        },
-        "opcode": {
-          "description": "Optional field just if you don't want to look up the opcode for this packet type.",
-          "const": 2
-        },
-        "full_pkt_hex_str": {
-          "$ref": "BTIDES_base.json#/definitions/full_pkt_hex_str"
         }
       }
     }

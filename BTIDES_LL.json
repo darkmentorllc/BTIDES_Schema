@@ -133,6 +133,9 @@
           },
           {
             "$ref": "#/definitions/LL_PHY_UPDATE_IND2"
+          },
+          {
+            "$ref": "#/definitions/LL_UNKNOWN_CUSTOM"
           }
         ]
       }
@@ -1721,6 +1724,35 @@
         "opcode": {
           "description": "This should always be 24. This is required to differentiate from other data types in an array.",
           "const": 24
+        },
+        "full_pkt_hex_str": {
+          "$ref": "BTIDES_base.json#/definitions/full_pkt_hex_str"
+        }
+      }
+    },
+    "LL_UNKNOWN_CUSTOM": {
+      "type": "object",
+      "description": "Structure for packets using opcode 0xFF, which is out of spec and therefore indicative of some sort of custom protocol",
+      "required": [
+        "direction",
+        "opcode",
+        "full_pkt_hex_str"
+      ],
+      "properties": {
+        "std_optional_fields": {
+          "$ref": "BTIDES_base.json#/definitions/std_optional_fields"
+        },
+        "direction": {
+          "$ref": "BTIDES_base.json#/definitions/direction"
+        },
+        "opcode_str": {
+          "description": "This optional field is just for if you don't care about json file size and you want more human-readable JSON output.",
+          "type": "string",
+          "const": "LL_UNKNOWN_CUSTOM"
+        },
+        "opcode": {
+          "description": "This should always be 255. This is required to differentiate from other data types in an array.",
+          "const": 255
         },
         "full_pkt_hex_str": {
           "$ref": "BTIDES_base.json#/definitions/full_pkt_hex_str"
