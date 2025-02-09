@@ -22,6 +22,12 @@
           },
           {
             "$ref": "#/definitions/SMP_0x05_Pairing_Failed"
+          },
+          {
+            "$ref": "#/definitions/SMP_0x0B_Security_Request"
+          },
+          {
+            "$ref": "#/definitions/SMP_0x0C_Pairing_Public_Key"
           }
         ]
       }
@@ -48,7 +54,7 @@
       ]
     },
     "auth_req": {
-      "description": "The \"AuthReq\" field from the spec. This has numerous bitfield sub-fields.",
+      "description": "The \"AuthReq\" field from the spec. This has numerous bit-field sub-fields such as Bonding, MITM, Secure Connections, etc",
       "type": "integer",
       "minimum": 0,
       "maximum": 255
@@ -266,6 +272,74 @@
           "type": "integer",
           "minimum": 0,
           "maximum": 255
+        }
+      }
+    },
+    "SMP_0x0B_Security_Request": {
+      "type": "object",
+      "description": "Structure for SMP Security Request packet.",
+      "required": [
+        "opcode",
+        "direction",
+        "auth_req"
+      ],
+      "properties": {
+        "std_optional_fields": {
+          "$ref": "BTIDES_base.json#/definitions/std_optional_fields"
+        },
+        "opcode_str": {
+          "description": "This optional field is just for if you don't care about json file size and you want more human-readable JSON output.",
+          "type": "string",
+          "const": "Security Request"
+        },
+        "opcode": {
+          "description": "The SMP opcode for this packet type. Must always be 11.",
+          "const": 11
+        },
+        "direction": {
+          "$ref": "BTIDES_base.json#/definitions/direction"
+        },
+        "auth_req": {
+          "$ref": "#/definitions/auth_req"
+        }
+      }
+    },
+    "SMP_0x0C_Pairing_Public_Key": {
+      "type": "object",
+      "description": "Structure for SMP Pairing Public Key packet.",
+      "required": [
+        "opcode",
+        "direction",
+        "pub_key_x_hex_str",
+        "pub_key_y_hex_str"
+      ],
+      "properties": {
+        "std_optional_fields": {
+          "$ref": "BTIDES_base.json#/definitions/std_optional_fields"
+        },
+        "opcode_str": {
+          "description": "This optional field is just for if you don't care about json file size and you want more human-readable JSON output.",
+          "type": "string",
+          "const": "Pairing Public Key"
+        },
+        "opcode": {
+          "description": "The SMP opcode for this packet type. Must always be 12.",
+          "const": 12
+        },
+        "direction": {
+          "$ref": "BTIDES_base.json#/definitions/direction"
+        },
+        "pub_key_x_hex_str": {
+          "description": "This is the little-endian 32 bytes that were sent for the Pairing Public Key X value, as a hex string.",
+          "type": "string",
+          "minLength": 64,
+          "maxLength": 64
+        },
+        "pub_key_y_hex_str": {
+          "description": "This is the little-endian 32 bytes that were sent for the Pairing Public Key Y value, as a hex string.",
+          "type": "string",
+          "minLength": 64,
+          "maxLength": 64
         }
       }
     }
