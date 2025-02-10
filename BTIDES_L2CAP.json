@@ -21,6 +21,12 @@
             "$ref": "#/definitions/0x05_L2CAP_CONFIGURATION_RSP"
           },
           {
+            "$ref": "#/definitions/0x06_L2CAP_DISCONNECTION_REQ"
+          },
+          {
+            "$ref": "#/definitions/0x07_L2CAP_DISCONNECTION_RSP"
+          },
+          {
             "$ref": "#/definitions/0x0A_L2CAP_INFORMATION_REQ"
           },
           {
@@ -268,6 +274,106 @@
         "config_options_hex_str": {
           "description": "Variable-length \"Configuration Options\" field from spec (given as \"Config\" in the diagram due to lack of space.). 'A list of the parameters and their values to be negotiated shall be provided in the Configuration Options field. These are defined in Section 5; in addition, as described in that section, an implementation shall be prepared to receive any number of unknown options. A L2CAP_CONFIGURATION_REQ may contain no options (referred to as an empty or null configuration request) and can be used to request a response. For an empty configuration request the length field is set to 0x0004.' (That seems like an error in the spec as the minimum size would be 6. 2 for Source CID, 2 for flags, 2 for result.)",
           "type": "string"
+        }
+      }
+    },
+    "0x06_L2CAP_DISCONNECTION_REQ": {
+      "type": "object",
+      "description": "Structure for L2CAP\\_DISCONNECTION\\_REQ packet.",
+      "required": [
+        "code",
+        "id",
+        "data_len",
+        "destination_cid",
+        "source_cid"
+      ],
+      "properties": {
+        "std_optional_fields": {
+          "$ref": "BTIDES_base.json#/definitions/std_optional_fields"
+        },
+        "psm_str": {
+          "description": "This optional field (interpretation of 'psm' field if it's a SIG-asigned value) is just for if you don't care about json file size and you want more human-readable JSON output.",
+          "type": "string"
+        },
+        "code_str": {
+          "description": "This optional field (interpretation of 'code' field) is just for if you don't care about json file size and you want more human-readable JSON output.",
+          "type": "string",
+          "const": "L2CAP_DISCONNECTION_REQ"
+        },
+        "code": {
+          "description": "The L2CAP code for this packet type. Must always be 6.",
+          "type": "integer",
+          "const": 6
+        },
+        "id": {
+          "$ref": "#/definitions/id"
+        },
+        "data_len": {
+          "$ref": "#/definitions/data_len"
+        },
+        "destination_cid": {
+          "description": "2-byte \"Destination CID (Channel ID)\" field from spec. 'This field specifies the endpoint of the channel to be disconnected on the device receiving this request.'",
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 65535
+        },
+        "source_cid": {
+          "description": "2-byte \"Source CID (Channel ID)\" field from spec. 'This field specifies the endpoint of the channel to be disconnected on the device sending this request.'.",
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 65535
+        }
+      }
+    },
+    "0x07_L2CAP_DISCONNECTION_RSP": {
+      "type": "object",
+      "description": "Structure for L2CAP\\_DISCONNECTION\\_RSP packet.",
+      "required": [
+        "code",
+        "id",
+        "data_len",
+        "destination_cid",
+        "source_cid"
+      ],
+      "properties": {
+        "std_optional_fields": {
+          "$ref": "BTIDES_base.json#/definitions/std_optional_fields"
+        },
+        "result_str": {
+          "description": "This optional field (interpretation of 'result' field) is just for if you don't care about json file size and you want more human-readable JSON output.",
+          "type": "string"
+        },
+        "status_str": {
+          "description": "This optional field (interpretation of 'status' field) is just for if you don't care about json file size and you want more human-readable JSON output.",
+          "type": "string"
+        },
+        "code_str": {
+          "description": "This optional field (interpretation of 'code' field) is just for if you don't care about json file size and you want more human-readable JSON output.",
+          "type": "string",
+          "const": "L2CAP_DISCONNECTION_RSP"
+        },
+        "code": {
+          "description": "The L2CAP code for this packet type. Must always be 7.",
+          "type": "integer",
+          "const": 7
+        },
+        "id": {
+          "$ref": "#/definitions/id"
+        },
+        "data_len": {
+          "$ref": "#/definitions/data_len"
+        },
+        "destination_cid": {
+          "description": "2-byte \"Destination CID (Channel ID)\" field from spec. 'This field identifies the channel endpoint on the device sending the L2CAP_DISCONNECTION_RSP packet.'",
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 65535
+        },
+        "source_cid": {
+          "description": "2-byte \"Source CID (Channel ID)\" field from spec. 'This field identifies the channel endpoint on the device receiving the L2CAP_DISCONNECTION_RSP packet'.",
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 65535
         }
       }
     },

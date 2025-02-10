@@ -9,40 +9,98 @@
       "items": {
         "anyOf": [
           {
-            "$ref": "#/definitions/PLACEHOLDER_"
+            "$ref": "#/definitions/0x01_SDP_ERROR_RSP"
           },
           {
-            "$ref": "#/definitions/PLACEHOLDER_2"
+            "$ref": "#/definitions/0x02_SDP_SERVICE_SEARCH_REQ"
+          },
+          {
+            "$ref": "#/definitions/0x03_SDP_SERVICE_SEARCH_RSP"
+          },
+          {
+            "$ref": "#/definitions/0x04_SDP_SERVICE_ATTR_REQ"
+          },
+          {
+            "$ref": "#/definitions/0x05_SDP_SERVICE_ATTR_RSP"
+          },
+          {
+            "$ref": "#/definitions/0x06_SDP_SERVICE_SEARCH_ATTR_REQ"
+          },
+          {
+            "$ref": "#/definitions/0x07_SDP_SERVICE_SEARCH_ATTR_RSP"
           }
         ]
       }
     }
   },
   "definitions": {
-    "PLACEHOLDER_": {
+    "transaction_id": {
+      "description": "1-byte \"Transaction ID\" field from spec. Arbitrary value, just used to match requests to responses.",
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 255
+    },
+    "param_len": {
+      "description": "2-byte \"ParameterLength\" field from spec.",
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 65535
+    },
+    "0x06_SDP_SERVICE_SEARCH_ATTR_REQ": {
       "type": "object",
-      "description": "Structure for PLACEHOLDER_ packet.",
+      "description": "Structure for L2CAP\\_CONNECTION\\_REQ packet.",
       "required": [
-        "asdf"
+        "pdu_id",
+        "transaction_id",
+        "param_len",
+        "service_search_pattern",
+        "maximum_attribute_byte_count",
+        "AttributeIDList",
+        "ContinuationState"
       ],
       "properties": {
-        "asdf": {
-          "description": "asdf",
+        "std_optional_fields": {
+          "$ref": "BTIDES_base.json#/definitions/std_optional_fields"
+        },
+        "pdu_id_str": {
+          "description": "This optional field (interpretation of 'pdu_id' field) is just for if you don't care about json file size and you want more human-readable JSON output.",
+          "type": "string",
+          "const": "SDP_SERVICE_SEARCH_ATTR_REQ"
+        },
+        "pdu_id": {
+          "description": "The L2CAP code for this packet type. Must always be 6.",
+          "type": "integer",
+          "const": 6
+        },
+        "transaction_id": {
+          "$ref": "#/definitions/transaction_id"
+        },
+        "param_len": {
+          "$ref": "#/definitions/param_len"
+        },
+        "service_search_pattern": {
+          "description": "2-byte \"ServiceSearchPattern\" field from spec. Two ranges, one SIG-assigned, one dynamic.",
           "type": "integer",
           "minimum": 0,
-          "maximum": 255
-        }
-      }
-    },
-    "PLACEHOLDER_2": {
-      "type": "object",
-      "description": "Structure for PLACEHOLDER_ packet, as single raw hex string.",
-      "required": [
-        "full_pkt_hex_str"
-      ],
-      "properties": {
-        "full_pkt_hex_str": {
-          "$ref": "BTIDES_base.json#/definitions/full_pkt_hex_str"
+          "maximum": 65535
+        },
+        "maximum_attribute_byte_count": {
+          "description": "2-byte \"MaximumAttributeByteCount\" field from spec. Indicates an L2CAP channel ID on the source where data can be sent. Should be from the dynamically allocated range of CIDs for ACL-U logical links (0x0040 to 0xFFFF).",
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 65535
+        },
+        "attribute_id_list": {
+          "description": "2-byte \"AttributeIDList\" field from spec. Indicates an L2CAP channel ID on the source where data can be sent. Should be from the dynamically allocated range of CIDs for ACL-U logical links (0x0040 to 0xFFFF).",
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 65535
+        },
+        "continuation_state": {
+          "description": "2-byte \"ContinuationState\" field from spec. Indicates an L2CAP channel ID on the source where data can be sent. Should be from the dynamically allocated range of CIDs for ACL-U logical links (0x0040 to 0xFFFF).",
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 65535
         }
       }
     }
