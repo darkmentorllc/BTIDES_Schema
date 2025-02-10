@@ -9,6 +9,12 @@
       "items": {
         "anyOf": [
           {
+            "$ref": "#/definitions/0x02_L2CAP_CONNECTION_REQ"
+          },
+          {
+            "$ref": "#/definitions/0x03_L2CAP_CONNECTION_RSP"
+          },
+          {
             "$ref": "#/definitions/0x0A_L2CAP_INFORMATION_REQ"
           },
           {
@@ -22,6 +28,132 @@
     }
   },
   "definitions": {
+    "id": {
+      "description": "1-byte \"identifier\" field from spec. Arbitrary value, just used to match requests to responses.",
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 255
+    },
+    "data_len": {
+      "description": "2-byte \"Data Length\" field from spec.",
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 65535
+    },
+    "0x02_L2CAP_CONNECTION_REQ": {
+      "type": "object",
+      "description": "Structure for L2CAP\\_CONNECTION\\_REQ packet.",
+      "required": [
+        "code",
+        "id",
+        "data_len",
+        "psm",
+        "source_cid"
+      ],
+      "properties": {
+        "std_optional_fields": {
+          "$ref": "BTIDES_base.json#/definitions/std_optional_fields"
+        },
+        "psm_str": {
+          "description": "This optional field (interpretation of 'psm' field if it's a SIG-asigned value) is just for if you don't care about json file size and you want more human-readable JSON output.",
+          "type": "string"
+        },
+        "code_str": {
+          "description": "This optional field (interpretation of 'code' field) is just for if you don't care about json file size and you want more human-readable JSON output.",
+          "type": "string",
+          "const": "L2CAP_CONNECTION_REQ"
+        },
+        "code": {
+          "description": "The L2CAP code for this packet type. Must always be 2.",
+          "type": "integer",
+          "const": 2
+        },
+        "id": {
+          "$ref": "#/definitions/id"
+        },
+        "data_len": {
+          "$ref": "#/definitions/data_len"
+        },
+        "psm": {
+          "description": "2-byte \"Protocol/Service Multiplexer (PSM)\" field from spec. Two ranges, one SIG-assigned, one dynamic.",
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 65535
+        },
+        "source_cid": {
+          "description": "2-byte \"Source CID (Channel ID)\" field from spec. Indicates an L2CAP channel ID on the source where data can be sent. Should be from the dynamically allocated range of CIDs for ACL-U logical links (0x0040 to 0xFFFF).",
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 65535
+        }
+      }
+    },
+    "0x03_L2CAP_CONNECTION_RSP": {
+      "type": "object",
+      "description": "Structure for L2CAP\\_CONNECTION\\_RSP packet.",
+      "required": [
+        "code",
+        "id",
+        "data_len",
+        "destination_cid",
+        "source_cid",
+        "result",
+        "status"
+      ],
+      "properties": {
+        "std_optional_fields": {
+          "$ref": "BTIDES_base.json#/definitions/std_optional_fields"
+        },
+        "result_str": {
+          "description": "This optional field (interpretation of 'result' field) is just for if you don't care about json file size and you want more human-readable JSON output.",
+          "type": "string"
+        },
+        "status_str": {
+          "description": "This optional field (interpretation of 'status' field) is just for if you don't care about json file size and you want more human-readable JSON output.",
+          "type": "string"
+        },
+        "code_str": {
+          "description": "This optional field (interpretation of 'code' field) is just for if you don't care about json file size and you want more human-readable JSON output.",
+          "type": "string",
+          "const": "L2CAP_CONNECTION_RSP"
+        },
+        "code": {
+          "description": "The L2CAP code for this packet type. Must always be 3.",
+          "type": "integer",
+          "const": 3
+        },
+        "id": {
+          "$ref": "#/definitions/id"
+        },
+        "data_len": {
+          "$ref": "#/definitions/data_len"
+        },
+        "destination_cid": {
+          "description": "2-byte \"Destination CID (Channel ID)\" field from spec. Indicates an L2CAP channel ID on the destination (i.e. not the one who initiated the connection) where data can be sent. Should be from the dynamically allocated range of CIDs for ACL-U logical links (0x0040 to 0xFFFF).",
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 65535
+        },
+        "source_cid": {
+          "description": "2-byte \"Source CID (Channel ID)\" field from spec. Copied by the destination device from the L2CAP_CONNECTION_REQ packet's Source CID field.",
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 65535
+        },
+        "result": {
+          "description": "2-byte \"Result\" field from spec. 'The result field indicates the outcome of the connection request.' As of Core Spec v5.4 there are values 1-7 defined.",
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 65535
+        },
+        "status": {
+          "description": "2-byte \"Status\" field from spec. 'Only defined for Result = Pending.' Contains information about pending statuses (e.g. Authentication or Authorization pending.)",
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 65535
+        }
+      }
+    },
     "0x0A_L2CAP_INFORMATION_REQ": {
       "type": "object",
       "description": "Structure for L2CAP\\_INFORMATION\\_REQ packet.",
@@ -36,7 +168,7 @@
           "$ref": "BTIDES_base.json#/definitions/std_optional_fields"
         },
         "code_str": {
-          "description": "This optional field is just for if you don't care about json file size and you want more human-readable JSON output.",
+          "description": "This optional field (interpretation of 'code' field) is just for if you don't care about json file size and you want more human-readable JSON output.",
           "type": "string",
           "const": "L2CAP_INFORMATION_REQ"
         },
@@ -46,16 +178,10 @@
           "const": 10
         },
         "id": {
-          "description": "1-byte \"identifier\" field from spec. Arbitrary value, just used to match requests to responses.",
-          "type": "integer",
-          "minimum": 0,
-          "maximum": 255
+          "$ref": "#/definitions/id"
         },
         "data_len": {
-          "description": "2-byte \"Data Length\" field from spec.",
-          "type": "integer",
-          "minimum": 0,
-          "maximum": 65535
+          "$ref": "#/definitions/data_len"
         },
         "info_type": {
           "description": "2-byte \"InfoType\" field from spec. Technically only values 1-3 are defined (as \"Connectionless MTU\", \"Extended features supported\", and \"Fixed channels supported over BR/EDR\"), but allow capturing any value so we can capture invalid packets which may be used in the wild.",
@@ -80,7 +206,7 @@
           "$ref": "BTIDES_base.json#/definitions/std_optional_fields"
         },
         "code_str": {
-          "description": "This optional field is just for if you don't care about json file size and you want more human-readable JSON output.",
+          "description": "This optional field (interpretation of 'code' field) is just for if you don't care about json file size and you want more human-readable JSON output.",
           "type": "string",
           "const": "L2CAP_INFORMATION_RSP"
         },
@@ -90,16 +216,10 @@
           "const": 11
         },
         "id": {
-          "description": "1-byte \"identifier\" field from spec. Arbitrary value, just used to match requests to responses.",
-          "type": "integer",
-          "minimum": 0,
-          "maximum": 255
+          "$ref": "#/definitions/id"
         },
         "data_len": {
-          "description": "2-byte \"Data Length\" field from spec.",
-          "type": "integer",
-          "minimum": 0,
-          "maximum": 65535
+          "$ref": "#/definitions/data_len"
         },
         "info_type": {
           "description": "2-byte \"InfoType\" field from spec. Technically only values 1-3 are defined, but allow capturing any value so we can capture invalid packets which may be used in the wild.",
@@ -138,7 +258,7 @@
           "$ref": "BTIDES_base.json#/definitions/std_optional_fields"
         },
         "code_str": {
-          "description": "This optional field is just for if you don't care about json file size and you want more human-readable JSON output.",
+          "description": "This optional field (interpretation of 'code' field) is just for if you don't care about json file size and you want more human-readable JSON output.",
           "type": "string",
           "const": "L2CAP_LE_CREDIT_BASED_CONNECTION_REQ"
         },
@@ -148,16 +268,10 @@
           "const": 20
         },
         "id": {
-          "description": "1-byte \"identifier\" field from spec. Arbitrary value, just used to match requests to responses.",
-          "type": "integer",
-          "minimum": 0,
-          "maximum": 255
+          "$ref": "#/definitions/id"
         },
         "data_len": {
-          "description": "2-byte \"Data Length\" field from spec.",
-          "type": "integer",
-          "minimum": 0,
-          "maximum": 65535
+          "$ref": "#/definitions/data_len"
         },
         "spsm": {
           "description": "2-byte \"SPSM\" (Simplified Protocol Service Multiplexer) field from spec.",
