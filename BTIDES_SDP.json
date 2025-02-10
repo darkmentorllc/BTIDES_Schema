@@ -20,10 +20,10 @@
   },
   "definitions": {
     "transaction_id": {
-      "description": "1-byte \"Transaction ID\" field from spec. Arbitrary value, just used to match requests to responses.",
+      "description": "2-byte \"Transaction ID\" field from spec. Arbitrary value, just used to match requests to responses.",
       "type": "integer",
       "minimum": 0,
-      "maximum": 255
+      "maximum": 65535
     },
     "param_len": {
       "description": "2-byte \"ParameterLength\" field from spec.",
