@@ -36,12 +36,13 @@
           "const": 1
         },
         "page_scan_repetition_mode": {
-          "description": "2-bit page scan reptition mode. 0 for R0, 1 for R1, 2 fr R2, 3 is RFU.",
+          "description": "2-bit page scan reptition mode. 0 for R0, 1 for R1, 2 fr R2, 3 is RFU. (But allow it anyway because it was seen in the wild.)",
           "type": "integer",
           "enum": [
             0,
             1,
-            2
+            2,
+            3
           ]
         }
       }
