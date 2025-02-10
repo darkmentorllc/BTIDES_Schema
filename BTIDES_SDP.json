@@ -9,21 +9,6 @@
       "items": {
         "anyOf": [
           {
-            "$ref": "#/definitions/0x01_SDP_ERROR_RSP"
-          },
-          {
-            "$ref": "#/definitions/0x02_SDP_SERVICE_SEARCH_REQ"
-          },
-          {
-            "$ref": "#/definitions/0x03_SDP_SERVICE_SEARCH_RSP"
-          },
-          {
-            "$ref": "#/definitions/0x04_SDP_SERVICE_ATTR_REQ"
-          },
-          {
-            "$ref": "#/definitions/0x05_SDP_SERVICE_ATTR_RSP"
-          },
-          {
             "$ref": "#/definitions/0x06_SDP_SERVICE_SEARCH_ATTR_REQ"
           },
           {
@@ -48,15 +33,15 @@
     },
     "0x06_SDP_SERVICE_SEARCH_ATTR_REQ": {
       "type": "object",
-      "description": "Structure for L2CAP\\_CONNECTION\\_REQ packet.",
+      "description": "Structure for SDP\\_SERVICE\\_SEARCH\\_ATTR\\_REQ packet.",
       "required": [
+        "direction",
+        "l2cap_len",
+        "l2cap_cid",
         "pdu_id",
         "transaction_id",
         "param_len",
-        "service_search_pattern",
-        "maximum_attribute_byte_count",
-        "AttributeIDList",
-        "ContinuationState"
+        "raw_data_hex_str"
       ],
       "properties": {
         "std_optional_fields": {
@@ -66,6 +51,18 @@
           "description": "This optional field (interpretation of 'pdu_id' field) is just for if you don't care about json file size and you want more human-readable JSON output.",
           "type": "string",
           "const": "SDP_SERVICE_SEARCH_ATTR_REQ"
+        },
+        "l2cap_len": {
+          "description": "2-byte length field from the enclosing L2CAP header. Not 100% sure yet whether we should include this in SDP but including it just in case.",
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 65535
+        },
+        "l2cap_cid": {
+          "description": "2-byte Channel ID (CID) field from the enclosing L2CAP header. Not 100% sure yet whether we should include this in SDP but including it just in case.",
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 65535
         },
         "pdu_id": {
           "description": "The L2CAP code for this packet type. Must always be 6.",
@@ -78,29 +75,59 @@
         "param_len": {
           "$ref": "#/definitions/param_len"
         },
-        "service_search_pattern": {
-          "description": "2-byte \"ServiceSearchPattern\" field from spec. Two ranges, one SIG-assigned, one dynamic.",
+        "raw_data_hex_str": {
+          "description": "Because the SDP data can be variable-length lists, and because Scapy doesn't parse it currently, for now I'm just saving this as the raw data which I'll put into the DB and then parse with TellMeEverything.py",
+          "type": "string"
+        }
+      }
+    },
+    "0x07_SDP_SERVICE_SEARCH_ATTR_RSP": {
+      "type": "object",
+      "description": "Structure for SDP\\_SERVICE\\_SEARCH\\_ATTR\\_RSP packet.",
+      "required": [
+        "direction",
+        "l2cap_len",
+        "l2cap_cid",
+        "pdu_id",
+        "transaction_id",
+        "param_len",
+        "raw_data_hex_str"
+      ],
+      "properties": {
+        "std_optional_fields": {
+          "$ref": "BTIDES_base.json#/definitions/std_optional_fields"
+        },
+        "pdu_id_str": {
+          "description": "This optional field (interpretation of 'pdu_id' field) is just for if you don't care about json file size and you want more human-readable JSON output.",
+          "type": "string",
+          "const": "SDP_SERVICE_SEARCH_ATTR_RSP"
+        },
+        "l2cap_len": {
+          "description": "2-byte length field from the enclosing L2CAP header. Not 100% sure yet whether we should include this in SDP but including it just in case.",
           "type": "integer",
           "minimum": 0,
           "maximum": 65535
         },
-        "maximum_attribute_byte_count": {
-          "description": "2-byte \"MaximumAttributeByteCount\" field from spec. Indicates an L2CAP channel ID on the source where data can be sent. Should be from the dynamically allocated range of CIDs for ACL-U logical links (0x0040 to 0xFFFF).",
+        "l2cap_cid": {
+          "description": "2-byte Channel ID (CID) field from the enclosing L2CAP header. Not 100% sure yet whether we should include this in SDP but including it just in case.",
           "type": "integer",
           "minimum": 0,
           "maximum": 65535
         },
-        "attribute_id_list": {
-          "description": "2-byte \"AttributeIDList\" field from spec. Indicates an L2CAP channel ID on the source where data can be sent. Should be from the dynamically allocated range of CIDs for ACL-U logical links (0x0040 to 0xFFFF).",
+        "pdu_id": {
+          "description": "The L2CAP code for this packet type. Must always be 7.",
           "type": "integer",
-          "minimum": 0,
-          "maximum": 65535
+          "const": 7
         },
-        "continuation_state": {
-          "description": "2-byte \"ContinuationState\" field from spec. Indicates an L2CAP channel ID on the source where data can be sent. Should be from the dynamically allocated range of CIDs for ACL-U logical links (0x0040 to 0xFFFF).",
-          "type": "integer",
-          "minimum": 0,
-          "maximum": 65535
+        "transaction_id": {
+          "$ref": "#/definitions/transaction_id"
+        },
+        "param_len": {
+          "$ref": "#/definitions/param_len"
+        },
+        "raw_data_hex_str": {
+          "description": "Because the SDP data can be variable-length lists, and because Scapy doesn't parse it currently, for now I'm just saving this as the raw data which I'll put into the DB and then parse with TellMeEverything.py",
+          "type": "string"
         }
       }
     }

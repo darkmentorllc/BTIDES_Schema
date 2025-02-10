@@ -56,6 +56,7 @@
       "type": "object",
       "description": "Structure for L2CAP\\_CONNECTION\\_REQ packet.",
       "required": [
+        "direction",
         "code",
         "id",
         "data_len",
@@ -74,6 +75,9 @@
           "description": "This optional field (interpretation of 'code' field) is just for if you don't care about json file size and you want more human-readable JSON output.",
           "type": "string",
           "const": "L2CAP_CONNECTION_REQ"
+        },
+        "direction": {
+          "$ref": "BTIDES_base.json#/definitions/direction"
         },
         "code": {
           "description": "The L2CAP code for this packet type. Must always be 2.",
@@ -104,6 +108,7 @@
       "type": "object",
       "description": "Structure for L2CAP\\_CONNECTION\\_RSP packet.",
       "required": [
+        "direction",
         "code",
         "id",
         "data_len",
@@ -128,6 +133,9 @@
           "description": "This optional field (interpretation of 'code' field) is just for if you don't care about json file size and you want more human-readable JSON output.",
           "type": "string",
           "const": "L2CAP_CONNECTION_RSP"
+        },
+        "direction": {
+          "$ref": "BTIDES_base.json#/definitions/direction"
         },
         "code": {
           "description": "The L2CAP code for this packet type. Must always be 3.",
@@ -170,6 +178,7 @@
       "type": "object",
       "description": "Structure for L2CAP\\_CONFIGURATION\\_REQ packet.",
       "required": [
+        "direction",
         "code",
         "id",
         "data_len",
@@ -184,6 +193,9 @@
           "description": "This optional field (interpretation of 'code' field) is just for if you don't care about json file size and you want more human-readable JSON output.",
           "type": "string",
           "const": "L2CAP_CONFIGURATION_REQ"
+        },
+        "direction": {
+          "$ref": "BTIDES_base.json#/definitions/direction"
         },
         "code": {
           "description": "The L2CAP code for this packet type. Must always be 4.",
@@ -218,6 +230,7 @@
       "type": "object",
       "description": "Structure for L2CAP\\_CONFIGURATION\\_RSP packet.",
       "required": [
+        "direction",
         "code",
         "id",
         "data_len",
@@ -241,6 +254,9 @@
           "description": "This optional field (interpretation of 'code' field) is just for if you don't care about json file size and you want more human-readable JSON output.",
           "type": "string",
           "const": "L2CAP_CONFIGURATION_RSP"
+        },
+        "direction": {
+          "$ref": "BTIDES_base.json#/definitions/direction"
         },
         "code": {
           "description": "The L2CAP code for this packet type. Must always be 5.",
@@ -281,6 +297,7 @@
       "type": "object",
       "description": "Structure for L2CAP\\_DISCONNECTION\\_REQ packet.",
       "required": [
+        "direction",
         "code",
         "id",
         "data_len",
@@ -299,6 +316,9 @@
           "description": "This optional field (interpretation of 'code' field) is just for if you don't care about json file size and you want more human-readable JSON output.",
           "type": "string",
           "const": "L2CAP_DISCONNECTION_REQ"
+        },
+        "direction": {
+          "$ref": "BTIDES_base.json#/definitions/direction"
         },
         "code": {
           "description": "The L2CAP code for this packet type. Must always be 6.",
@@ -329,6 +349,7 @@
       "type": "object",
       "description": "Structure for L2CAP\\_DISCONNECTION\\_RSP packet.",
       "required": [
+        "direction",
         "code",
         "id",
         "data_len",
@@ -352,6 +373,9 @@
           "type": "string",
           "const": "L2CAP_DISCONNECTION_RSP"
         },
+        "direction": {
+          "$ref": "BTIDES_base.json#/definitions/direction"
+        },
         "code": {
           "description": "The L2CAP code for this packet type. Must always be 7.",
           "type": "integer",
@@ -364,13 +388,13 @@
           "$ref": "#/definitions/data_len"
         },
         "destination_cid": {
-          "description": "2-byte \"Destination CID (Channel ID)\" field from spec. 'This field identifies the channel endpoint on the device sending the L2CAP_DISCONNECTION_RSP packet.'",
+          "description": "2-byte \"Destination CID (Channel ID)\" field from spec. 'This field identifies the channel endpoint on the device sending the L2CAP_DISCONNECTION_RSP packet.' (This should be copied from the REQ.)",
           "type": "integer",
           "minimum": 0,
           "maximum": 65535
         },
         "source_cid": {
-          "description": "2-byte \"Source CID (Channel ID)\" field from spec. 'This field identifies the channel endpoint on the device receiving the L2CAP_DISCONNECTION_RSP packet'.",
+          "description": "2-byte \"Source CID (Channel ID)\" field from spec. 'This field identifies the channel endpoint on the device receiving the L2CAP_DISCONNECTION_RSP packet'. (This should be copied from the REQ.)",
           "type": "integer",
           "minimum": 0,
           "maximum": 65535
@@ -381,6 +405,7 @@
       "type": "object",
       "description": "Structure for L2CAP\\_INFORMATION\\_REQ packet.",
       "required": [
+        "direction",
         "code",
         "id",
         "data_len",
@@ -394,6 +419,9 @@
           "description": "This optional field (interpretation of 'code' field) is just for if you don't care about json file size and you want more human-readable JSON output.",
           "type": "string",
           "const": "L2CAP_INFORMATION_REQ"
+        },
+        "direction": {
+          "$ref": "BTIDES_base.json#/definitions/direction"
         },
         "code": {
           "description": "The L2CAP code for this packet type. Must always be 10.",
@@ -418,6 +446,7 @@
       "type": "object",
       "description": "Structure for L2CAP\\_INFORMATION\\_RSP packet.",
       "required": [
+        "direction",
         "code",
         "id",
         "data_len",
@@ -432,6 +461,9 @@
           "description": "This optional field (interpretation of 'code' field) is just for if you don't care about json file size and you want more human-readable JSON output.",
           "type": "string",
           "const": "L2CAP_INFORMATION_RSP"
+        },
+        "direction": {
+          "$ref": "BTIDES_base.json#/definitions/direction"
         },
         "code": {
           "description": "The L2CAP code for this packet type. Must always be 11.",
@@ -468,6 +500,8 @@
       "type": "object",
       "description": "Structure for L2CAP\\_LE\\_CREDIT\\_BASED\\_CONNECTION\\_REQ packet.",
       "required": [
+        "direction",
+        "code",
         "id",
         "data_len",
         "spsm",
@@ -484,6 +518,9 @@
           "description": "This optional field (interpretation of 'code' field) is just for if you don't care about json file size and you want more human-readable JSON output.",
           "type": "string",
           "const": "L2CAP_LE_CREDIT_BASED_CONNECTION_REQ"
+        },
+        "direction": {
+          "$ref": "BTIDES_base.json#/definitions/direction"
         },
         "code": {
           "description": "Optional field just if you don't want to look up the \"code\" (term used in the spec, rather than opcode) for this packet type.",
