@@ -15,6 +15,12 @@
             "$ref": "#/definitions/0x03_L2CAP_CONNECTION_RSP"
           },
           {
+            "$ref": "#/definitions/0x04_L2CAP_CONFIGURATION_REQ"
+          },
+          {
+            "$ref": "#/definitions/0x05_L2CAP_CONFIGURATION_RSP"
+          },
+          {
             "$ref": "#/definitions/0x0A_L2CAP_INFORMATION_REQ"
           },
           {
@@ -151,6 +157,117 @@
           "type": "integer",
           "minimum": 0,
           "maximum": 65535
+        }
+      }
+    },
+    "0x04_L2CAP_CONFIGURATION_REQ": {
+      "type": "object",
+      "description": "Structure for L2CAP\\_CONFIGURATION\\_REQ packet.",
+      "required": [
+        "code",
+        "id",
+        "data_len",
+        "destination_cid",
+        "flags"
+      ],
+      "properties": {
+        "std_optional_fields": {
+          "$ref": "BTIDES_base.json#/definitions/std_optional_fields"
+        },
+        "code_str": {
+          "description": "This optional field (interpretation of 'code' field) is just for if you don't care about json file size and you want more human-readable JSON output.",
+          "type": "string",
+          "const": "L2CAP_CONFIGURATION_REQ"
+        },
+        "code": {
+          "description": "The L2CAP code for this packet type. Must always be 4.",
+          "type": "integer",
+          "const": 4
+        },
+        "id": {
+          "$ref": "#/definitions/id"
+        },
+        "data_len": {
+          "$ref": "#/definitions/data_len"
+        },
+        "destination_cid": {
+          "description": "2-byte \"Destination CID (Channel ID)\" field from spec. 'channel endpoint on the device receiving this Request packet'",
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 65535
+        },
+        "flags": {
+          "description": "2-byte \"Flags\" field from spec. 'Only one flag is defined, the Continuation flag (C)' (bit 0) 'When used in the L2CAP_CONFIGURATION_REQ packet, the continuation flag indicates the responder should expect to receive multiple request packets.'",
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 65535
+        },
+        "config_options_hex_str": {
+          "description": "Variable-length \"Configuration Options\" field from spec. 'A list of the parameters and their values to be negotiated shall be provided in the Configuration Options field. These are defined in Section 5; in addition, as described in that section, an implementation shall be prepared to receive any number of unknown options. A L2CAP_CONFIGURATION_REQ may contain no options (referred to as an empty or null configuration request) and can be used to request a response. For an empty configuration request the length field is set to 0x0004.'",
+          "type": "string"
+        }
+      }
+    },
+    "0x05_L2CAP_CONFIGURATION_RSP": {
+      "type": "object",
+      "description": "Structure for L2CAP\\_CONFIGURATION\\_RSP packet.",
+      "required": [
+        "code",
+        "id",
+        "data_len",
+        "source_cid",
+        "flags",
+        "result"
+      ],
+      "properties": {
+        "std_optional_fields": {
+          "$ref": "BTIDES_base.json#/definitions/std_optional_fields"
+        },
+        "result_str": {
+          "description": "This optional field (interpretation of 'result' field) is just for if you don't care about json file size and you want more human-readable JSON output.",
+          "type": "string"
+        },
+        "status_str": {
+          "description": "This optional field (interpretation of 'status' field) is just for if you don't care about json file size and you want more human-readable JSON output.",
+          "type": "string"
+        },
+        "code_str": {
+          "description": "This optional field (interpretation of 'code' field) is just for if you don't care about json file size and you want more human-readable JSON output.",
+          "type": "string",
+          "const": "L2CAP_CONFIGURATION_RSP"
+        },
+        "code": {
+          "description": "The L2CAP code for this packet type. Must always be 5.",
+          "type": "integer",
+          "const": 5
+        },
+        "id": {
+          "$ref": "#/definitions/id"
+        },
+        "data_len": {
+          "$ref": "#/definitions/data_len"
+        },
+        "source_cid": {
+          "description": "2-byte \"Source CID (Channel ID)\" field from spec. 'This field contains the channel endpoint on the device receiving this Response packet.'",
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 65535
+        },
+        "flags": {
+          "description": "2-byte \"Flags\" field from spec. 'Only one flag is defined, the Continuation flag (C)' (bit 0) 'More L2CAP_CONFIGURATION_REQ packets will follow when C is set to one. This flag indicates that the parameters included in the response are a partial subset of parameters being sent by the device sending the Response packet.'",
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 65535
+        },
+        "result": {
+          "description": "2-byte \"Result\" field from spec. 'The Result field indicates whether or not the Request was acceptable. See Table 4.8 for possible result codes.' As of Core Spec v5.4 there are values 0-5 defined.",
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 65535
+        },
+        "config_options_hex_str": {
+          "description": "Variable-length \"Configuration Options\" field from spec (given as \"Config\" in the diagram due to lack of space.). 'A list of the parameters and their values to be negotiated shall be provided in the Configuration Options field. These are defined in Section 5; in addition, as described in that section, an implementation shall be prepared to receive any number of unknown options. A L2CAP_CONFIGURATION_REQ may contain no options (referred to as an empty or null configuration request) and can be used to request a response. For an empty configuration request the length field is set to 0x0004.' (That seems like an error in the spec as the minimum size would be 6. 2 for Source CID, 2 for flags, 2 for result.)",
+          "type": "string"
         }
       }
     },
