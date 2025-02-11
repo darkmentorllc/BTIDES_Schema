@@ -9,6 +9,9 @@
       "items": {
         "anyOf": [
           {
+            "$ref": "#/definitions/0x01_SDP_ERROR_RSP"
+          },
+          {
             "$ref": "#/definitions/0x06_SDP_SERVICE_SEARCH_ATTR_REQ"
           },
           {
@@ -30,6 +33,62 @@
       "type": "integer",
       "minimum": 0,
       "maximum": 65535
+    },
+    "0x01_SDP_ERROR_RSP": {
+      "type": "object",
+      "description": "Structure for SDP\\_ERROR\\_RSP packet.",
+      "required": [
+        "direction",
+        "l2cap_len",
+        "l2cap_cid",
+        "pdu_id",
+        "transaction_id",
+        "param_len",
+        "error_code"
+      ],
+      "properties": {
+        "std_optional_fields": {
+          "$ref": "BTIDES_base.json#/definitions/std_optional_fields"
+        },
+        "error_code_str": {
+          "description": "This optional field (interpretation of 'error_code' field) is just for if you don't care about json file size and you want more human-readable JSON output.",
+          "type": "string"
+        },
+        "pdu_id_str": {
+          "description": "This optional field (interpretation of 'pdu_id' field) is just for if you don't care about json file size and you want more human-readable JSON output.",
+          "type": "string",
+          "const": "SDP_ERROR_RSP"
+        },
+        "l2cap_len": {
+          "description": "2-byte length field from the enclosing L2CAP header. Not 100% sure yet whether we should include this in SDP but including it just in case.",
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 65535
+        },
+        "l2cap_cid": {
+          "description": "2-byte Channel ID (CID) field from the enclosing L2CAP header. Not 100% sure yet whether we should include this in SDP but including it just in case.",
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 65535
+        },
+        "pdu_id": {
+          "description": "The L2CAP code for this packet type. Must always be 1.",
+          "type": "integer",
+          "const": 1
+        },
+        "transaction_id": {
+          "$ref": "#/definitions/transaction_id"
+        },
+        "param_len": {
+          "$ref": "#/definitions/param_len"
+        },
+        "error_code": {
+          "description": "2-byte \"ErrorCode\" value from the spec. As of BT Core Spec v5.4 only types 1-6 are defined.",
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 65535
+        }
+      }
     },
     "0x06_SDP_SERVICE_SEARCH_ATTR_REQ": {
       "type": "object",
