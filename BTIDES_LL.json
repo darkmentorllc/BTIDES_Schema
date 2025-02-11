@@ -142,6 +142,30 @@
     }
   },
   "definitions": {
+    "interval_min": {
+      "description": "The minimum connection interval. (Multiplied by 1.25ms). This should technically be only between 7.5ms to 4.0s (6-3200) according to the spec, but put in whatever was actually used.",
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 65535
+    },
+    "interval_max": {
+      "description": "The maximum connection interval. (Multiplied by 1.25ms). This should technically be only between 7.5ms to 4.0s (6-3200) according to the spec, but put in whatever was actually used.",
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 65535
+    },
+    "latency": {
+      "description": "The Peripheral latency (how many connection events the Peripheral can skip replying to.). \"The value of connSubrateFactor shall be in the range 1 to 500 and shall be set to 1 for a new connection\" to be valid according to the spec, but put whatever value was actually found in the packet.",
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 65535
+    },
+    "timeout": {
+      "description": "The connection timeout. (Multiplied by 10ms). \"The connSupervisionTimeout shall be a multiple of 10 ms in the range 100 ms to 32.0s and it shall be larger than (1 + connPeripheralLatency) × connSubrateFactor × connInterval × 2.\" (so 1-3200)according to the spec, but put in whatever was actually used.",
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 65535
+    },
     "LL_CONNECTION_UPDATE_IND": {
       "type": "object",
       "description": "Structure for LL\\_CONNECTION\\_UPDATE\\_IND packet.",
@@ -993,28 +1017,16 @@
           "const": 15
         },
         "interval_min": {
-          "description": "The minimum connection interval. (Multiplied by 1.25ms). This should technically be only between 7.5ms to 4.0s (6-3200) according to the spec, but put in whatever was actually used.",
-          "type": "integer",
-          "minimum": 0,
-          "maximum": 65535
+          "$ref": "#/definitions/interval_min"
         },
         "interval_max": {
-          "description": "The maximum connection interval. (Multiplied by 1.25ms). This should technically be only between 7.5ms to 4.0s (6-3200) according to the spec, but put in whatever was actually used.",
-          "type": "integer",
-          "minimum": 0,
-          "maximum": 65535
+          "$ref": "#/definitions/interval_max"
         },
         "latency": {
-          "description": "The Peripheral latency (how many connection events the Peripheral can skip replying to.). \"The value of connSubrateFactor shall be in the range 1 to 500 and shall be set to 1 for a new connection\" to be valid according to the spec, but put whatever value was actually found in the packet.",
-          "type": "integer",
-          "minimum": 0,
-          "maximum": 65535
+          "$ref": "#/definitions/latency"
         },
         "timeout": {
-          "description": "The connection timeout. (Multiplied by 10ms). \"The connSupervisionTimeout shall be a multiple of 10 ms in the range 100 ms to 32.0s and it shall be larger than (1 + connPeripheralLatency) × connSubrateFactor × connInterval × 2.\" (so 1-3200)according to the spec, but put in whatever was actually used.",
-          "type": "integer",
-          "minimum": 0,
-          "maximum": 65535
+          "$ref": "#/definitions/timeout"
         },
         "preferred_periodicity": {
           "description": "Multiplied by 1.25ms. 'The PreferredPeriodicity field shall be set to indicate a value the connInterval is preferred to be a multiple of.'",
@@ -1131,28 +1143,16 @@
           "const": 16
         },
         "interval_min": {
-          "description": "The minimum connection interval. (Multiplied by 1.25ms). This should technically be only between 7.5ms to 4.0s (6-3200) according to the spec, but put in whatever was actually used.",
-          "type": "integer",
-          "minimum": 0,
-          "maximum": 65535
+          "$ref": "#/definitions/interval_min"
         },
         "interval_max": {
-          "description": "The maximum connection interval. (Multiplied by 1.25ms). This should technically be only between 7.5ms to 4.0s (6-3200) according to the spec, but put in whatever was actually used.",
-          "type": "integer",
-          "minimum": 0,
-          "maximum": 65535
+          "$ref": "#/definitions/interval_max"
         },
         "latency": {
-          "description": "The Peripheral latency (how many connection events the Peripheral can skip replying to.). \"The value of connSubrateFactor shall be in the range 1 to 500 and shall be set to 1 for a new connection\" to be valid according to the spec, but put whatever value was actually found in the packet.",
-          "type": "integer",
-          "minimum": 0,
-          "maximum": 65535
+          "$ref": "#/definitions/latency"
         },
         "timeout": {
-          "description": "The connection timeout. (Multiplied by 10ms). \"The connSupervisionTimeout shall be a multiple of 10 ms in the range 100 ms to 32.0s and it shall be larger than (1 + connPeripheralLatency) × connSubrateFactor × connInterval × 2.\" (so 1-3200)according to the spec, but put in whatever was actually used.",
-          "type": "integer",
-          "minimum": 0,
-          "maximum": 65535
+          "$ref": "#/definitions/timeout"
         },
         "preferred_periodicity": {
           "description": "Multiplied by 1.25ms. 'The PreferredPeriodicity field shall be set to indicate a value the connInterval is preferred to be a multiple of.'",

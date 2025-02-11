@@ -33,6 +33,12 @@
             "$ref": "#/definitions/0x0B_L2CAP_INFORMATION_RSP"
           },
           {
+            "$ref": "#/definitions/0x12_L2CAP_CONNECTION_PARAMETER_UPDATE_REQ"
+          },
+          {
+            "$ref": "#/definitions/0x13_L2CAP_CONNECTION_PARAMETER_UPDATE_RSP"
+          },
+          {
             "$ref": "#/definitions/0x14_L2CAP_LE_CREDIT_BASED_CONNECTION_REQ"
           }
         ]
@@ -493,6 +499,105 @@
           "type": "string",
           "minLength": 4,
           "maxLength": 16
+        }
+      }
+    },
+    "0x12_L2CAP_CONNECTION_PARAMETER_UPDATE_REQ": {
+      "type": "object",
+      "description": "Structure for L2CAP\\_CONNECTION\\_PARAMETER\\_UPDATE\\_REQ packet.",
+      "required": [
+        "direction",
+        "code",
+        "id",
+        "data_len",
+        "interval_min",
+        "interval_max",
+        "latency",
+        "timeout"
+      ],
+      "properties": {
+        "std_optional_fields": {
+          "$ref": "BTIDES_base.json#/definitions/std_optional_fields"
+        },
+        "psm_str": {
+          "description": "This optional field (interpretation of 'psm' field if it's a SIG-asigned value) is just for if you don't care about json file size and you want more human-readable JSON output.",
+          "type": "string"
+        },
+        "code_str": {
+          "description": "This optional field (interpretation of 'code' field) is just for if you don't care about json file size and you want more human-readable JSON output.",
+          "type": "string",
+          "const": "L2CAP_CONNECTION_PARAMETER_UPDATE_REQ"
+        },
+        "direction": {
+          "$ref": "BTIDES_base.json#/definitions/direction"
+        },
+        "code": {
+          "description": "The L2CAP code for this packet type. Must always be 18.",
+          "type": "integer",
+          "const": 18
+        },
+        "id": {
+          "$ref": "#/definitions/id"
+        },
+        "data_len": {
+          "$ref": "#/definitions/data_len"
+        },
+        "interval_min": {
+          "$ref": "BTIDES_LL.json#/definitions/interval_min"
+        },
+        "interval_max": {
+          "$ref": "BTIDES_LL.json#/definitions/interval_max"
+        },
+        "latency": {
+          "$ref": "BTIDES_LL.json#/definitions/latency"
+        },
+        "timeout": {
+          "$ref": "BTIDES_LL.json#/definitions/timeout"
+        }
+      }
+    },
+    "0x13_L2CAP_CONNECTION_PARAMETER_UPDATE_RSP": {
+      "type": "object",
+      "description": "Structure for L2CAP\\_CONNECTION\\_PARAMETER\\_UPDATE\\_RSP packet.",
+      "required": [
+        "direction",
+        "code",
+        "id",
+        "data_len",
+        "result"
+      ],
+      "properties": {
+        "std_optional_fields": {
+          "$ref": "BTIDES_base.json#/definitions/std_optional_fields"
+        },
+        "result_str": {
+          "description": "This optional field (interpretation of 'result' field) is just for if you don't care about json file size and you want more human-readable JSON output.",
+          "type": "string"
+        },
+        "code_str": {
+          "description": "This optional field (interpretation of 'code' field) is just for if you don't care about json file size and you want more human-readable JSON output.",
+          "type": "string",
+          "const": "L2CAP_CONNECTION_PARAMETER_UPDATE_RSP"
+        },
+        "direction": {
+          "$ref": "BTIDES_base.json#/definitions/direction"
+        },
+        "code": {
+          "description": "The L2CAP code for this packet type. Must always be 19.",
+          "type": "integer",
+          "const": 19
+        },
+        "id": {
+          "$ref": "#/definitions/id"
+        },
+        "data_len": {
+          "$ref": "#/definitions/data_len"
+        },
+        "result": {
+          "description": "2-byte \"Result\" field from spec. 'The result field indicates the response to the request. The result value of 0x0000 indicates that the Central’s Host has accepted the connection parameters while 0x0001 indicates that the Central’s Host has rejected the connection parameters.",
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 65535
         }
       }
     },
