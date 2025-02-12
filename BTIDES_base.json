@@ -270,6 +270,12 @@
           "minimum": 0,
           "maximum": 4294967295
         },
+        "unix_time_milli": {
+          "description": "Unix milliseconds-since-epoch (1970-01-01 00:00:00 UTC) timestamp, as a 64-bit integer.",
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 18446744073709551615
+        },
         "time_str1": {
           "description": "Time formatted like YYYY-MM-DD-HH-mm-ss. E.g. 2024-01-02-03-14-15 for January 2nd 2024 at 3:14AM.",
           "type": "string",

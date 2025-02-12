@@ -23,7 +23,7 @@
         "lon"
       ],
       "properties": {
-        "RSSI": {
+        "rssi": {
           "$ref": "BTIDES_base.json#/definitions/RSSI"
         },
         "src_file": {
