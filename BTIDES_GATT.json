@@ -346,7 +346,7 @@
       "required": [
         "UUID",
         "handle",
-        "user_description"
+        "user_description_hex_str"
       ],
       "properties": {
         "type_str": {
@@ -365,8 +365,12 @@
           "minimum": 1,
           "maximum": 65535
         },
-        "user_description": {
-          "description": "Human-readable string which describes the associated Characteristic to users (if so desired.)",
+        "user_description_hex_str": {
+          "description": "String which describes the associated Characteristic to users, as a hex string.",
+          "type": "string"
+        },
+        "utf8_user_description": {
+          "description": "Optional UTF8 form of human-readable string which describes the associated Characteristic to users.",
           "type": "string"
         }
       }
@@ -528,7 +532,7 @@
           "maximum": 65535
         },
         "attribute_handles_list": {
-          "description": "From spec: \"List of Attribute Handles for the Characteristic Presenta- tion Format Declarations\".",
+          "description": "From spec: \"List of Attribute Handles for the Characteristic Presentation Format Declarations\".",
           "type": "array",
           "items": {
             "type": "integer",

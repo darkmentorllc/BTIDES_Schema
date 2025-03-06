@@ -50,7 +50,7 @@ A JSON file meant to conform to the BTIDES schema can be validated on the comman
 python3 -m venv ./venv`
 source ./venv/bin/activate`
 pip3 install check-jsonschema`
-check-jsonschema --verbose --base-uri . --schemafile ./BTIDES_base.json ./example_data.btides
+check-jsonschema --verbose --base-uri ./BTIDES_base.json --schemafile ./BTIDES_base.json ./example_data.btides
 ```
 
 ### Schema verification in Python
