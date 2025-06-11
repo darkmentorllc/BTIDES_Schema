@@ -33,7 +33,7 @@
           "$ref": "BTIDES_AdvData.json#/properties/AdvChanArray"
         },
         "LLArray": {
-          "$ref": "BTIDES_LL.json#/properties/LLArray"
+          "$ref": "BTIDES_LLCP.json#/properties/LLArray"
         },
         "HCIArray": {
           "$ref": "BTIDES_HCI.json#/properties/HCIArray"
@@ -177,7 +177,7 @@
           "$ref": "BTIDES_AdvData.json#/properties/AdvChanArray"
         },
         "LLArray": {
-          "$ref": "BTIDES_LL.json#/properties/LLArray"
+          "$ref": "BTIDES_LLCP.json#/properties/LLArray"
         },
         "HCIArray": {
           "$ref": "BTIDES_HCI.json#/properties/HCIArray"

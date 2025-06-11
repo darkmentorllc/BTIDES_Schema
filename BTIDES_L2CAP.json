@@ -543,16 +543,16 @@
           "$ref": "#/definitions/data_len"
         },
         "interval_min": {
-          "$ref": "BTIDES_LL.json#/definitions/interval_min"
+          "$ref": "BTIDES_LLCP.json#/definitions/interval_min"
         },
         "interval_max": {
-          "$ref": "BTIDES_LL.json#/definitions/interval_max"
+          "$ref": "BTIDES_LLCP.json#/definitions/interval_max"
         },
         "latency": {
-          "$ref": "BTIDES_LL.json#/definitions/latency"
+          "$ref": "BTIDES_LLCP.json#/definitions/latency"
         },
         "timeout": {
-          "$ref": "BTIDES_LL.json#/definitions/timeout"
+          "$ref": "BTIDES_LLCP.json#/definitions/timeout"
         }
       }
     },

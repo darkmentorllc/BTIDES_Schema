@@ -196,13 +196,13 @@
           "const": 37
         },
         "version": {
-          "$ref": "BTIDES_LL.json#/definitions/version"
+          "$ref": "BTIDES_LLCP.json#/definitions/version"
         },
         "company_id": {
-          "$ref": "BTIDES_LL.json#/definitions/company_id"
+          "$ref": "BTIDES_LLCP.json#/definitions/company_id"
         },
         "subversion": {
-          "$ref": "BTIDES_LL.json#/definitions/subversion"
+          "$ref": "BTIDES_LLCP.json#/definitions/subversion"
         }
       }
     },
@@ -254,13 +254,13 @@
           "const": 38
         },
         "version": {
-          "$ref": "BTIDES_LL.json#/definitions/version"
+          "$ref": "BTIDES_LLCP.json#/definitions/version"
         },
         "company_id": {
-          "$ref": "BTIDES_LL.json#/definitions/company_id"
+          "$ref": "BTIDES_LLCP.json#/definitions/company_id"
         },
         "subversion": {
-          "$ref": "BTIDES_LL.json#/definitions/subversion"
+          "$ref": "BTIDES_LLCP.json#/definitions/subversion"
         }
       }
     },

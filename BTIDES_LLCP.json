@@ -1,5 +1,5 @@
 {
-  "$id": "https://darkmentor.com/BTIDES_Schema/BTIDES_LL.json",
+  "$id": "https://darkmentor.com/BTIDES_Schema/BTIDES_LLCP.json",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "description": "JSON Schema for Bluetooth Device Information. Sub-information, Link Layer packet information data types",
   "type": "object",

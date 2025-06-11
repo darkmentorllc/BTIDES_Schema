@@ -1055,7 +1055,7 @@
           "type": "integer"
         },
         "le_features_hex_str": {
-          "$ref": "BTIDES_LL.json#/definitions/le_features_hex_str"
+          "$ref": "BTIDES_LLCP.json#/definitions/le_features_hex_str"
         }
       }
     },
