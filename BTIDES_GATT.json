@@ -258,6 +258,8 @@
             "Unknown Application Error 0x82",
             "Unknown Application Error 0x83",
             "Unknown Application Error 0x84",
+            "Unknown Application Error 0xf1",
+            "Unknown Application Error 0xf2",
             "Unknown Application Error 0xf7",
             "Write Request Rejected",
             "Client Characteristic Configuration Descriptor Improperly Configured",
