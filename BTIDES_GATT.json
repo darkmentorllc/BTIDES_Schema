@@ -197,11 +197,11 @@
     "CharacteristicValue": {
       "type": "object",
       "description": "Structure for GATT Characteristic (\"attribute type\" UUID always 0x2803). Optional io_array captures input/output seen to/from this Characteristic Value.",
+      "required": [
+        "handle",
+        "value_uuid"
+      ],
       "properties": {
-        "required": [
-          "handle",
-          "value_uuid"
-        ],
         "handle": {
           "description": "2-byte ATT handle number of the \"Characteristic\" attribute itself.",
           "type": "integer",
