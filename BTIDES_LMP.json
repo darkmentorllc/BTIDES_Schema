@@ -337,7 +337,7 @@
           "const": "LMP_FEATURES_REQ"
         },
         "opcode": {
-          "description": "This should always be 38. This is required to differentiate from other data types in an array.",
+          "description": "This should always be 39. This is required to differentiate from other data types in an array.",
           "const": 39
         },
         "full_pkt_hex_str": {
