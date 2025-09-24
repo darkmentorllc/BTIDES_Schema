@@ -227,7 +227,10 @@
           "const": 37
         },
         "full_pkt_hex_str": {
-          "$ref": "BTIDES_base.json#/definitions/full_pkt_hex_str"
+          "description": "This should *exclude* the opcode byte. Therefore it will always be exactly 5 bytes / 10 hex characters.",
+          "$ref": "BTIDES_base.json#/definitions/full_pkt_hex_str",
+          "minLength": 10,
+          "maxLength": 10
         }
       }
     },
@@ -285,7 +288,10 @@
           "const": 38
         },
         "full_pkt_hex_str": {
-          "$ref": "BTIDES_base.json#/definitions/full_pkt_hex_str"
+          "description": "This should *exclude* the opcode byte. Therefore it will always be exactly 5 bytes / 10 hex characters.",
+          "$ref": "BTIDES_base.json#/definitions/full_pkt_hex_str",
+          "minLength": 10,
+          "maxLength": 10
         }
       }
     },
@@ -341,7 +347,10 @@
           "const": 39
         },
         "full_pkt_hex_str": {
-          "$ref": "BTIDES_base.json#/definitions/full_pkt_hex_str"
+          "description": "This should *exclude* the opcode byte. Therefore it will always be exactly 8 bytes / 16 hex characters.",
+          "$ref": "BTIDES_base.json#/definitions/full_pkt_hex_str",
+          "minLength": 16,
+          "maxLength": 16
         }
       }
     },
@@ -391,7 +400,10 @@
           "const": 40
         },
         "full_pkt_hex_str": {
-          "$ref": "BTIDES_base.json#/definitions/full_pkt_hex_str"
+          "description": "This should *exclude* the opcode byte. Therefore it will always be exactly 8 bytes / 16 hex characters.",
+          "$ref": "BTIDES_base.json#/definitions/full_pkt_hex_str",
+          "minLength": 16,
+          "maxLength": 16
         }
       }
     },
@@ -461,7 +473,10 @@
           "const": 4
         },
         "full_pkt_hex_str": {
-          "$ref": "BTIDES_base.json#/definitions/full_pkt_hex_str"
+          "description": "This should *exclude* the escape byte and opcode byte. Therefore it will always be exactly 10 bytes / 20 hex characters.",
+          "$ref": "BTIDES_base.json#/definitions/full_pkt_hex_str",
+          "minLength": 20,
+          "maxLength": 20
         }
       }
     }
