@@ -21,6 +21,18 @@
             "$ref": "#/definitions/LMP_NAME_RES2"
           },
           {
+            "$ref": "#/definitions/LMP_ACCEPTED"
+          },
+          {
+            "$ref": "#/definitions/LMP_ACCEPTED2"
+          },
+          {
+            "$ref": "#/definitions/LMP_NOT_ACCEPTED"
+          },
+          {
+            "$ref": "#/definitions/LMP_NOT_ACCEPTED2"
+          },
+          {
             "$ref": "#/definitions/LMP_VERSION_REQ"
           },
           {
@@ -170,6 +182,146 @@
         },
         "full_pkt_hex_str": {
           "$ref": "BTIDES_base.json#/definitions/full_pkt_hex_str"
+        }
+      }
+    },
+    "rcvd_opcode": {
+      "description": "One byte value indicating the opcode of the LMP command being accepted or not accepted.",
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 255
+    },
+    "rcvd_opcode_str": {
+      "description": "Optional string version of the rcvd_opcode (e.g. like 'LMP\\_ACCEPTED').",
+      "type": "string",
+      "maximum": 33
+    },
+    "LMP_ACCEPTED": {
+      "type": "object",
+      "description": "Structure for LMP\\_ACCEPTED packet.",
+      "required": [
+        "opcode",
+        "rcvd_opcode"
+      ],
+      "properties": {
+        "std_optional_fields": {
+          "$ref": "BTIDES_base.json#/definitions/std_optional_fields"
+        },
+        "opcode_str": {
+          "description": "This optional field is just for if you don't care about json file size and you want more human-readable JSON output.",
+          "type": "string",
+          "const": "LMP_ACCEPTED"
+        },
+        "opcode": {
+          "description": "This should always be 3. This is required to differentiate from other data types in an array.",
+          "const": 3
+        },
+        "rcvd_opcode": {
+          "$ref": "#/definitions/rcvd_opcode"
+        },
+        "rcvd_opcode_str": {
+          "$ref": "#/definitions/rcvd_opcode_str"
+        }
+      }
+    },
+    "LMP_ACCEPTED2": {
+      "type": "object",
+      "description": "Structure for LMP\\_ACCEPTED packet, as single raw hex string.",
+      "required": [
+        "opcode",
+        "full_pkt_hex_str"
+      ],
+      "properties": {
+        "std_optional_fields": {
+          "$ref": "BTIDES_base.json#/definitions/std_optional_fields"
+        },
+        "opcode_str": {
+          "description": "This optional field is just for if you don't care about json file size and you want more human-readable JSON output.",
+          "type": "string",
+          "const": "LMP_ACCEPTED"
+        },
+        "opcode": {
+          "description": "This should always be 3. This is required to differentiate from other data types in an array.",
+          "const": 3
+        },
+        "full_pkt_hex_str": {
+          "description": "This should *exclude* the opcode byte. Therefore it will always be exactly 1 byte / 2 hex characters.",
+          "$ref": "BTIDES_base.json#/definitions/full_pkt_hex_str",
+          "minLength": 2,
+          "maxLength": 2
+        }
+      }
+    },
+    "error_code": {
+      "description": "One byte value indicating the reason for rejection.",
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 255
+    },
+    "error_code_str": {
+      "description": "Optional string version of the error_code (e.g. like 'Synchronous Connection Limit To A Device Exceeded').",
+      "type": "string"
+    },
+    "LMP_NOT_ACCEPTED": {
+      "type": "object",
+      "description": "Structure for LMP\\_NOT\\_ACCEPTED packet.",
+      "required": [
+        "opcode",
+        "rcvd_opcode",
+        "error_code"
+      ],
+      "properties": {
+        "std_optional_fields": {
+          "$ref": "BTIDES_base.json#/definitions/std_optional_fields"
+        },
+        "opcode_str": {
+          "description": "This optional field is just for if you don't care about json file size and you want more human-readable JSON output.",
+          "type": "string",
+          "const": "LMP_NOT_ACCEPTED"
+        },
+        "opcode": {
+          "description": "This should always be 4. This is required to differentiate from other data types in an array.",
+          "const": 4
+        },
+        "rcvd_opcode": {
+          "$ref": "#/definitions/rcvd_opcode"
+        },
+        "rcvd_opcode_str": {
+          "$ref": "#/definitions/rcvd_opcode_str"
+        },
+        "error_code": {
+          "$ref": "#/definitions/error_code"
+        },
+        "error_code_str": {
+          "$ref": "#/definitions/error_code_str"
+        }
+      }
+    },
+    "LMP_NOT_ACCEPTED2": {
+      "type": "object",
+      "description": "Structure for LMP\\_NOT\\_ACCEPTED packet, as single raw hex string.",
+      "required": [
+        "opcode",
+        "full_pkt_hex_str"
+      ],
+      "properties": {
+        "std_optional_fields": {
+          "$ref": "BTIDES_base.json#/definitions/std_optional_fields"
+        },
+        "opcode_str": {
+          "description": "This optional field is just for if you don't care about json file size and you want more human-readable JSON output.",
+          "type": "string",
+          "const": "LMP_NOT_ACCEPTED"
+        },
+        "opcode": {
+          "description": "This should always be 4. This is required to differentiate from other data types in an array.",
+          "const": 4
+        },
+        "full_pkt_hex_str": {
+          "description": "This should *exclude* the opcode byte. Therefore it will always be exactly 2 bytes / 4 hex characters.",
+          "$ref": "BTIDES_base.json#/definitions/full_pkt_hex_str",
+          "minLength": 4,
+          "maxLength": 4
         }
       }
     },
