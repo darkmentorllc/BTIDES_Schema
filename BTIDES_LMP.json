@@ -57,6 +57,24 @@
             "$ref": "#/definitions/LMP_FEATURES_RES2"
           },
           {
+            "$ref": "#/definitions/LMP_ACCEPTED_EXT"
+          },
+          {
+            "$ref": "#/definitions/LMP_ACCEPTED_EXT2"
+          },
+          {
+            "$ref": "#/definitions/LMP_NOT_ACCEPTED_EXT"
+          },
+          {
+            "$ref": "#/definitions/LMP_NOT_ACCEPTED_EXT2"
+          },
+          {
+            "$ref": "#/definitions/LMP_FEATURES_REQ_EXT"
+          },
+          {
+            "$ref": "#/definitions/LMP_FEATURES_REQ_EXT2"
+          },
+          {
             "$ref": "#/definitions/LMP_FEATURES_RES_EXT"
           },
           {
@@ -559,11 +577,176 @@
         }
       }
     },
-    "LMP_FEATURES_RES_EXT": {
+    "escape_127": {
+      "description": "The 'escape' opcode of 127 (0x7F) that's used at the offset that would normally be the LMP opcode. Used for extended LMP commands (suffixed with _EXT).",
+      "type": "integer",
+      "const": 127
+    },
+    "rcvd_escape_opcode": {
+      "description": "The 'escape' opcode which was used for the extended LMP command that's being accepted or not accepted.",
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 255
+    },
+    "rcvd_extended_opcode": {
+      "description": "The opcode which was used for the extended LMP command that's being accepted or not accepted.",
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 255
+    },
+    "rcvd_extended_opcode_str": {
+      "description": "Optional string version of the rcvd_extended_opcode (e.g. like 'LMP\\_ACCEPTED\\_EXT').",
+      "type": "string",
+      "maximum": 33
+    },
+    "LMP_ACCEPTED_EXT": {
       "type": "object",
-      "description": "Structure for LMP\\_FEATURES\\_RES\\_EXT packet.",
+      "description": "Structure for LMP\\_ACCEPTED\\_EXT packet.",
       "required": [
-        "opcode",
+        "escape_127",
+        "extended_opcode",
+        "rcvd_escape_opcode",
+        "rcvd_extended_opcode"
+      ],
+      "properties": {
+        "std_optional_fields": {
+          "$ref": "BTIDES_base.json#/definitions/std_optional_fields"
+        },
+        "escape_127": {
+          "$ref": "#/definitions/escape_127"
+        },
+        "extended_opcode": {
+          "description": "This should always be 1. This is required to differentiate from other data types in an array.",
+          "const": 1
+        },
+        "extended_opcode_str": {
+          "description": "This optional field is just for if you don't care about json file size and you want more human-readable JSON output.",
+          "type": "string",
+          "const": "LMP_ACCEPTED_EXT"
+        },
+        "rcvd_escape_opcode": {
+          "$ref": "#/definitions/rcvd_escape_opcode"
+        },
+        "rcvd_extended_opcode": {
+          "$ref": "#/definitions/rcvd_extended_opcode"
+        },
+        "rcvd_extended_opcode_str": {
+          "$ref": "#/definitions/rcvd_extended_opcode_str"
+        }
+      }
+    },
+    "LMP_ACCEPTED_EXT2": {
+      "type": "object",
+      "description": "Structure for LMP\\_ACCEPTED\\_EXT packet, as single raw hex string.",
+      "required": [
+        "escape_127",
+        "extended_opcode",
+        "full_pkt_hex_str"
+      ],
+      "properties": {
+        "std_optional_fields": {
+          "$ref": "BTIDES_base.json#/definitions/std_optional_fields"
+        },
+        "escape_127": {
+          "$ref": "#/definitions/escape_127"
+        },
+        "extended_opcode": {
+          "description": "This should always be 1. This is required to differentiate from other data types in an array.",
+          "const": 1
+        },
+        "extended_opcode_str": {
+          "description": "This optional field is just for if you don't care about json file size and you want more human-readable JSON output.",
+          "type": "string",
+          "const": "LMP_ACCEPTED_EXT"
+        },
+        "full_pkt_hex_str": {
+          "description": "This should *exclude* the opcode byte. Therefore it will always be exactly 2 bytes / 4 hex characters.",
+          "$ref": "BTIDES_base.json#/definitions/full_pkt_hex_str",
+          "minLength": 4,
+          "maxLength": 4
+        }
+      }
+    },
+    "LMP_NOT_ACCEPTED_EXT": {
+      "type": "object",
+      "description": "Structure for LMP\\_NOT\\_ACCEPTED\\_EXT packet.",
+      "required": [
+        "escape_127",
+        "extended_opcode",
+        "rcvd_escape_opcode",
+        "rcvd_extended_opcode",
+        "error_code"
+      ],
+      "properties": {
+        "std_optional_fields": {
+          "$ref": "BTIDES_base.json#/definitions/std_optional_fields"
+        },
+        "escape_127": {
+          "$ref": "#/definitions/escape_127"
+        },
+        "extended_opcode": {
+          "description": "This should always be 2. This is required to differentiate from other data types in an array.",
+          "const": 2
+        },
+        "extended_opcode_str": {
+          "description": "This optional field is just for if you don't care about json file size and you want more human-readable JSON output.",
+          "type": "string",
+          "const": "LMP_NOT_ACCEPTED_EXT"
+        },
+        "rcvd_escape_opcode": {
+          "$ref": "#/definitions/rcvd_escape_opcode"
+        },
+        "rcvd_extended_opcode": {
+          "$ref": "#/definitions/rcvd_extended_opcode"
+        },
+        "rcvd_extended_opcode_str": {
+          "$ref": "#/definitions/rcvd_extended_opcode_str"
+        },
+        "error_code": {
+          "$ref": "#/definitions/error_code"
+        },
+        "error_code_str": {
+          "$ref": "#/definitions/error_code_str"
+        }
+      }
+    },
+    "LMP_NOT_ACCEPTED_EXT2": {
+      "type": "object",
+      "description": "Structure for LMP\\_NOT\\_ACCEPTED\\_EXT packet, as single raw hex string.",
+      "required": [
+        "escape_127",
+        "extended_opcode",
+        "full_pkt_hex_str"
+      ],
+      "properties": {
+        "std_optional_fields": {
+          "$ref": "BTIDES_base.json#/definitions/std_optional_fields"
+        },
+        "escape_127": {
+          "$ref": "#/definitions/escape_127"
+        },
+        "extended_opcode": {
+          "description": "This should always be 2. This is required to differentiate from other data types in an array.",
+          "const": 2
+        },
+        "extended_opcode_str": {
+          "description": "This optional field is just for if you don't care about json file size and you want more human-readable JSON output.",
+          "type": "string",
+          "const": "LMP_NOT_ACCEPTED_EXT"
+        },
+        "full_pkt_hex_str": {
+          "description": "This should *exclude* the opcode byte. Therefore it will always be exactly 3 bytes / 6 hex characters.",
+          "$ref": "BTIDES_base.json#/definitions/full_pkt_hex_str",
+          "minLength": 6,
+          "maxLength": 6
+        }
+      }
+    },
+    "LMP_FEATURES_REQ_EXT": {
+      "type": "object",
+      "description": "Structure for LMP\\_FEATURES\\_REQ\\_EXT packet.",
+      "required": [
+        "escape_127",
         "extended_opcode",
         "page",
         "max_page",
@@ -573,18 +756,88 @@
         "std_optional_fields": {
           "$ref": "BTIDES_base.json#/definitions/std_optional_fields"
         },
-        "opcode_str": {
+        "escape_127": {
+          "$ref": "#/definitions/escape_127"
+        },
+        "extended_opcode": {
+          "description": "This should always be 3. This is required to differentiate from other data types in an array.",
+          "const": 3
+        },
+        "extended_opcode_str": {
           "description": "This optional field is just for if you don't care about json file size and you want more human-readable JSON output.",
           "type": "string",
-          "const": "LMP_FEATURES_RES_EXT"
+          "const": "LMP_FEATURES_REQ_EXT"
         },
-        "opcode": {
-          "description": "This should always be 127. This is required to differentiate from other data types in an array.",
-          "const": 127
+        "page": {
+          "description": "Which page of features this corresponds to.",
+          "type": "integer"
+        },
+        "max_page": {
+          "description": "The maximum supported page (64-bit chunk) which contains non-zero features.",
+          "type": "integer"
+        },
+        "lmp_features_hex_str": {
+          "$ref": "#/definitions/lmp_features_hex_str"
+        }
+      }
+    },
+    "LMP_FEATURES_REQ_EXT2": {
+      "type": "object",
+      "description": "Structure for LMP\\_FEATURES\\_REQ\\_EXT packet.",
+      "required": [
+        "escape_127",
+        "extended_opcode",
+        "full_pkt_hex_str"
+      ],
+      "properties": {
+        "std_optional_fields": {
+          "$ref": "BTIDES_base.json#/definitions/std_optional_fields"
+        },
+        "escape_127": {
+          "$ref": "#/definitions/escape_127"
+        },
+        "extended_opcode": {
+          "description": "This should always be 3. This is required to differentiate from other data types in an array.",
+          "const": 3
+        },
+        "extended_opcode_str": {
+          "description": "This optional field is just for if you don't care about json file size and you want more human-readable JSON output.",
+          "type": "string",
+          "const": "LMP_FEATURES_REQ_EXT"
+        },
+        "full_pkt_hex_str": {
+          "description": "This should *exclude* the escape byte and opcode byte. Therefore it will always be exactly 10 bytes / 20 hex characters.",
+          "$ref": "BTIDES_base.json#/definitions/full_pkt_hex_str",
+          "minLength": 20,
+          "maxLength": 20
+        }
+      }
+    },
+    "LMP_FEATURES_RES_EXT": {
+      "type": "object",
+      "description": "Structure for LMP\\_FEATURES\\_RES\\_EXT packet.",
+      "required": [
+        "escape_127",
+        "extended_opcode",
+        "page",
+        "max_page",
+        "lmp_features_hex_str"
+      ],
+      "properties": {
+        "std_optional_fields": {
+          "$ref": "BTIDES_base.json#/definitions/std_optional_fields"
+        },
+        "escape_127": {
+          "$ref": "#/definitions/escape_127"
         },
         "extended_opcode": {
           "description": "This should always be 4. This is required to differentiate from other data types in an array.",
           "const": 4
+        },
+        "extended_opcode_str": {
+          "description": "This optional field is just for if you don't care about json file size and you want more human-readable JSON output.",
+          "type": "string",
+          "const": "LMP_FEATURES_RES_EXT"
         },
         "page": {
           "description": "Which page of features this corresponds to.",
@@ -603,7 +856,7 @@
       "type": "object",
       "description": "Structure for LMP\\_FEATURES\\_RES\\_EXT packet.",
       "required": [
-        "opcode",
+        "escape_127",
         "extended_opcode",
         "full_pkt_hex_str"
       ],
@@ -611,18 +864,17 @@
         "std_optional_fields": {
           "$ref": "BTIDES_base.json#/definitions/std_optional_fields"
         },
-        "opcode_str": {
-          "description": "This optional field is just for if you don't care about json file size and you want more human-readable JSON output.",
-          "type": "string",
-          "const": "LMP_FEATURES_RES_EXT"
-        },
-        "opcode": {
-          "description": "This should always be 127. This is required to differentiate from other data types in an array.",
-          "const": 127
+        "escape_127": {
+          "$ref": "#/definitions/escape_127"
         },
         "extended_opcode": {
           "description": "This should always be 4. This is required to differentiate from other data types in an array.",
           "const": 4
+        },
+        "extended_opcode_str": {
+          "description": "This optional field is just for if you don't care about json file size and you want more human-readable JSON output.",
+          "type": "string",
+          "const": "LMP_FEATURES_RES_EXT"
         },
         "full_pkt_hex_str": {
           "description": "This should *exclude* the escape byte and opcode byte. Therefore it will always be exactly 10 bytes / 20 hex characters.",
