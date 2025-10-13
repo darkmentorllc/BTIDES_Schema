@@ -33,6 +33,21 @@
             "$ref": "#/definitions/LMP_NOT_ACCEPTED2"
           },
           {
+            "$ref": "#/definitions/LMP_DETACH"
+          },
+          {
+            "$ref": "#/definitions/LMP_DETACH2"
+          },
+          {
+            "$ref": "#/definitions/LMP_AUTO_RATE"
+          },
+          {
+            "$ref": "#/definitions/LMP_PREFERRED_RATE"
+          },
+          {
+            "$ref": "#/definitions/LMP_PREFERRED_RATE2"
+          },
+          {
             "$ref": "#/definitions/LMP_VERSION_REQ"
           },
           {
@@ -55,6 +70,18 @@
           },
           {
             "$ref": "#/definitions/LMP_FEATURES_RES2"
+          },
+          {
+            "$ref": "#/definitions/LMP_TIMING_ACCURACY_REQ"
+          },
+          {
+            "$ref": "#/definitions/LMP_TIMING_ACCURACY_RES"
+          },
+          {
+            "$ref": "#/definitions/LMP_TIMING_ACCURACY_RES2"
+          },
+          {
+            "$ref": "#/definitions/LMP_SETUP_COMPLETE"
           },
           {
             "$ref": "#/definitions/LMP_ACCEPTED_EXT"
@@ -343,6 +370,137 @@
         }
       }
     },
+    "LMP_DETACH": {
+      "type": "object",
+      "description": "Structure for LMP\\_DETACH packet.",
+      "required": [
+        "opcode",
+        "error_code"
+      ],
+      "properties": {
+        "std_optional_fields": {
+          "$ref": "BTIDES_base.json#/definitions/std_optional_fields"
+        },
+        "opcode_str": {
+          "description": "This optional field is just for if you don't care about json file size and you want more human-readable JSON output.",
+          "type": "string",
+          "const": "LMP_DETACH"
+        },
+        "opcode": {
+          "description": "This should always be 7. This is required to differentiate from other data types in an array.",
+          "const": 7
+        },
+        "error_code": {
+          "$ref": "#/definitions/error_code"
+        },
+        "error_code_str": {
+          "$ref": "#/definitions/error_code_str"
+        }
+      }
+    },
+    "LMP_DETACH2": {
+      "type": "object",
+      "description": "Structure for LMP\\_DETACH packet, as single raw hex string.",
+      "required": [
+        "opcode",
+        "full_pkt_hex_str"
+      ],
+      "properties": {
+        "std_optional_fields": {
+          "$ref": "BTIDES_base.json#/definitions/std_optional_fields"
+        },
+        "opcode_str": {
+          "description": "This optional field is just for if you don't care about json file size and you want more human-readable JSON output.",
+          "type": "string",
+          "const": "LMP_DETACH"
+        },
+        "opcode": {
+          "description": "This should always be 7. This is required to differentiate from other data types in an array.",
+          "const": 7
+        },
+        "full_pkt_hex_str": {
+          "description": "This should *exclude* the opcode byte. Therefore it will always be exactly 1 bytes / 2 hex characters.",
+          "$ref": "BTIDES_base.json#/definitions/full_pkt_hex_str",
+          "minLength": 2,
+          "maxLength": 2
+        }
+      }
+    },
+    "LMP_AUTO_RATE": {
+      "type": "object",
+      "description": "Structure for LMP\\_AUTO\\_RATEpacket (which is defined as only an opcode, no payload).",
+      "required": [
+        "opcode"
+      ],
+      "properties": {
+        "std_optional_fields": {
+          "$ref": "BTIDES_base.json#/definitions/std_optional_fields"
+        },
+        "opcode_str": {
+          "description": "This optional field is just for if you don't care about json file size and you want more human-readable JSON output.",
+          "type": "string",
+          "const": "LMP_AUTO_RATE"
+        },
+        "opcode": {
+          "description": "This should always be 35. This is required to differentiate from other data types in an array.",
+          "const": 35
+        }
+      }
+    },
+    "LMP_PREFERRED_RATE": {
+      "type": "object",
+      "description": "Structure for LMP\\_PREFERRED\\_RATE packet.",
+      "required": [
+        "opcode",
+        "data_rate"
+      ],
+      "properties": {
+        "std_optional_fields": {
+          "$ref": "BTIDES_base.json#/definitions/std_optional_fields"
+        },
+        "opcode_str": {
+          "description": "This optional field is just for if you don't care about json file size and you want more human-readable JSON output.",
+          "type": "string",
+          "const": "LMP_PREFERRED_RATE"
+        },
+        "opcode": {
+          "description": "This should always be 36. This is required to differentiate from other data types in an array.",
+          "const": 36
+        },
+        "data_rate": {
+          "description": "1-byte value indicating the preferred data rate. Different interpretations when using BR vs. EDR. (See spec.)",
+          "type": "integer"
+        }
+      }
+    },
+    "LMP_PREFERRED_RATE2": {
+      "type": "object",
+      "description": "Structure for LMP\\_PREFERRED\\_RATE packet, as single raw hex string.",
+      "required": [
+        "opcode",
+        "full_pkt_hex_str"
+      ],
+      "properties": {
+        "std_optional_fields": {
+          "$ref": "BTIDES_base.json#/definitions/std_optional_fields"
+        },
+        "opcode_str": {
+          "description": "This optional field is just for if you don't care about json file size and you want more human-readable JSON output.",
+          "type": "string",
+          "const": "LMP_PREFERRED_RATE"
+        },
+        "opcode": {
+          "description": "This should always be 36. This is required to differentiate from other data types in an array.",
+          "const": 36
+        },
+        "full_pkt_hex_str": {
+          "description": "This should *exclude* the opcode byte. Therefore it will always be exactly 1 byte / 2 hex characters.",
+          "$ref": "BTIDES_base.json#/definitions/full_pkt_hex_str",
+          "minLength": 2,
+          "maxLength": 2
+        }
+      }
+    },
     "LMP_VERSION_REQ": {
       "type": "object",
       "description": "Structure for LMP\\_VERSION\\_REQ packet.",
@@ -574,6 +732,111 @@
           "$ref": "BTIDES_base.json#/definitions/full_pkt_hex_str",
           "minLength": 16,
           "maxLength": 16
+        }
+      }
+    },
+    "LMP_TIMING_ACCURACY_REQ": {
+      "type": "object",
+      "description": "Structure for LMP\\_TIMING\\_ACCURACY\\_REQ packet (which is defined as only an opcode, no payload).",
+      "required": [
+        "opcode"
+      ],
+      "properties": {
+        "std_optional_fields": {
+          "$ref": "BTIDES_base.json#/definitions/std_optional_fields"
+        },
+        "opcode_str": {
+          "description": "This optional field is just for if you don't care about json file size and you want more human-readable JSON output.",
+          "type": "string",
+          "const": "LMP_TIMING_ACCURACY_REQ"
+        },
+        "opcode": {
+          "description": "This should always be 47. This is required to differentiate from other data types in an array.",
+          "const": 47
+        }
+      }
+    },
+    "LMP_TIMING_ACCURACY_RES": {
+      "type": "object",
+      "description": "Structure for LMP\\_TIMING\\_ACCURACY\\_RES packet.",
+      "required": [
+        "opcode",
+        "drift",
+        "jitter"
+      ],
+      "properties": {
+        "std_optional_fields": {
+          "$ref": "BTIDES_base.json#/definitions/std_optional_fields"
+        },
+        "opcode_str": {
+          "description": "This optional field is just for if you don't care about json file size and you want more human-readable JSON output.",
+          "type": "string",
+          "const": "LMP_TIMING_ACCURACY_RES"
+        },
+        "opcode": {
+          "description": "This should always be 48. This is required to differentiate from other data types in an array.",
+          "const": 48
+        },
+        "drift": {
+          "description": "1-byte value indicating the maximum clock drift in clock tick ppm (parts per million). (Spec default is 250.)",
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 255
+        },
+        "jitter": {
+          "description": "1-byte value indicating the maximum jitter in microseconds. (Spec default is 10.)",
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 255
+        }
+      }
+    },
+    "LMP_TIMING_ACCURACY_RES2": {
+      "type": "object",
+      "description": "Structure for LMP\\_TIMING\\_ACCURACY\\_RES packet, as single raw hex string.",
+      "required": [
+        "opcode",
+        "full_pkt_hex_str"
+      ],
+      "properties": {
+        "std_optional_fields": {
+          "$ref": "BTIDES_base.json#/definitions/std_optional_fields"
+        },
+        "opcode_str": {
+          "description": "This optional field is just for if you don't care about json file size and you want more human-readable JSON output.",
+          "type": "string",
+          "const": "LMP_TIMING_ACCURACY_RES"
+        },
+        "opcode": {
+          "description": "This should always be 48. This is required to differentiate from other data types in an array.",
+          "const": 48
+        },
+        "full_pkt_hex_str": {
+          "description": "This should *exclude* the opcode byte. Therefore it will always be exactly 2 bytes / 4 hex characters.",
+          "$ref": "BTIDES_base.json#/definitions/full_pkt_hex_str",
+          "minLength": 4,
+          "maxLength": 4
+        }
+      }
+    },
+    "LMP_SETUP_COMPLETE": {
+      "type": "object",
+      "description": "Structure for LMP\\_SETUP\\_COMPLETE packet (which is defined as only an opcode, no payload).",
+      "required": [
+        "opcode"
+      ],
+      "properties": {
+        "std_optional_fields": {
+          "$ref": "BTIDES_base.json#/definitions/std_optional_fields"
+        },
+        "opcode_str": {
+          "description": "This optional field is just for if you don't care about json file size and you want more human-readable JSON output.",
+          "type": "string",
+          "const": "LMP_SETUP_COMPLETE"
+        },
+        "opcode": {
+          "description": "This should always be 49. This is required to differentiate from other data types in an array.",
+          "const": 49
         }
       }
     },
