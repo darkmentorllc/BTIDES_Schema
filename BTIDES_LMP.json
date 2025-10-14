@@ -106,6 +106,24 @@
           },
           {
             "$ref": "#/definitions/LMP_FEATURES_RES_EXT2"
+          },
+          {
+            "$ref": "#/definitions/LMP_CHANNEL_CLASSIFICATION"
+          },
+          {
+            "$ref": "#/definitions/LMP_CHANNEL_CLASSIFICATION2"
+          },
+          {
+            "$ref": "#/definitions/LMP_POWER_CONTROL_REQ"
+          },
+          {
+            "$ref": "#/definitions/LMP_POWER_CONTROL_REQ2"
+          },
+          {
+            "$ref": "#/definitions/LMP_POWER_CONTROL_RES"
+          },
+          {
+            "$ref": "#/definitions/LMP_POWER_CONTROL_RES2"
           }
         ]
       }
@@ -200,7 +218,7 @@
           "maximum": 255
         },
         "name_fragment_hex_str": {
-          "description": "A portion of the device name, as a hex string.",
+          "description": "A portion of the device name, as single raw hex string..",
           "type": "string"
         }
       }
@@ -1046,7 +1064,7 @@
     },
     "LMP_FEATURES_REQ_EXT2": {
       "type": "object",
-      "description": "Structure for LMP\\_FEATURES\\_REQ\\_EXT packet.",
+      "description": "Structure for LMP\\_FEATURES\\_REQ\\_EXT packet, as single raw hex string..",
       "required": [
         "escape_127",
         "extended_opcode",
@@ -1117,7 +1135,7 @@
     },
     "LMP_FEATURES_RES_EXT2": {
       "type": "object",
-      "description": "Structure for LMP\\_FEATURES\\_RES\\_EXT packet.",
+      "description": "Structure for LMP\\_FEATURES\\_RES\\_EXT packet, as single raw hex string..",
       "required": [
         "escape_127",
         "extended_opcode",
@@ -1144,6 +1162,198 @@
           "$ref": "BTIDES_base.json#/definitions/full_pkt_hex_str",
           "minLength": 20,
           "maxLength": 20
+        }
+      }
+    },
+    "LMP_CHANNEL_CLASSIFICATION": {
+      "type": "object",
+      "description": "Structure for LMP\\_CHANNEL\\_CLASSIFICATION packet.",
+      "required": [
+        "escape_127",
+        "extended_opcode",
+        "afh_channel_classification_hex_str"
+      ],
+      "properties": {
+        "std_optional_fields": {
+          "$ref": "BTIDES_base.json#/definitions/std_optional_fields"
+        },
+        "escape_127": {
+          "$ref": "#/definitions/escape_127"
+        },
+        "extended_opcode": {
+          "description": "This should always be 17. This is required to differentiate from other data types in an array.",
+          "const": 17
+        },
+        "extended_opcode_str": {
+          "description": "This optional field is just for if you don't care about json file size and you want more human-readable JSON output.",
+          "type": "string",
+          "const": "LMP_CHANNEL_CLASSIFICATION"
+        },
+        "afh_channel_classification_hex_str": {
+          "description": "10-byte value (2 bit classifier * 40 channels) as hex string.",
+          "type": "string",
+          "minLength": 20,
+          "maxLength": 20
+        }
+      }
+    },
+    "LMP_CHANNEL_CLASSIFICATION2": {
+      "type": "object",
+      "description": "Structure for LMP\\_CHANNEL\\_CLASSIFICATION packet, as single raw hex string..",
+      "required": [
+        "escape_127",
+        "extended_opcode",
+        "full_pkt_hex_str"
+      ],
+      "properties": {
+        "std_optional_fields": {
+          "$ref": "BTIDES_base.json#/definitions/std_optional_fields"
+        },
+        "escape_127": {
+          "$ref": "#/definitions/escape_127"
+        },
+        "extended_opcode": {
+          "description": "This should always be 17. This is required to differentiate from other data types in an array.",
+          "const": 17
+        },
+        "extended_opcode_str": {
+          "description": "This optional field is just for if you don't care about json file size and you want more human-readable JSON output.",
+          "type": "string",
+          "const": "LMP_CHANNEL_CLASSIFICATION"
+        },
+        "full_pkt_hex_str": {
+          "description": "This should *exclude* the escape byte and opcode byte. Therefore it will always be exactly 10 bytes / 20 hex characters.",
+          "$ref": "BTIDES_base.json#/definitions/full_pkt_hex_str",
+          "minLength": 20,
+          "maxLength": 20
+        }
+      }
+    },
+    "LMP_POWER_CONTROL_REQ": {
+      "type": "object",
+      "description": "Structure for LMP\\_POWER\\_CONTROL\\_REQ packet.",
+      "required": [
+        "escape_127",
+        "extended_opcode",
+        "power_adj_req"
+      ],
+      "properties": {
+        "std_optional_fields": {
+          "$ref": "BTIDES_base.json#/definitions/std_optional_fields"
+        },
+        "escape_127": {
+          "$ref": "#/definitions/escape_127"
+        },
+        "extended_opcode": {
+          "description": "This should always be 31. This is required to differentiate from other data types in an array.",
+          "const": 31
+        },
+        "extended_opcode_str": {
+          "description": "This optional field is just for if you don't care about json file size and you want more human-readable JSON output.",
+          "type": "string",
+          "const": "LMP_POWER_CONTROL_REQ"
+        },
+        "power_adj_req": {
+          "description": "Request to increment, decrement, or increase to maximu the transmit power level.",
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 255
+        }
+      }
+    },
+    "LMP_POWER_CONTROL_REQ2": {
+      "type": "object",
+      "description": "Structure for LMP\\_POWER\\_CONTROL\\_REQ packet, as single raw hex string..",
+      "required": [
+        "escape_127",
+        "extended_opcode",
+        "full_pkt_hex_str"
+      ],
+      "properties": {
+        "std_optional_fields": {
+          "$ref": "BTIDES_base.json#/definitions/std_optional_fields"
+        },
+        "escape_127": {
+          "$ref": "#/definitions/escape_127"
+        },
+        "extended_opcode": {
+          "description": "This should always be 31. This is required to differentiate from other data types in an array.",
+          "const": 31
+        },
+        "extended_opcode_str": {
+          "description": "This optional field is just for if you don't care about json file size and you want more human-readable JSON output.",
+          "type": "string",
+          "const": "LMP_POWER_CONTROL_REQ"
+        },
+        "full_pkt_hex_str": {
+          "description": "This should *exclude* the escape byte and opcode byte. Therefore it will always be exactly 1 byte / 2 hex characters.",
+          "$ref": "BTIDES_base.json#/definitions/full_pkt_hex_str",
+          "minLength": 2,
+          "maxLength": 2
+        }
+      }
+    },
+    "LMP_POWER_CONTROL_RES": {
+      "type": "object",
+      "description": "Structure for LMP\\_POWER\\_CONTROL\\_RES packet.",
+      "required": [
+        "escape_127",
+        "extended_opcode",
+        "power_adj_res"
+      ],
+      "properties": {
+        "std_optional_fields": {
+          "$ref": "BTIDES_base.json#/definitions/std_optional_fields"
+        },
+        "escape_127": {
+          "$ref": "#/definitions/escape_127"
+        },
+        "extended_opcode": {
+          "description": "This should always be 32. This is required to differentiate from other data types in an array.",
+          "const": 32
+        },
+        "extended_opcode_str": {
+          "description": "This optional field is just for if you don't care about json file size and you want more human-readable JSON output.",
+          "type": "string",
+          "const": "LMP_POWER_CONTROL_RES"
+        },
+        "power_adj_res": {
+          "description": "Array of 4 2-bit values, for GFSK, π/4-DQPSK, 8DPSK & reserved, indicating whether to change the TX power by 1 step or move to min or max power.",
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 255
+        }
+      }
+    },
+    "LMP_POWER_CONTROL_RES2": {
+      "type": "object",
+      "description": "Structure for LMP\\_POWER\\_CONTROL\\_RES packet, as single raw hex string..",
+      "required": [
+        "escape_127",
+        "extended_opcode",
+        "full_pkt_hex_str"
+      ],
+      "properties": {
+        "std_optional_fields": {
+          "$ref": "BTIDES_base.json#/definitions/std_optional_fields"
+        },
+        "escape_127": {
+          "$ref": "#/definitions/escape_127"
+        },
+        "extended_opcode": {
+          "description": "This should always be 32. This is required to differentiate from other data types in an array.",
+          "const": 32
+        },
+        "extended_opcode_str": {
+          "description": "This optional field is just for if you don't care about json file size and you want more human-readable JSON output.",
+          "type": "string",
+          "const": "LMP_POWER_CONTROL_RES"
+        },
+        "full_pkt_hex_str": {
+          "description": "This should *exclude* the escape byte and opcode byte. Therefore it will always be exactly 1 byte / 2 hex characters.",
+          "$ref": "BTIDES_base.json#/definitions/full_pkt_hex_str",
+          "minLength": 2,
+          "maxLength": 2
         }
       }
     }
