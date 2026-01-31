@@ -72,6 +72,18 @@
             "$ref": "#/definitions/LMP_FEATURES_RES2"
           },
           {
+            "$ref": "#/definitions/LMP_MAX_SLOT"
+          },
+          {
+            "$ref": "#/definitions/LMP_MAX_SLOT2"
+          },
+          {
+            "$ref": "#/definitions/LMP_MAX_SLOT_REQ"
+          },
+          {
+            "$ref": "#/definitions/LMP_MAX_SLOT_REQ2"
+          },
+          {
             "$ref": "#/definitions/LMP_TIMING_ACCURACY_REQ"
           },
           {
@@ -79,6 +91,15 @@
           },
           {
             "$ref": "#/definitions/LMP_TIMING_ACCURACY_RES2"
+          },
+          {
+            "$ref": "#/definitions/LMP_ENCRYPTION_KEY_SIZE_MASK_REQ"
+          },
+          {
+            "$ref": "#/definitions/LMP_ENCRYPTION_KEY_SIZE_MASK_RES"
+          },
+          {
+            "$ref": "#/definitions/LMP_ENCRYPTION_KEY_SIZE_MASK_RES2"
           },
           {
             "$ref": "#/definitions/LMP_SETUP_COMPLETE"
@@ -753,6 +774,118 @@
         }
       }
     },
+    "LMP_MAX_SLOT": {
+      "type": "object",
+      "description": "Structure for LMP\\_MAX\\_SLOT packet.",
+      "required": [
+        "opcode",
+        "max_slots"
+      ],
+      "properties": {
+        "std_optional_fields": {
+          "$ref": "BTIDES_base.json#/definitions/std_optional_fields"
+        },
+        "opcode_str": {
+          "description": "This optional field is just for if you don't care about json file size and you want more human-readable JSON output.",
+          "type": "string",
+          "const": "LMP_MAX_SLOT"
+        },
+        "opcode": {
+          "description": "This should always be 45. This is required to differentiate from other data types in an array.",
+          "const": 45
+        },
+        "max_slots": {
+          "description": "1-byte value indicating the number of consecutive slots used by a device on an ACL-U logical link (Spec default is 1.)",
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 255
+        }
+      }
+    },
+    "LMP_MAX_SLOT2": {
+      "type": "object",
+      "description": "Structure for LMP\\_MAX\\_SLOT packet.",
+      "required": [
+        "opcode",
+        "full_pkt_hex_str"
+      ],
+      "properties": {
+        "std_optional_fields": {
+          "$ref": "BTIDES_base.json#/definitions/std_optional_fields"
+        },
+        "opcode_str": {
+          "description": "This optional field is just for if you don't care about json file size and you want more human-readable JSON output.",
+          "type": "string",
+          "const": "LMP_MAX_SLOT"
+        },
+        "opcode": {
+          "description": "This should always be 45. This is required to differentiate from other data types in an array.",
+          "const": 45
+        },
+        "full_pkt_hex_str": {
+          "description": "This should *exclude* the opcode byte. Therefore it will always be exactly 1 byte / 2 hex characters.",
+          "$ref": "BTIDES_base.json#/definitions/full_pkt_hex_str",
+          "minLength": 2,
+          "maxLength": 2
+        }
+      }
+    },
+    "LMP_MAX_SLOT_REQ": {
+      "type": "object",
+      "description": "Structure for LMP\\_MAX\\_SLOT\\_REQ packet.",
+      "required": [
+        "opcode",
+        "max_slots"
+      ],
+      "properties": {
+        "std_optional_fields": {
+          "$ref": "BTIDES_base.json#/definitions/std_optional_fields"
+        },
+        "opcode_str": {
+          "description": "This optional field is just for if you don't care about json file size and you want more human-readable JSON output.",
+          "type": "string",
+          "const": "LMP_MAX_SLOT_REQ"
+        },
+        "opcode": {
+          "description": "This should always be 46. This is required to differentiate from other data types in an array.",
+          "const": 46
+        },
+        "max_slots": {
+          "description": "1-byte value indicating the number of consecutive slots used by a device on an ACL-U logical link (Spec default is 1.)",
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 255
+        }
+      }
+    },
+    "LMP_MAX_SLOT_REQ2": {
+      "type": "object",
+      "description": "Structure for LMP\\_MAX\\_SLOT\\_REQ packet.",
+      "required": [
+        "opcode",
+        "full_pkt_hex_str"
+      ],
+      "properties": {
+        "std_optional_fields": {
+          "$ref": "BTIDES_base.json#/definitions/std_optional_fields"
+        },
+        "opcode_str": {
+          "description": "This optional field is just for if you don't care about json file size and you want more human-readable JSON output.",
+          "type": "string",
+          "const": "LMP_MAX_SLOT_REQ"
+        },
+        "opcode": {
+          "description": "This should always be 46. This is required to differentiate from other data types in an array.",
+          "const": 46
+        },
+        "full_pkt_hex_str": {
+          "description": "This should *exclude* the opcode byte. Therefore it will always be exactly 1 byte / 2 hex characters.",
+          "$ref": "BTIDES_base.json#/definitions/full_pkt_hex_str",
+          "minLength": 2,
+          "maxLength": 2
+        }
+      }
+    },
     "LMP_TIMING_ACCURACY_REQ": {
       "type": "object",
       "description": "Structure for LMP\\_TIMING\\_ACCURACY\\_REQ packet (which is defined as only an opcode, no payload).",
@@ -855,6 +988,83 @@
         "opcode": {
           "description": "This should always be 49. This is required to differentiate from other data types in an array.",
           "const": 49
+        }
+      }
+    },
+    "LMP_ENCRYPTION_KEY_SIZE_MASK_REQ": {
+      "type": "object",
+      "description": "Structure for LMP\\_ENCRYPTION\\_KEY\\_SIZE\\_MASK\\_REQ packet (which is defined as only an opcode, no payload).",
+      "required": [
+        "opcode"
+      ],
+      "properties": {
+        "std_optional_fields": {
+          "$ref": "BTIDES_base.json#/definitions/std_optional_fields"
+        },
+        "opcode_str": {
+          "description": "This optional field is just for if you don't care about json file size and you want more human-readable JSON output.",
+          "type": "string",
+          "const": "LMP_ENCRYPTION_KEY_SIZE_MASK_REQ"
+        },
+        "opcode": {
+          "description": "This should always be 58. This is required to differentiate from other data types in an array.",
+          "const": 58
+        }
+      }
+    },
+    "LMP_ENCRYPTION_KEY_SIZE_MASK_RES": {
+      "type": "object",
+      "description": "Structure for LMP\\_ENCRYPTION\\_KEY\\_SIZE\\_MASK\\_RES packet.",
+      "required": [
+        "opcode",
+        "key_size_mask"
+      ],
+      "properties": {
+        "std_optional_fields": {
+          "$ref": "BTIDES_base.json#/definitions/std_optional_fields"
+        },
+        "opcode_str": {
+          "description": "This optional field is just for if you don't care about json file size and you want more human-readable JSON output.",
+          "type": "string",
+          "const": "LMP_ENCRYPTION_KEY_SIZE_MASK_RES"
+        },
+        "opcode": {
+          "description": "This should always be 59. This is required to differentiate from other data types in an array.",
+          "const": 59
+        },
+        "key_size_mask": {
+          "description": "2-byte bit field where if bit 0 is set it means key size is not supported, bit 1 means 1 byte key supported, bit 2 means 2 byte key supported, etc. up to bit 16 for 16 byte key supported.",
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 65535
+        }
+      }
+    },
+    "LMP_ENCRYPTION_KEY_SIZE_MASK_RES2": {
+      "type": "object",
+      "description": "Structure for LMP\\_ENCRYPTION\\_KEY\\_SIZE\\_MASK\\_RES packet.",
+      "required": [
+        "opcode",
+        "full_pkt_hex_str"
+      ],
+      "properties": {
+        "std_optional_fields": {
+          "$ref": "BTIDES_base.json#/definitions/std_optional_fields"
+        },
+        "opcode_str": {
+          "description": "This optional field is just for if you don't care about json file size and you want more human-readable JSON output.",
+          "type": "string",
+          "const": "LMP_ENCRYPTION_KEY_SIZE_MASK_RES"
+        },
+        "opcode": {
+          "description": "This should always be 59. This is required to differentiate from other data types in an array.",
+          "const": 59
+        },
+        "full_pkt_hex_str": {
+          "description": "This should *exclude* the opcode byte. Therefore it will always be exactly 2 bytes / 4 hex characters.",
+          "$ref": "BTIDES_base.json#/definitions/full_pkt_hex_str",
+          "minLength": 4,
+          "maxLength": 4
         }
       }
     },
