@@ -1033,7 +1033,7 @@
           "const": 59
         },
         "key_size_mask": {
-          "description": "2-byte bit field where if bit 0 is set it means key size is not supported, bit 1 means 1 byte key supported, bit 2 means 2 byte key supported, etc. up to bit 16 for 16 byte key supported.",
+          "description": "2-byte bit field where if bit 0 means 1 byte key supported, bit 1 means 2 byte key supported, etc. up to bit 15 for 16 byte key supported.",
           "type": "integer",
           "minimum": 0,
           "maximum": 65535
