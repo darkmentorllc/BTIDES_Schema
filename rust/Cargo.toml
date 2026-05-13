@@ -1,0 +1,38 @@
+[workspace]
+members = [
+    "BTIDES-model",
+    "BTIDES-pcap",
+    "BTIDES-btsnoop",
+    "BTIDES-bt",
+    "BTIDES-hci",
+    "pcap-to-BTIDES",
+    "hci-to-BTIDES",
+    "sdp-to-BTIDES",
+]
+# wigle-to-BTIDES and import-all-BTIDES live in Blue2thprinting/Analysis/rust/
+# instead of here, because both depend on Blue2thprinting-specific state
+# (the bt2/bttest MySQL schema for wigle, and the Blue2thprinting capture
+# directory layout for import-all). They consume the libraries here via
+# cross-workspace path = "../../BTIDES_Schema/rust/..." dependencies.
+resolver = "2"
+
+[workspace.package]
+version = "0.1.0"
+edition = "2021"
+authors = ["Xeno Kovah / Dark Mentor LLC"]
+license = "GPL-3.0-or-later"
+
+[workspace.dependencies]
+serde = { version = "1", features = ["derive"] }
+# preserve_order keeps JSON object key insertion order (matches Python dict semantics).
+serde_json = { version = "1", features = ["preserve_order"] }
+jsonschema = "0.30"
+clap = { version = "4", features = ["derive"] }
+memmap2 = "0.9"
+thiserror = "2"
+quick-xml = "0.36"
+
+[profile.release]
+lto = "fat"
+codegen-units = 1
+opt-level = 3

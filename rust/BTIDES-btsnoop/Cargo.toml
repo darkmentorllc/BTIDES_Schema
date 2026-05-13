@@ -1,0 +1,11 @@
+[package]
+name = "BTIDES-btsnoop"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+description = "BTSnoop / BTSnoop-monitor file reader (BlueZ btmon output, HCI snoop logs). Reusable across BTIDES converters."
+
+[dependencies]
+memmap2.workspace = true
+thiserror.workspace = true

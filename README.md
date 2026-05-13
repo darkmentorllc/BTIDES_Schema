@@ -115,6 +115,77 @@ def write_BTIDES(out_filename):
         json.dump(BTIDES_JSON, fp=f) # For saving space
 ```
 
+# Rust converters (`rust/`)
+
+The `rust/` directory contains a Cargo workspace with three end-user binaries that read Bluetooth-adjacent data sources and emit `.btides` files validated against the schemas in this repo:
+
+- `pcap-to-BTIDES` — convert a single libpcap/pcapng capture (Sniffle, BetterGetter, etc.) to BTIDES.
+- `hci-to-BTIDES` — convert a single BTSnoop log (BlueZ `btmon`, Android `btsnoop_hci.log`) to BTIDES.
+- `sdp-to-BTIDES` — convert sdptool XML output (`{BDADDR}_sdp.xml` files) into BTIDES. Re-encodes the XML as binary SDP attribute lists wrapped in a synthetic `SDP_SERVICE_SEARCH_ATTR_RSP` PDU per device.
+
+The workspace also ships reusable library crates (`BTIDES-model`, `BTIDES-pcap`, `BTIDES-btsnoop`, `BTIDES-bt`, `BTIDES-hci`) so the same protocol parsers can be embedded in other tools.
+
+Two further converters live in the parent [Blue2thprinting](https://github.com/darkmentorllc/Blue2thprinting) repository at `Analysis/rust/`, because they depend on Blue2thprinting-specific state that isn't part of this schema repo:
+
+- `wigle-to-BTIDES` — needs the local `bt2`/`bttest` MySQL schema to look up `bdaddr_random` for BLE devices observed by WiGLE.
+- `import-all-BTIDES` — orchestrates bulk capture-folder conversion using Blue2thprinting's directory layout.
+
+Those binaries consume the libraries above as cross-workspace path dependencies, so they only build inside a full Blue2thprinting checkout.
+
+## Build prerequisites
+
+The workspace targets stable Rust and uses `jsonschema 0.30`, which requires **rustc 1.79 or newer**. On Debian/Ubuntu the apt-shipped `rustc` is often too old — use `rustup` instead.
+
+**macOS** (with [Homebrew](https://brew.sh/) installed):
+
+```sh
+brew install rust
+```
+
+**Debian / Ubuntu**:
+
+```sh
+sudo apt-get install -y build-essential curl ca-certificates pkg-config
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y --default-toolchain stable --profile minimal
+```
+
+## Build
+
+From the directory containing this README:
+
+```sh
+cd rust
+cargo build --release
+```
+
+The optimized binaries are produced at `rust/target/release/{pcap-to-BTIDES,hci-to-BTIDES,sdp-to-BTIDES}`.
+
+## Usage
+
+Each binary takes a `--schema-dir` pointing at the directory containing this README (so the schemas can be loaded for validation):
+
+```sh
+# Single PCAP
+./rust/target/release/pcap-to-BTIDES \
+    --input  capture.pcap \
+    --output capture.btides \
+    --schema-dir .
+
+# Single HCI / BTSnoop log
+./rust/target/release/hci-to-BTIDES \
+    --input  btsnoop_hci.log \
+    --output btsnoop_hci.btides \
+    --schema-dir .
+
+# sdptool XML directory or single file
+./rust/target/release/sdp-to-BTIDES \
+    --input  /path/to/sdptool/   \
+    --output sdp_all.btides      \
+    --schema-dir .
+```
+
+For `import-all-BTIDES` (bulk converter) and `wigle-to-BTIDES`, see the corresponding `Analysis/rust/` workspace in the parent [Blue2thprinting](https://github.com/darkmentorllc/Blue2thprinting) repository.
+
 # Contributing
 
 If you would like to contribute a definition of one of the protocol types not yet captured in a schema (we know there are many still), please reach out to discuss it first by contacting xeno🍥darkmentor.com.

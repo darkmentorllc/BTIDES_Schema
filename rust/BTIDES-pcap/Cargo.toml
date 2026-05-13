@@ -1,0 +1,11 @@
+[package]
+name = "BTIDES-pcap"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+description = "Classic libpcap (.pcap) file reader. Reusable across BTIDES converters."
+
+[dependencies]
+memmap2.workspace = true
+thiserror.workspace = true

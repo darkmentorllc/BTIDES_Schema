@@ -213,11 +213,12 @@
       "type": "string"
     },
     "bdaddr_random": {
-      "description": "Set to 1 if the BDADDR is a random address, and 0 if it's a public address. For BT Classic (BR/EDR) BDADDRs it should always be set to 0.",
+      "description": "Set to 1 if the BDADDR is a random address, and 0 if it's a public address. For BT Classic (BR/EDR) BDADDRs it should always be set to 0. The value 255 is the spec-defined sentinel for an anonymous extended advertising report (Address_Type = 0xFF in the HCI_LE_Extended_Advertising_Report event); in that case the accompanying bdaddr should be all-zero.",
       "type": "integer",
       "enum": [
         0,
-        1
+        1,
+        255
       ]
     },
     "access_address": {

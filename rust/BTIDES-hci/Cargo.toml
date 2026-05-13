@@ -1,0 +1,13 @@
+[package]
+name = "BTIDES-hci"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+description = "Bluetooth HCI packet parsers (commands/events/ACL) feeding BTIDES records. Reuses BTIDES-bt for ATT/SMP/AdvData decoding."
+
+[dependencies]
+BTIDES-model = { path = "../BTIDES-model" }
+BTIDES-bt    = { path = "../BTIDES-bt" }
+serde.workspace = true
+serde_json.workspace = true
