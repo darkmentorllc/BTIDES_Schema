@@ -9,6 +9,9 @@
       "items": {
         "anyOf": [
           {
+            "$ref": "#/definitions/0x01_L2CAP_COMMAND_REJECT_RSP"
+          },
+          {
             "$ref": "#/definitions/0x02_L2CAP_CONNECTION_REQ"
           },
           {
@@ -27,10 +30,34 @@
             "$ref": "#/definitions/0x07_L2CAP_DISCONNECTION_RSP"
           },
           {
+            "$ref": "#/definitions/0x08_L2CAP_ECHO_REQ"
+          },
+          {
+            "$ref": "#/definitions/0x09_L2CAP_ECHO_RSP"
+          },
+          {
             "$ref": "#/definitions/0x0A_L2CAP_INFORMATION_REQ"
           },
           {
             "$ref": "#/definitions/0x0B_L2CAP_INFORMATION_RSP"
+          },
+          {
+            "$ref": "#/definitions/0x0C_L2CAP_CREATE_CHANNEL_REQ"
+          },
+          {
+            "$ref": "#/definitions/0x0D_L2CAP_CREATE_CHANNEL_RSP"
+          },
+          {
+            "$ref": "#/definitions/0x0E_L2CAP_MOVE_CHANNEL_REQ"
+          },
+          {
+            "$ref": "#/definitions/0x0F_L2CAP_MOVE_CHANNEL_RSP"
+          },
+          {
+            "$ref": "#/definitions/0x10_L2CAP_MOVE_CHANNEL_CONFIRMATION_REQ"
+          },
+          {
+            "$ref": "#/definitions/0x11_L2CAP_MOVE_CHANNEL_CONFIRMATION_RSP"
           },
           {
             "$ref": "#/definitions/0x12_L2CAP_CONNECTION_PARAMETER_UPDATE_REQ"
@@ -40,6 +67,24 @@
           },
           {
             "$ref": "#/definitions/0x14_L2CAP_LE_CREDIT_BASED_CONNECTION_REQ"
+          },
+          {
+            "$ref": "#/definitions/0x15_L2CAP_LE_CREDIT_BASED_CONNECTION_RSP"
+          },
+          {
+            "$ref": "#/definitions/0x16_L2CAP_FLOW_CONTROL_CREDIT_IND"
+          },
+          {
+            "$ref": "#/definitions/0x17_L2CAP_CREDIT_BASED_CONNECTION_REQ"
+          },
+          {
+            "$ref": "#/definitions/0x18_L2CAP_CREDIT_BASED_CONNECTION_RSP"
+          },
+          {
+            "$ref": "#/definitions/0x19_L2CAP_CREDIT_BASED_RECONFIGURE_REQ"
+          },
+          {
+            "$ref": "#/definitions/0x1A_L2CAP_CREDIT_BASED_RECONFIGURE_RSP"
           }
         ]
       }
@@ -57,6 +102,57 @@
       "type": "integer",
       "minimum": 0,
       "maximum": 65535
+    },
+    "0x01_L2CAP_COMMAND_REJECT_RSP": {
+      "type": "object",
+      "description": "Structure for L2CAP\\_COMMAND\\_REJECT\\_RSP packet.",
+      "required": [
+        "direction",
+        "code",
+        "id",
+        "data_len",
+        "reason"
+      ],
+      "properties": {
+        "std_optional_fields": {
+          "$ref": "BTIDES_base.json#/definitions/std_optional_fields"
+        },
+        "reason_str": {
+          "description": "This optional field (interpretation of 'reason' field) is just for if you don't care about json file size and you want more human-readable JSON output.",
+          "type": "string"
+        },
+        "code_str": {
+          "description": "This optional field (interpretation of 'code' field) is just for if you don't care about json file size and you want more human-readable JSON output.",
+          "type": "string",
+          "const": "L2CAP_COMMAND_REJECT_RSP"
+        },
+        "direction": {
+          "$ref": "BTIDES_base.json#/definitions/direction"
+        },
+        "code": {
+          "description": "The L2CAP code for this packet type. Must always be 1.",
+          "type": "integer",
+          "const": 1
+        },
+        "id": {
+          "$ref": "#/definitions/id"
+        },
+        "data_len": {
+          "$ref": "#/definitions/data_len"
+        },
+        "reason": {
+          "description": "2-byte \"Reason\" field from spec. 'The Reason field describes why the Request packet was rejected.' As of Core Spec v5.2 values 0-2 are defined (0x0000 = Command not understood, 0x0001 = Signaling MTU exceeded, 0x0002 = Invalid CID in request).",
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 65535
+        },
+        "data_hex_str": {
+          "description": "Variable-length \"Data\" field from spec, encoded as hex string. 'The length and content of the Data field depends on the Reason code.' Reason = 0x0000: 0 octets (absent). Reason = 0x0001: 2 octets representing the maximum signaling MTU (MTUsig) the sender can accept. Reason = 0x0002: 4 octets containing the local (first) and remote (second) channel endpoints (relative to the sender of the L2CAP_COMMAND_REJECT_RSP) of the disputed channel; if the rejected command contained only one of the channel endpoints, the other shall be replaced by the null CID 0x0000. Then maxLength is that * 2 for hex_str encoding.",
+          "type": "string",
+          "minLength": 4,
+          "maxLength": 8
+        }
+      }
     },
     "0x02_L2CAP_CONNECTION_REQ": {
       "type": "object",
@@ -407,6 +503,82 @@
         }
       }
     },
+    "0x08_L2CAP_ECHO_REQ": {
+      "type": "object",
+      "description": "Structure for L2CAP\\_ECHO\\_REQ packet.",
+      "required": [
+        "direction",
+        "code",
+        "id",
+        "data_len"
+      ],
+      "properties": {
+        "std_optional_fields": {
+          "$ref": "BTIDES_base.json#/definitions/std_optional_fields"
+        },
+        "code_str": {
+          "description": "This optional field (interpretation of 'code' field) is just for if you don't care about json file size and you want more human-readable JSON output.",
+          "type": "string",
+          "const": "L2CAP_ECHO_REQ"
+        },
+        "direction": {
+          "$ref": "BTIDES_base.json#/definitions/direction"
+        },
+        "code": {
+          "description": "The L2CAP code for this packet type. Must always be 8.",
+          "type": "integer",
+          "const": 8
+        },
+        "id": {
+          "$ref": "#/definitions/id"
+        },
+        "data_len": {
+          "$ref": "#/definitions/data_len"
+        },
+        "data_hex_str": {
+          "description": "Variable-length \"Data\" field from spec, encoded as hex string. 'The Data field is optional and implementation specific. L2CAP entities should ignore the contents of this field if present.' Captured here so vendor-specific echo payloads are recorded when present.",
+          "type": "string"
+        }
+      }
+    },
+    "0x09_L2CAP_ECHO_RSP": {
+      "type": "object",
+      "description": "Structure for L2CAP\\_ECHO\\_RSP packet.",
+      "required": [
+        "direction",
+        "code",
+        "id",
+        "data_len"
+      ],
+      "properties": {
+        "std_optional_fields": {
+          "$ref": "BTIDES_base.json#/definitions/std_optional_fields"
+        },
+        "code_str": {
+          "description": "This optional field (interpretation of 'code' field) is just for if you don't care about json file size and you want more human-readable JSON output.",
+          "type": "string",
+          "const": "L2CAP_ECHO_RSP"
+        },
+        "direction": {
+          "$ref": "BTIDES_base.json#/definitions/direction"
+        },
+        "code": {
+          "description": "The L2CAP code for this packet type. Must always be 9.",
+          "type": "integer",
+          "const": 9
+        },
+        "id": {
+          "$ref": "#/definitions/id"
+        },
+        "data_len": {
+          "$ref": "#/definitions/data_len"
+        },
+        "data_hex_str": {
+          "description": "Variable-length \"Data\" field from spec, encoded as hex string. 'The optional and implementation specific data field may contain the contents of the data field in the L2CAP_ECHO_REQ, different data, or no data at all.'",
+          "type": "string"
+        }
+      }
+    },
     "0x0A_L2CAP_INFORMATION_REQ": {
       "type": "object",
       "description": "Structure for L2CAP\\_INFORMATION\\_REQ packet.",
@@ -499,6 +671,328 @@
           "type": "string",
           "minLength": 4,
           "maxLength": 16
+        }
+      }
+    },
+    "0x0C_L2CAP_CREATE_CHANNEL_REQ": {
+      "type": "object",
+      "description": "Structure for L2CAP\\_CREATE\\_CHANNEL\\_REQ packet. 'The L2CAP_CREATE_CHANNEL_REQ packet is sent to create an L2CAP channel between two devices over the Controller identified by the Controller ID.'",
+      "required": [
+        "direction",
+        "code",
+        "id",
+        "data_len",
+        "psm",
+        "source_cid",
+        "controller_id"
+      ],
+      "properties": {
+        "std_optional_fields": {
+          "$ref": "BTIDES_base.json#/definitions/std_optional_fields"
+        },
+        "psm_str": {
+          "description": "This optional field (interpretation of 'psm' field if it's a SIG-asigned value) is just for if you don't care about json file size and you want more human-readable JSON output.",
+          "type": "string"
+        },
+        "code_str": {
+          "description": "This optional field (interpretation of 'code' field) is just for if you don't care about json file size and you want more human-readable JSON output.",
+          "type": "string",
+          "const": "L2CAP_CREATE_CHANNEL_REQ"
+        },
+        "direction": {
+          "$ref": "BTIDES_base.json#/definitions/direction"
+        },
+        "code": {
+          "description": "The L2CAP code for this packet type. Must always be 12.",
+          "type": "integer",
+          "const": 12
+        },
+        "id": {
+          "$ref": "#/definitions/id"
+        },
+        "data_len": {
+          "$ref": "#/definitions/data_len"
+        },
+        "psm": {
+          "description": "2-byte \"Protocol/Service Multiplexer (PSM)\" field from spec. Same semantics as in L2CAP_CONNECTION_REQ (see Section 4.2). Two ranges, one SIG-assigned, one dynamic.",
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 65535
+        },
+        "source_cid": {
+          "description": "2-byte \"Source CID (SCID)\" field from spec. 'The source CID is two octets in length and represents a channel endpoint on the device sending the request.' Should be from the dynamically allocated range of CIDs (0x0040 to 0xFFFF).",
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 65535
+        },
+        "controller_id": {
+          "description": "1-byte \"Controller Identifier\" field from spec. 'The Controller ID is one octet in length and represents the Controller physical link over which the channel shall be created.'",
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 255
+        }
+      }
+    },
+    "0x0D_L2CAP_CREATE_CHANNEL_RSP": {
+      "type": "object",
+      "description": "Structure for L2CAP\\_CREATE\\_CHANNEL\\_RSP packet.",
+      "required": [
+        "direction",
+        "code",
+        "id",
+        "data_len",
+        "destination_cid",
+        "source_cid",
+        "result",
+        "status"
+      ],
+      "properties": {
+        "std_optional_fields": {
+          "$ref": "BTIDES_base.json#/definitions/std_optional_fields"
+        },
+        "result_str": {
+          "description": "This optional field (interpretation of 'result' field) is just for if you don't care about json file size and you want more human-readable JSON output.",
+          "type": "string"
+        },
+        "status_str": {
+          "description": "This optional field (interpretation of 'status' field) is just for if you don't care about json file size and you want more human-readable JSON output.",
+          "type": "string"
+        },
+        "code_str": {
+          "description": "This optional field (interpretation of 'code' field) is just for if you don't care about json file size and you want more human-readable JSON output.",
+          "type": "string",
+          "const": "L2CAP_CREATE_CHANNEL_RSP"
+        },
+        "direction": {
+          "$ref": "BTIDES_base.json#/definitions/direction"
+        },
+        "code": {
+          "description": "The L2CAP code for this packet type. Must always be 13.",
+          "type": "integer",
+          "const": 13
+        },
+        "id": {
+          "$ref": "#/definitions/id"
+        },
+        "data_len": {
+          "$ref": "#/definitions/data_len"
+        },
+        "destination_cid": {
+          "description": "2-byte \"Destination CID (DCID)\" field from spec. 'This field contains the channel endpoint on the device sending this Response packet.' Should be from the dynamically allocated range of CIDs (0x0040 to 0xFFFF).",
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 65535
+        },
+        "source_cid": {
+          "description": "2-byte \"Source CID (SCID)\" field from spec. 'This field contains the channel endpoint on the device receiving this Response packet. This is copied from the SCID field of the L2CAP_CREATE_CHANNEL_REQ packet.'",
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 65535
+        },
+        "result": {
+          "description": "2-byte \"Result\" field from spec. 'The result field indicates the outcome of the request. The result value of 0x0000 indicates success while a non-zero value indicates the request failed or is pending.' As of Core Spec v5.2 there are values 0-7 defined.",
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 65535
+        },
+        "status": {
+          "description": "2-byte \"Status\" field from spec. 'Only defined for Result = Pending.' Indicates the status of the connection (e.g. Authentication or Authorization pending).",
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 65535
+        }
+      }
+    },
+    "0x0E_L2CAP_MOVE_CHANNEL_REQ": {
+      "type": "object",
+      "description": "Structure for L2CAP\\_MOVE\\_CHANNEL\\_REQ packet. 'L2CAP_MOVE_CHANNEL_REQ packets are sent to move an existing L2CAP channel from a physical link on one Controller to a physical link on another Controller.'",
+      "required": [
+        "direction",
+        "code",
+        "id",
+        "data_len",
+        "initiator_cid",
+        "dest_controller_id"
+      ],
+      "properties": {
+        "std_optional_fields": {
+          "$ref": "BTIDES_base.json#/definitions/std_optional_fields"
+        },
+        "code_str": {
+          "description": "This optional field (interpretation of 'code' field) is just for if you don't care about json file size and you want more human-readable JSON output.",
+          "type": "string",
+          "const": "L2CAP_MOVE_CHANNEL_REQ"
+        },
+        "direction": {
+          "$ref": "BTIDES_base.json#/definitions/direction"
+        },
+        "code": {
+          "description": "The L2CAP code for this packet type. Must always be 14.",
+          "type": "integer",
+          "const": 14
+        },
+        "id": {
+          "$ref": "#/definitions/id"
+        },
+        "data_len": {
+          "$ref": "#/definitions/data_len"
+        },
+        "initiator_cid": {
+          "description": "2-byte \"Initiator Channel Identifier (ICID)\" field from spec. 'This field contains the channel endpoint on the device sending this packet.'",
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 65535
+        },
+        "dest_controller_id": {
+          "description": "1-byte \"Destination Controller Identifier\" field from spec. 'The Dest Controller ID is one octet in length and represents the Controller physical link to which the channel shall be moved.'",
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 255
+        }
+      }
+    },
+    "0x0F_L2CAP_MOVE_CHANNEL_RSP": {
+      "type": "object",
+      "description": "Structure for L2CAP\\_MOVE\\_CHANNEL\\_RSP packet.",
+      "required": [
+        "direction",
+        "code",
+        "id",
+        "data_len",
+        "initiator_cid",
+        "result"
+      ],
+      "properties": {
+        "std_optional_fields": {
+          "$ref": "BTIDES_base.json#/definitions/std_optional_fields"
+        },
+        "result_str": {
+          "description": "This optional field (interpretation of 'result' field) is just for if you don't care about json file size and you want more human-readable JSON output.",
+          "type": "string"
+        },
+        "code_str": {
+          "description": "This optional field (interpretation of 'code' field) is just for if you don't care about json file size and you want more human-readable JSON output.",
+          "type": "string",
+          "const": "L2CAP_MOVE_CHANNEL_RSP"
+        },
+        "direction": {
+          "$ref": "BTIDES_base.json#/definitions/direction"
+        },
+        "code": {
+          "description": "The L2CAP code for this packet type. Must always be 15.",
+          "type": "integer",
+          "const": 15
+        },
+        "id": {
+          "$ref": "#/definitions/id"
+        },
+        "data_len": {
+          "$ref": "#/definitions/data_len"
+        },
+        "initiator_cid": {
+          "description": "2-byte \"Initiator Channel Identifier (ICID)\" field from spec. 'This field contains the channel endpoint on the device that sent the L2CAP_MOVE_CHANNEL_REQ (the device receiving this L2CAP_MOVE_CHANNEL_RSP packet). This is the same value as was sent in the L2CAP_MOVE_CHANNEL_REQ packet.'",
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 65535
+        },
+        "result": {
+          "description": "2-byte \"Result\" field from spec. 'The result field indicates the outcome of the move request. The result value of 0x0000 indicates success while a non-zero value indicates the move request failed.' As of Core Spec v5.2 there are values 0-6 defined.",
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 65535
+        }
+      }
+    },
+    "0x10_L2CAP_MOVE_CHANNEL_CONFIRMATION_REQ": {
+      "type": "object",
+      "description": "Structure for L2CAP\\_MOVE\\_CHANNEL\\_CONFIRMATION\\_REQ packet. 'When the initiator of an L2CAP_MOVE_CHANNEL_REQ receives an L2CAP_MOVE_CHANNEL_RSP with a result code other than \"pending\" from the responder, it shall send an L2CAP_MOVE_CHANNEL_CONFIRMATION_REQ packet, that will conclude the Move Channel procedure, informing the responder that all the QoS parameters were successfully (or not) negotiated.'",
+      "required": [
+        "direction",
+        "code",
+        "id",
+        "data_len",
+        "initiator_cid",
+        "result"
+      ],
+      "properties": {
+        "std_optional_fields": {
+          "$ref": "BTIDES_base.json#/definitions/std_optional_fields"
+        },
+        "result_str": {
+          "description": "This optional field (interpretation of 'result' field) is just for if you don't care about json file size and you want more human-readable JSON output.",
+          "type": "string"
+        },
+        "code_str": {
+          "description": "This optional field (interpretation of 'code' field) is just for if you don't care about json file size and you want more human-readable JSON output.",
+          "type": "string",
+          "const": "L2CAP_MOVE_CHANNEL_CONFIRMATION_REQ"
+        },
+        "direction": {
+          "$ref": "BTIDES_base.json#/definitions/direction"
+        },
+        "code": {
+          "description": "The L2CAP code for this packet type. Must always be 16.",
+          "type": "integer",
+          "const": 16
+        },
+        "id": {
+          "$ref": "#/definitions/id"
+        },
+        "data_len": {
+          "$ref": "#/definitions/data_len"
+        },
+        "initiator_cid": {
+          "description": "2-byte \"Initiator Channel Identifier (ICID)\" field from spec. 'This field contains the channel endpoint on the device sending the L2CAP_MOVE_CHANNEL_CONFIRMATION_REQ packet. This is the same value as was sent in the original L2CAP_MOVE_CHANNEL_REQ packet.'",
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 65535
+        },
+        "result": {
+          "description": "2-byte \"Result\" field from spec. 'The result field indicates the outcome of the move confirmation. The result value of 0x0000 indicates success while a non-zero value indicates the move failed.' As of Core Spec v5.2 there are values 0-1 defined (0x0000 = Move success - both sides succeed, 0x0001 = Move failure - one or both sides refuse).",
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 65535
+        }
+      }
+    },
+    "0x11_L2CAP_MOVE_CHANNEL_CONFIRMATION_RSP": {
+      "type": "object",
+      "description": "Structure for L2CAP\\_MOVE\\_CHANNEL\\_CONFIRMATION\\_RSP packet. 'The purpose of the L2CAP_MOVE_CHANNEL_CONFIRMATION_RSP is to make L2CAP_MOVE_CHANNEL_CONFIRMATION_REQ consistent with the command/response style.'",
+      "required": [
+        "direction",
+        "code",
+        "id",
+        "data_len",
+        "initiator_cid"
+      ],
+      "properties": {
+        "std_optional_fields": {
+          "$ref": "BTIDES_base.json#/definitions/std_optional_fields"
+        },
+        "code_str": {
+          "description": "This optional field (interpretation of 'code' field) is just for if you don't care about json file size and you want more human-readable JSON output.",
+          "type": "string",
+          "const": "L2CAP_MOVE_CHANNEL_CONFIRMATION_RSP"
+        },
+        "direction": {
+          "$ref": "BTIDES_base.json#/definitions/direction"
+        },
+        "code": {
+          "description": "The L2CAP code for this packet type. Must always be 17.",
+          "type": "integer",
+          "const": 17
+        },
+        "id": {
+          "$ref": "#/definitions/id"
+        },
+        "data_len": {
+          "$ref": "#/definitions/data_len"
+        },
+        "initiator_cid": {
+          "description": "2-byte \"Initiator Channel Identifier (ICID)\" field from spec. 'This field contains the channel endpoint on the device that sent the L2CAP_MOVE_CHANNEL_CONFIRMATION_REQ packet.'",
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 65535
         }
       }
     },
@@ -610,7 +1104,7 @@
         "id",
         "data_len",
         "spsm",
-        "src_cid",
+        "source_cid",
         "mtu",
         "mps",
         "initial_credits"
@@ -644,7 +1138,7 @@
           "minimum": 0,
           "maximum": 65535
         },
-        "src_cid": {
+        "source_cid": {
           "description": "2-byte \"Source CID\" ((L2CAP) Channel ID) field from spec.",
           "type": "integer",
           "minimum": 0,
@@ -664,6 +1158,369 @@
         },
         "initial_credits": {
           "description": "2-byte \"Initial Credits\" field from spec.",
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 65535
+        }
+      }
+    },
+    "0x15_L2CAP_LE_CREDIT_BASED_CONNECTION_RSP": {
+      "type": "object",
+      "description": "Structure for L2CAP\\_LE\\_CREDIT\\_BASED\\_CONNECTION\\_RSP packet.",
+      "required": [
+        "direction",
+        "code",
+        "id",
+        "data_len",
+        "destination_cid",
+        "mtu",
+        "mps",
+        "initial_credits",
+        "result"
+      ],
+      "properties": {
+        "std_optional_fields": {
+          "$ref": "BTIDES_base.json#/definitions/std_optional_fields"
+        },
+        "result_str": {
+          "description": "This optional field (interpretation of 'result' field) is just for if you don't care about json file size and you want more human-readable JSON output.",
+          "type": "string"
+        },
+        "code_str": {
+          "description": "This optional field (interpretation of 'code' field) is just for if you don't care about json file size and you want more human-readable JSON output.",
+          "type": "string",
+          "const": "L2CAP_LE_CREDIT_BASED_CONNECTION_RSP"
+        },
+        "direction": {
+          "$ref": "BTIDES_base.json#/definitions/direction"
+        },
+        "code": {
+          "description": "The L2CAP code for this packet type. Must always be 21.",
+          "type": "integer",
+          "const": 21
+        },
+        "id": {
+          "$ref": "#/definitions/id"
+        },
+        "data_len": {
+          "$ref": "#/definitions/data_len"
+        },
+        "destination_cid": {
+          "description": "2-byte \"Destination CID (DCID)\" field from spec. 'The destination CID is two octets in length and represents a channel endpoint on the device sending the response.' Should be from the dynamically allocated range of CIDs.",
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 65535
+        },
+        "mtu": {
+          "description": "2-byte \"Maximum Transmission Unit (MTU)\" field from spec. 'The MTU field specifies the maximum SDU size (in octets) that the L2CAP layer entity sending the L2CAP_LE_CREDIT_BASED_CONNECTION_RSP can receive on this channel. L2CAP implementations shall support a minimum MTU size of 23 octets.'",
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 65535
+        },
+        "mps": {
+          "description": "2-byte \"Maximum PDU Payload Size (MPS)\" field from spec. 'The MPS field specifies the maximum PDU payload size (in octets) that the L2CAP layer entity sending the L2CAP_LE_CREDIT_BASED_CONNECTION_RSP is capable of receiving on this channel. L2CAP implementations shall support a minimum MPS of 23 octets and may support an MPS up to 65533 octets.'",
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 65535
+        },
+        "initial_credits": {
+          "description": "2-byte \"Initial Credits\" field from spec. 'The initial credit value indicates the number of K-frames that the peer device can send to the L2CAP layer entity sending the L2CAP_LE_CREDIT_BASED_CONNECTION_RSP. The initial credit value shall be in the range 0 to 65535.'",
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 65535
+        },
+        "result": {
+          "description": "2-byte \"Result\" field from spec. 'The result field indicates the outcome of the connection request. A result value of 0x0000 indicates success while a non-zero value indicates the connection request was refused.' As of Core Spec v5.2 there are values 0x0000, 0x0002, 0x0004-0x000B defined.",
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 65535
+        }
+      }
+    },
+    "0x16_L2CAP_FLOW_CONTROL_CREDIT_IND": {
+      "type": "object",
+      "description": "Structure for L2CAP\\_FLOW\\_CONTROL\\_CREDIT\\_IND packet. 'A device shall send an L2CAP_FLOW_CONTROL_CREDIT_IND packet when it is capable of receiving additional K-frames (for example after it has processed one or more K-frames) in LE Credit Based Flow Control mode and Enhanced Credit Based Flow Control mode.'",
+      "required": [
+        "direction",
+        "code",
+        "id",
+        "data_len",
+        "cid",
+        "credits"
+      ],
+      "properties": {
+        "std_optional_fields": {
+          "$ref": "BTIDES_base.json#/definitions/std_optional_fields"
+        },
+        "code_str": {
+          "description": "This optional field (interpretation of 'code' field) is just for if you don't care about json file size and you want more human-readable JSON output.",
+          "type": "string",
+          "const": "L2CAP_FLOW_CONTROL_CREDIT_IND"
+        },
+        "direction": {
+          "$ref": "BTIDES_base.json#/definitions/direction"
+        },
+        "code": {
+          "description": "The L2CAP code for this packet type. Must always be 22.",
+          "type": "integer",
+          "const": 22
+        },
+        "id": {
+          "$ref": "#/definitions/id"
+        },
+        "data_len": {
+          "$ref": "#/definitions/data_len"
+        },
+        "cid": {
+          "description": "2-byte \"CID\" field from spec. 'The CID is two octets in length and represents the source channel endpoint of the device sending the L2CAP_FLOW_CONTROL_CREDIT_IND packet. For example, a received L2CAP_FLOW_CONTROL_CREDIT_IND packet with a given CID (0x0042) would provide credits for the receiving device's destination CID (0x0042).'",
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 65535
+        },
+        "credits": {
+          "description": "2-byte \"Credits\" field from spec. 'The credit value field represents number of credits the receiving device can increment, corresponding to the number of K-frames that can be sent to the peer device sending the L2CAP_FLOW_CONTROL_CREDIT_IND packet. The credit value field shall be a number between 1 and 65535.' Allow capturing 0 here so we can capture invalid packets which may be used in the wild.",
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 65535
+        }
+      }
+    },
+    "0x17_L2CAP_CREDIT_BASED_CONNECTION_REQ": {
+      "type": "object",
+      "description": "Structure for L2CAP\\_CREDIT\\_BASED\\_CONNECTION\\_REQ packet. 'L2CAP_CREDIT_BASED_CONNECTION_REQ packets are sent to create and configure up to five L2CAP channels between two devices.'",
+      "required": [
+        "direction",
+        "code",
+        "id",
+        "data_len",
+        "spsm",
+        "mtu",
+        "mps",
+        "initial_credits",
+        "source_cids_hex_str"
+      ],
+      "properties": {
+        "std_optional_fields": {
+          "$ref": "BTIDES_base.json#/definitions/std_optional_fields"
+        },
+        "code_str": {
+          "description": "This optional field (interpretation of 'code' field) is just for if you don't care about json file size and you want more human-readable JSON output.",
+          "type": "string",
+          "const": "L2CAP_CREDIT_BASED_CONNECTION_REQ"
+        },
+        "direction": {
+          "$ref": "BTIDES_base.json#/definitions/direction"
+        },
+        "code": {
+          "description": "The L2CAP code for this packet type. Must always be 23.",
+          "type": "integer",
+          "const": 23
+        },
+        "id": {
+          "$ref": "#/definitions/id"
+        },
+        "data_len": {
+          "$ref": "#/definitions/data_len"
+        },
+        "spsm": {
+          "description": "2-byte \"Simplified Protocol/Service Multiplexer (SPSM)\" field from spec. As defined in Section 4.22. SPSM values are separated into two ranges, one SIG-assigned (0x0001-0x007F) and one dynamic (0x0080-0x00FF).",
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 65535
+        },
+        "mtu": {
+          "description": "2-byte \"Maximum Transmission Unit (MTU)\" field from spec. 'The MTU field specifies the maximum SDU size (in octets) that the L2CAP layer entity sending the L2CAP_CREDIT_BASED_CONNECTION_REQ packet can receive on each of the Source CID channels. L2CAP implementations shall support a minimum MTU size of 64 octets for these channels.'",
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 65535
+        },
+        "mps": {
+          "description": "2-byte \"Maximum PDU Payload Size (MPS)\" field from spec. 'The MPS field specifies the maximum PDU payload size (in octets) that the L2CAP layer entity sending the L2CAP_CREDIT_BASED_CONNECTION_REQ packet is capable of receiving on each of the Source CID channels. L2CAP implementations shall support a minimum MPS of 64 octets and may support an MPS up to 65533 octets for these channels.'",
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 65535
+        },
+        "initial_credits": {
+          "description": "2-byte \"Initial Credits\" field from spec. 'The Initial Credit field value indicates the number of K-frames that the peer device can send to the L2CAP layer entity sending the L2CAP_CREDIT_BASED_CONNECTION_REQ packet on each of the Source CID channels. The initial credit value shall be in the range of 1 to 65535.' Allow capturing 0 here so we can capture invalid packets which may be used in the wild.",
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 65535
+        },
+        "source_cids_hex_str": {
+          "description": "Variable-length \"Source CID\" field (2 to 10 octets) from spec, encoded as hex string. 'The Source CID is an array of up to 5 two-octet values and represents the channel endpoints on the device sending the request.' Each two-octet entry (little-endian on the wire) represents one channel endpoint. 'Each entry in the array shall be non-zero and represents a request for a channel.' Then minLength is 4 (1 CID) and maxLength is 20 (5 CIDs) for hex_str encoding.",
+          "type": "string",
+          "minLength": 4,
+          "maxLength": 20
+        }
+      }
+    },
+    "0x18_L2CAP_CREDIT_BASED_CONNECTION_RSP": {
+      "type": "object",
+      "description": "Structure for L2CAP\\_CREDIT\\_BASED\\_CONNECTION\\_RSP packet.",
+      "required": [
+        "direction",
+        "code",
+        "id",
+        "data_len",
+        "mtu",
+        "mps",
+        "initial_credits",
+        "result",
+        "destination_cids_hex_str"
+      ],
+      "properties": {
+        "std_optional_fields": {
+          "$ref": "BTIDES_base.json#/definitions/std_optional_fields"
+        },
+        "result_str": {
+          "description": "This optional field (interpretation of 'result' field) is just for if you don't care about json file size and you want more human-readable JSON output.",
+          "type": "string"
+        },
+        "code_str": {
+          "description": "This optional field (interpretation of 'code' field) is just for if you don't care about json file size and you want more human-readable JSON output.",
+          "type": "string",
+          "const": "L2CAP_CREDIT_BASED_CONNECTION_RSP"
+        },
+        "direction": {
+          "$ref": "BTIDES_base.json#/definitions/direction"
+        },
+        "code": {
+          "description": "The L2CAP code for this packet type. Must always be 24.",
+          "type": "integer",
+          "const": 24
+        },
+        "id": {
+          "$ref": "#/definitions/id"
+        },
+        "data_len": {
+          "$ref": "#/definitions/data_len"
+        },
+        "mtu": {
+          "description": "2-byte \"Maximum Transmission Unit (MTU)\" field from spec. 'The MTU field specifies the maximum SDU size (in octets) that the L2CAP layer entity sending the L2CAP_CREDIT_BASED_CONNECTION_RSP packet can receive on each of the Destination CID channels. L2CAP implementations shall support a minimum MTU size of 64 octets.'",
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 65535
+        },
+        "mps": {
+          "description": "2-byte \"Maximum PDU Payload Size (MPS)\" field from spec. 'The MPS field specifies the maximum PDU payload size (in octets) that the L2CAP layer entity sending the L2CAP_CREDIT_BASED_CONNECTION_RSP packet is capable of receiving on each of the Destination CID channels. L2CAP implementations shall support a minimum MPS of 64 octets and may support an MPS up to 65533 octets.'",
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 65535
+        },
+        "initial_credits": {
+          "description": "2-byte \"Initial Credits\" field from spec. 'The Initial Credit field value indicates the number of K-frames that the peer device can send to the L2CAP layer entity sending the L2CAP_CREDIT_BASED_CONNECTION_RSP packet on each of the Destination CID channels. The initial credit value shall be in the range of 1 to 65535.' Allow capturing 0 here so we can capture invalid packets which may be used in the wild.",
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 65535
+        },
+        "result": {
+          "description": "2-byte \"Result\" field from spec. 'The Result field indicates the outcome of the connection request.' As of Core Spec v5.2 there are values 0x0000, 0x0002, 0x0004-0x000C defined (e.g. 0x0000 = All connections successful, 0x0002 = All connections refused - SPSM not supported, 0x0004 = Some connections refused - insufficient resources available, ..., 0x000C = All connections refused - invalid parameters).",
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 65535
+        },
+        "destination_cids_hex_str": {
+          "description": "Variable-length \"Destination CID\" field (2 to 10 octets) from spec, encoded as hex string. 'The Destination CID is an array of up to 5 two-octet values and represents the channel endpoints on the device sending the L2CAP_CREDIT_BASED_CONNECTION_RSP packet.' Each two-octet entry (little-endian on the wire) represents one channel endpoint. 'The order of the Destination CIDs shall correspond to the order of the Source IDs in the corresponding L2CAP_CREDIT_BASED_CONNECTION_REQ packet. If a Destination CID is non-zero, the channel was established. If a Destination CID is 0x0000, the channel was not established.' Then minLength is 4 (1 CID) and maxLength is 20 (5 CIDs) for hex_str encoding.",
+          "type": "string",
+          "minLength": 4,
+          "maxLength": 20
+        }
+      }
+    },
+    "0x19_L2CAP_CREDIT_BASED_RECONFIGURE_REQ": {
+      "type": "object",
+      "description": "Structure for L2CAP\\_CREDIT\\_BASED\\_RECONFIGURE\\_REQ packet. 'A device shall send an L2CAP_CREDIT_BASED_RECONFIGURE_REQ packet when its receive MTU or MPS values have changed compared to when the channel was created or last reconfigured.'",
+      "required": [
+        "direction",
+        "code",
+        "id",
+        "data_len",
+        "mtu",
+        "mps",
+        "destination_cids_hex_str"
+      ],
+      "properties": {
+        "std_optional_fields": {
+          "$ref": "BTIDES_base.json#/definitions/std_optional_fields"
+        },
+        "code_str": {
+          "description": "This optional field (interpretation of 'code' field) is just for if you don't care about json file size and you want more human-readable JSON output.",
+          "type": "string",
+          "const": "L2CAP_CREDIT_BASED_RECONFIGURE_REQ"
+        },
+        "direction": {
+          "$ref": "BTIDES_base.json#/definitions/direction"
+        },
+        "code": {
+          "description": "The L2CAP code for this packet type. Must always be 25.",
+          "type": "integer",
+          "const": 25
+        },
+        "id": {
+          "$ref": "#/definitions/id"
+        },
+        "data_len": {
+          "$ref": "#/definitions/data_len"
+        },
+        "mtu": {
+          "description": "2-byte \"Maximum Transmission Unit (MTU)\" field from spec. 'The MTU field specifies the maximum SDU size (in octets) that the L2CAP layer entity sending the L2CAP_CREDIT_BASED_RECONFIGURE_REQ packet can receive on each of the Destination CID channels. The MTU field shall be greater than or equal to the greatest current MTU size of the channels.'",
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 65535
+        },
+        "mps": {
+          "description": "2-byte \"Maximum PDU Payload Size (MPS)\" field from spec. 'The MPS field specifies the maximum PDU payload size (in octets) that the L2CAP layer entity sending the L2CAP_CREDIT_BASED_RECONFIGURE_REQ packet is capable of receiving on each of the Destination CID channels. If more than one channel is being configured, the MPS field shall be greater than or equal to the current MPS size of any channel. If only one channel is being configured, the MPS field may be less than the current MPS of that channel.'",
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 65535
+        },
+        "destination_cids_hex_str": {
+          "description": "Variable-length \"Destination CID\" field (2 to 10 octets) from spec, encoded as hex string. 'The Destination CID is an array of up to 5 two-octet values which shall be non-zero and represent the channel endpoints on the device sending the L2CAP_CREDIT_BASED_RECONFIGURE_REQ packet.' Each two-octet entry (little-endian on the wire) represents one channel endpoint. Then minLength is 4 (1 CID) and maxLength is 20 (5 CIDs) for hex_str encoding.",
+          "type": "string",
+          "minLength": 4,
+          "maxLength": 20
+        }
+      }
+    },
+    "0x1A_L2CAP_CREDIT_BASED_RECONFIGURE_RSP": {
+      "type": "object",
+      "description": "Structure for L2CAP\\_CREDIT\\_BASED\\_RECONFIGURE\\_RSP packet (titled 'Enhanced Credit Based Reconfigure Response' in Figure 4.30 of the spec).",
+      "required": [
+        "direction",
+        "code",
+        "id",
+        "data_len",
+        "result"
+      ],
+      "properties": {
+        "std_optional_fields": {
+          "$ref": "BTIDES_base.json#/definitions/std_optional_fields"
+        },
+        "result_str": {
+          "description": "This optional field (interpretation of 'result' field) is just for if you don't care about json file size and you want more human-readable JSON output.",
+          "type": "string"
+        },
+        "code_str": {
+          "description": "This optional field (interpretation of 'code' field) is just for if you don't care about json file size and you want more human-readable JSON output.",
+          "type": "string",
+          "const": "L2CAP_CREDIT_BASED_RECONFIGURE_RSP"
+        },
+        "direction": {
+          "$ref": "BTIDES_base.json#/definitions/direction"
+        },
+        "code": {
+          "description": "The L2CAP code for this packet type. Must always be 26.",
+          "type": "integer",
+          "const": 26
+        },
+        "id": {
+          "$ref": "#/definitions/id"
+        },
+        "data_len": {
+          "$ref": "#/definitions/data_len"
+        },
+        "result": {
+          "description": "2-byte \"Result\" field from spec. 'The Result field contains information about the success of the request.' As of Core Spec v5.2 there are values 0-4 defined (0x0000 = Reconfiguration successful, 0x0001 = Reconfiguration failed - reduction in size of MTU not allowed, 0x0002 = Reconfiguration failed - reduction in size of MPS not allowed for more than one channel at a time, 0x0003 = Reconfiguration failed - one or more Destination CIDs invalid, 0x0004 = Reconfiguration failed - other unacceptable parameters).",
           "type": "integer",
           "minimum": 0,
           "maximum": 65535
