@@ -9,185 +9,252 @@
       "items": {
         "anyOf": [
           {
+            "$ref": "#/definitions/0xD2_ATT_SIGNED_WRITE_CMD"
+          },
+          {
+            "$ref": "#/definitions/0xD2_ATT_SIGNED_WRITE_CMD2"
+          },
+          {
+            "$ref": "#/definitions/0x52_ATT_WRITE_CMD"
+          },
+          {
+            "$ref": "#/definitions/0x52_ATT_WRITE_CMD2"
+          },
+          {
+            "$ref": "#/definitions/0x23_ATT_MULTIPLE_HANDLE_VALUE_NTF"
+          },
+          {
+            "$ref": "#/definitions/0x23_ATT_MULTIPLE_HANDLE_VALUE_NTF2"
+          },
+          {
+            "$ref": "#/definitions/0x21_ATT_READ_MULTIPLE_VARIABLE_RSP"
+          },
+          {
+            "$ref": "#/definitions/0x21_ATT_READ_MULTIPLE_VARIABLE_RSP2"
+          },
+          {
+            "$ref": "#/definitions/0x20_ATT_READ_MULTIPLE_VARIABLE_REQ"
+          },
+          {
+            "$ref": "#/definitions/0x20_ATT_READ_MULTIPLE_VARIABLE_REQ2"
+          },
+          {
+            "$ref": "#/definitions/0x1E_ATT_HANDLE_VALUE_CFM"
+          },
+          {
+            "$ref": "#/definitions/0x1E_ATT_HANDLE_VALUE_CFM2"
+          },
+          {
+            "$ref": "#/definitions/0x1D_ATT_HANDLE_VALUE_IND"
+          },
+          {
+            "$ref": "#/definitions/0x1D_ATT_HANDLE_VALUE_IND2"
+          },
+          {
+            "$ref": "#/definitions/0x1B_ATT_HANDLE_VALUE_NTF"
+          },
+          {
+            "$ref": "#/definitions/0x1B_ATT_HANDLE_VALUE_NTF2"
+          },
+          {
+            "$ref": "#/definitions/0x19_ATT_EXECUTE_WRITE_RSP"
+          },
+          {
+            "$ref": "#/definitions/0x19_ATT_EXECUTE_WRITE_RSP2"
+          },
+          {
+            "$ref": "#/definitions/0x18_ATT_EXECUTE_WRITE_REQ"
+          },
+          {
+            "$ref": "#/definitions/0x18_ATT_EXECUTE_WRITE_REQ2"
+          },
+          {
+            "$ref": "#/definitions/0x17_ATT_PREPARE_WRITE_RSP"
+          },
+          {
+            "$ref": "#/definitions/0x17_ATT_PREPARE_WRITE_RSP2"
+          },
+          {
+            "$ref": "#/definitions/0x16_ATT_PREPARE_WRITE_REQ"
+          },
+          {
+            "$ref": "#/definitions/0x16_ATT_PREPARE_WRITE_REQ2"
+          },
+          {
+            "$ref": "#/definitions/0x13_ATT_WRITE_RSP"
+          },
+          {
+            "$ref": "#/definitions/0x13_ATT_WRITE_RSP2"
+          },
+          {
+            "$ref": "#/definitions/0x12_ATT_WRITE_REQ"
+          },
+          {
+            "$ref": "#/definitions/0x12_ATT_WRITE_REQ2"
+          },
+          {
+            "$ref": "#/definitions/0x11_ATT_READ_BY_GROUP_TYPE_RSP"
+          },
+          {
+            "$ref": "#/definitions/0x11_ATT_READ_BY_GROUP_TYPE_RSP2"
+          },
+          {
+            "$ref": "#/definitions/0x10_ATT_READ_BY_GROUP_TYPE_REQ"
+          },
+          {
+            "$ref": "#/definitions/0x10_ATT_READ_BY_GROUP_TYPE_REQ2"
+          },
+          {
+            "$ref": "#/definitions/0x0F_ATT_READ_MULTIPLE_RSP"
+          },
+          {
+            "$ref": "#/definitions/0x0F_ATT_READ_MULTIPLE_RSP2"
+          },
+          {
+            "$ref": "#/definitions/0x0E_ATT_READ_MULTIPLE_REQ"
+          },
+          {
+            "$ref": "#/definitions/0x0E_ATT_READ_MULTIPLE_REQ2"
+          },
+          {
+            "$ref": "#/definitions/0x0D_ATT_READ_BLOB_RSP"
+          },
+          {
+            "$ref": "#/definitions/0x0D_ATT_READ_BLOB_RSP2"
+          },
+          {
+            "$ref": "#/definitions/0x0C_ATT_READ_BLOB_REQ"
+          },
+          {
+            "$ref": "#/definitions/0x0C_ATT_READ_BLOB_REQ2"
+          },
+          {
+            "$ref": "#/definitions/0x0B_ATT_READ_RSP"
+          },
+          {
+            "$ref": "#/definitions/0x0B_ATT_READ_RSP2"
+          },
+          {
+            "$ref": "#/definitions/0x0A_ATT_READ_REQ"
+          },
+          {
+            "$ref": "#/definitions/0x0A_ATT_READ_REQ2"
+          },
+          {
+            "$ref": "#/definitions/0x09_ATT_READ_BY_TYPE_RSP"
+          },
+          {
+            "$ref": "#/definitions/0x09_ATT_READ_BY_TYPE_RSP2"
+          },
+          {
+            "$ref": "#/definitions/0x08_ATT_READ_BY_TYPE_REQ"
+          },
+          {
+            "$ref": "#/definitions/0x08_ATT_READ_BY_TYPE_REQ2"
+          },
+          {
+            "$ref": "#/definitions/0x07_ATT_FIND_BY_TYPE_VALUE_RSP"
+          },
+          {
+            "$ref": "#/definitions/0x07_ATT_FIND_BY_TYPE_VALUE_RSP2"
+          },
+          {
+            "$ref": "#/definitions/0x06_ATT_FIND_BY_TYPE_VALUE_REQ"
+          },
+          {
+            "$ref": "#/definitions/0x06_ATT_FIND_BY_TYPE_VALUE_REQ2"
+          },
+          {
+            "$ref": "#/definitions/0x05_ATT_FIND_INFORMATION_RSP"
+          },
+          {
+            "$ref": "#/definitions/0x05_ATT_FIND_INFORMATION_RSP2"
+          },
+          {
+            "$ref": "#/definitions/0x04_ATT_FIND_INFORMATION_REQ"
+          },
+          {
+            "$ref": "#/definitions/0x04_ATT_FIND_INFORMATION_REQ2"
+          },
+          {
+            "$ref": "#/definitions/0x03_ATT_EXCHANGE_MTU_RSP"
+          },
+          {
+            "$ref": "#/definitions/0x03_ATT_EXCHANGE_MTU_RSP2"
+          },
+          {
+            "$ref": "#/definitions/0x02_ATT_EXCHANGE_MTU_REQ"
+          },
+          {
+            "$ref": "#/definitions/0x02_ATT_EXCHANGE_MTU_REQ2"
+          },
+          {
+            "$ref": "#/definitions/0x01_ATT_ERROR_RSP"
+          },
+          {
+            "$ref": "#/definitions/0x01_ATT_ERROR_RSP2"
+          },
+          {
             "$ref": "#/definitions/ATT_handle_enumeration"
-          },
-          {
-            "$ref": "#/definitions/ATT_EXCHANGE_MTU_REQ"
-          },
-          {
-            "$ref": "#/definitions/ATT_EXCHANGE_MTU_REQ2"
-          },
-          {
-            "$ref": "#/definitions/ATT_EXCHANGE_MTU_RSP"
-          },
-          {
-            "$ref": "#/definitions/ATT_EXCHANGE_MTU_RSP2"
-          },
-          {
-            "$ref": "#/definitions/ATT_FIND_INFORMATION_REQ"
-          },
-          {
-            "$ref": "#/definitions/ATT_FIND_INFORMATION_REQ2"
-          },
-          {
-            "$ref": "#/definitions/ATT_FIND_INFORMATION_RSP"
-          },
-          {
-            "$ref": "#/definitions/ATT_FIND_INFORMATION_RSP2"
-          },
-          {
-          "$ref": "#/definitions/ATT_READ_BY_TYPE_REQ"
-          },
-          {
-          "$ref": "#/definitions/ATT_READ_BY_TYPE_RSP"
-          },
-          {
-            "$ref": "#/definitions/ATT_READ_REQ"
-          },
-          {
-            "$ref": "#/definitions/ATT_READ_REQ2"
-          },
-          {
-            "$ref": "#/definitions/ATT_READ_RSP"
-          },
-          {
-            "$ref": "#/definitions/ATT_READ_RSP2"
-          },
-          {
-            "$ref": "#/definitions/ATT_READ_BY_GROUP_TYPE_REQ"
-          },
-          {
-            "$ref": "#/definitions/ATT_READ_BY_GROUP_TYPE_REQ2"
-          },
-          {
-            "$ref": "#/definitions/ATT_READ_BY_GROUP_TYPE_RSP"
-          },
-          {
-            "$ref": "#/definitions/ATT_READ_BY_GROUP_TYPE_RSP2"
           }
         ]
       }
     }
   },
   "definitions": {
-    "ATT_handle_enumeration": {
-      "$comment": "Leaving out time and RSSI for now, because this is done over many packets, so one would need to mandate a beginning time/RSSI or ending time/RSSI, and I'm not sure I want to spec that out yet.",
-      "description": "An array of all known ATT handle number/UUID pairs.",
+    "0xD2_ATT_SIGNED_WRITE_CMD": {
       "type": "object",
-      "properties": {
-        "ATT_handle_enumeration": {
-          "description": "Each entry is a handle and UUID",
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/handle_entry"
-          }
-        }
-      }
-    },
-    "handle_entry": {
-      "type": "object",
-      "description": "Structure for ATT enumeration array.",
-      "required": [
-        "handle",
-        "UUID"
-      ],
-      "properties": {
-        "handle": {
-          "description": "2-byte ATT handle number. (Handle 0 is invalid.)",
-          "type": "integer",
-          "minimum": 1,
-          "maximum": 65535
-        },
-        "UUID": {
-          "$ref": "BTIDES_base.json#/definitions/UUID"
-        }
-      }
-    },
-    "ATT_ERROR_RSP": {
-      "type": "object",
-      "description": "Structure for ATT\\_ERROR\\_RSP packet.",
+      "description": "Structure for ATT\\_SIGNED\\_WRITE\\_CMD packet. Write without response with an authentication signature appended. Per spec, shall not be used on an Enhanced ATT bearer.",
       "required": [
         "opcode",
         "direction",
-        "request_opcode_in_error",
-        "attribute_handle_in_error",
-        "error_code"
+        "attribute_handle",
+        "authentication_signature_hex_str"
       ],
       "properties": {
         "std_optional_fields": {
           "$ref": "BTIDES_base.json#/definitions/std_optional_fields"
         },
-        "error_str": {
-          "description": "Optional field for a human-readable error string.",
+        "opcode_str": {
+          "description": "This optional field is just for if you don't care about json file size and you want more human-readable JSON output.",
+          "type": "string",
+          "const": "ATT_SIGNED_WRITE_CMD"
+        },
+        "opcode": {
+          "description": "ATT packet opcode.",
+          "const": 210
+        },
+        "direction": {
+          "$ref": "BTIDES_base.json#/definitions/direction"
+        },
+        "attribute_handle": {
+          "description": "The handle of the attribute to be set.",
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 65535
+        },
+        "value_hex_str": {
+          "description": "The value to be written to the attribute, as a hex string. May be 0 octets in length.",
           "type": "string"
         },
-        "opcode_str": {
-          "description": "This optional field is just for if you don't care about json file size and you want more human-readable JSON output.",
+        "utf8_str": {
+          "description": "This is an optional human-readable version of the value being written.",
           "type": "string",
-          "const": "ATT_ERROR_RSP"
+          "minLength": 0,
+          "maxLength": 255
         },
-        "opcode": {
-          "description": "ATT packet opcode.",
-          "const": 1
-        },
-        "direction": {
-          "$ref": "BTIDES_base.json#/definitions/direction"
-        },
-        "request_opcode_in_error": {
-          "description": "Opcode of the request that generated this error response.",
-          "type": "integer",
-          "minimum": 0,
-          "maximum": 255
-        },
-        "attribute_handle_in_error": {
-          "description": "Handle of the attribute that generated this error response.",
-          "type": "integer",
-          "minimum": 0,
-          "maximum": 65535
-        },
-        "error_code": {
-          "description": "Error code indicating the nature of the error.",
-          "type": "integer",
-          "minimum": 0,
-          "maximum": 255
+        "authentication_signature_hex_str": {
+          "$comment": "Per Vol 3, Part F, Section 3.3.1, the authentication signature is the SignCounter (4 octets) concatenated with the MAC (8 octets), for a total of 12 octets / 24 hex characters.",
+          "description": "12-byte authentication signature (SignCounter || MAC) covering the opcode, attribute handle, and attribute value, as a 24-character hex string.",
+          "type": "string",
+          "minLength": 24,
+          "maxLength": 24
         }
       }
     },
-    "ATT_EXCHANGE_MTU_REQ": {
+    "0xD2_ATT_SIGNED_WRITE_CMD2": {
       "type": "object",
-      "description": "Structure for ATT\\_EXCHANGE\\_MTU\\_REQ packet.",
-      "required": [
-        "opcode",
-        "direction",
-        "client_rx_mtu"
-      ],
-      "properties": {
-        "std_optional_fields": {
-          "$ref": "BTIDES_base.json#/definitions/std_optional_fields"
-        },
-        "opcode_str": {
-          "description": "This optional field is just for if you don't care about json file size and you want more human-readable JSON output.",
-          "type": "string",
-          "const": "ATT_EXCHANGE_MTU_REQ"
-        },
-        "opcode": {
-          "description": "ATT packet opcode.",
-          "const": 2
-        },
-        "direction": {
-          "$ref": "BTIDES_base.json#/definitions/direction"
-        },
-        "client_rx_mtu": {
-          "description": "2-byte \"Client Rx MTU\" from spec. Maximum number of bytes the ATT Client can receive via ATT.",
-          "type": "integer",
-          "minimum": 0,
-          "maximum": 65535
-        }
-      }
-    },
-    "ATT_EXCHANGE_MTU_REQ2": {
-      "type": "object",
-      "description": "Structure for ATT\\_EXCHANGE\\_MTU\\_REQ packet, as single raw hex string.",
+      "description": "Structure for ATT\\_SIGNED\\_WRITE\\_CMD packet, as single raw hex string.",
       "required": [
         "opcode",
         "direction",
@@ -200,11 +267,11 @@
         "opcode_str": {
           "description": "This optional field is just for if you don't care about json file size and you want more human-readable JSON output.",
           "type": "string",
-          "const": "ATT_EXCHANGE_MTU_REQ"
+          "const": "ATT_SIGNED_WRITE_CMD"
         },
         "opcode": {
           "description": "ATT packet opcode.",
-          "const": 2
+          "const": 210
         },
         "direction": {
           "$ref": "BTIDES_base.json#/definitions/direction"
@@ -214,41 +281,51 @@
         }
       }
     },
-    "ATT_EXCHANGE_MTU_RSP": {
+    "0x52_ATT_WRITE_CMD": {
       "type": "object",
-      "description": "Structure for ATT\\_EXCHANGE\\_MTU\\_RSP packet.",
+      "description": "Structure for ATT\\_WRITE\\_CMD packet. Write without response; the server generates no ATT_ERROR_RSP or ATT_WRITE_RSP for this command.",
       "required": [
         "opcode",
         "direction",
-        "server_rx_mtu"
+        "attribute_handle"
       ],
       "properties": {
         "std_optional_fields": {
           "$ref": "BTIDES_base.json#/definitions/std_optional_fields"
         },
         "opcode_str": {
-          "description": "ATT packet opcode.",
+          "description": "This optional field is just for if you don't care about json file size and you want more human-readable JSON output.",
           "type": "string",
-          "const": "ATT_EXCHANGE_MTU_RSP"
+          "const": "ATT_WRITE_CMD"
         },
         "opcode": {
           "description": "ATT packet opcode.",
-          "const": 3
+          "const": 82
         },
         "direction": {
           "$ref": "BTIDES_base.json#/definitions/direction"
         },
-        "server_rx_mtu": {
-          "description": "2-byte \"Server Rx MTU\" from spec. Maximum number of bytes the ATT Server can receive via ATT.",
+        "attribute_handle": {
+          "description": "The handle of the attribute to be set.",
           "type": "integer",
           "minimum": 0,
           "maximum": 65535
+        },
+        "value_hex_str": {
+          "description": "The value to be written to the attribute, as a hex string. May be 0 octets in length.",
+          "type": "string"
+        },
+        "utf8_str": {
+          "description": "This is an optional human-readable version of the value being written.",
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 255
         }
       }
     },
-    "ATT_EXCHANGE_MTU_RSP2": {
+    "0x52_ATT_WRITE_CMD2": {
       "type": "object",
-      "description": "Structure for ATT\\_EXCHANGE\\_MTU\\_RSP packet, as single raw hex string.",
+      "description": "Structure for ATT\\_WRITE\\_CMD packet, as single raw hex string.",
       "required": [
         "opcode",
         "direction",
@@ -261,11 +338,11 @@
         "opcode_str": {
           "description": "This optional field is just for if you don't care about json file size and you want more human-readable JSON output.",
           "type": "string",
-          "const": "ATT_EXCHANGE_MTU_RSP"
+          "const": "ATT_WRITE_CMD"
         },
         "opcode": {
-          "description": "Optional field just if you don't want to look up the opcode for this packet type.",
-          "const": 3
+          "description": "ATT packet opcode.",
+          "const": 82
         },
         "direction": {
           "$ref": "BTIDES_base.json#/definitions/direction"
@@ -275,14 +352,13 @@
         }
       }
     },
-    "ATT_FIND_INFORMATION_REQ": {
+    "0x23_ATT_MULTIPLE_HANDLE_VALUE_NTF": {
       "type": "object",
-      "description": "Structure for ATT\\_FIND\\_INFORMATION\\_REQ packet.",
+      "description": "Structure for ATT\\_MULTIPLE\\_HANDLE\\_VALUE\\_NTF packet. Server-initiated notification of two or more attribute values at once.",
       "required": [
         "opcode",
         "direction",
-        "start_handle",
-        "end_handle"
+        "handle_length_value_tuple_list"
       ],
       "properties": {
         "std_optional_fields": {
@@ -291,246 +367,46 @@
         "opcode_str": {
           "description": "This optional field is just for if you don't care about json file size and you want more human-readable JSON output.",
           "type": "string",
-          "const": "ATT_FIND_INFORMATION_REQ"
+          "const": "ATT_MULTIPLE_HANDLE_VALUE_NTF"
         },
         "opcode": {
           "description": "ATT packet opcode.",
-          "const": 4
+          "const": 35
         },
         "direction": {
           "$ref": "BTIDES_base.json#/definitions/direction"
         },
-        "start_handle": {
-          "description": "First requested handle number.",
-          "type": "integer",
-          "minimum": 0,
-          "maximum": 65535
-        },
-        "end_handle": {
-          "description": "Last requested handle number.",
-          "type": "integer",
-          "minimum": 0,
-          "maximum": 65535
-        }
-      }
-    },
-    "ATT_FIND_INFORMATION_REQ2": {
-      "type": "object",
-      "description": "Structure for ATT\\_FIND\\_INFORMATION\\_REQ packet, as single raw hex string.",
-      "required": [
-        "opcode",
-        "direction",
-        "full_pkt_hex_str"
-      ],
-      "properties": {
-        "std_optional_fields": {
-          "$ref": "BTIDES_base.json#/definitions/std_optional_fields"
-        },
-        "opcode_str": {
-          "description": "This optional field is just for if you don't care about json file size and you want more human-readable JSON output.",
-          "type": "string",
-          "const": "ATT_FIND_INFORMATION_REQ"
-        },
-        "opcode": {
-          "description": "ATT packet opcode.",
-          "const": 4
-        },
-        "direction": {
-          "$ref": "BTIDES_base.json#/definitions/direction"
-        },
-        "full_pkt_hex_str": {
-          "$ref": "BTIDES_base.json#/definitions/full_pkt_hex_str"
-        }
-      }
-    },
-    "ATT_FIND_INFORMATION_RSP": {
-      "type": "object",
-      "description": "Structure for ATT\\_FIND\\_INFORMATION\\_RSP packet.",
-      "required": [
-        "opcode",
-        "direction",
-        "format",
-        "information_data"
-      ],
-      "properties": {
-        "std_optional_fields": {
-          "$ref": "BTIDES_base.json#/definitions/std_optional_fields"
-        },
-        "opcode_str": {
-          "description": "This optional field is just for if you don't care about json file size and you want more human-readable JSON output.",
-          "type": "string",
-          "const": "ATT_FIND_INFORMATION_RSP"
-        },
-        "opcode": {
-          "description": "ATT packet opcode.",
-          "const": 5
-        },
-        "direction": {
-          "$ref": "BTIDES_base.json#/definitions/direction"
-        },
-        "format": {
-          "description": "Format of the information data (1 = handles and 16-bit UUIDs, 2 = handles and 128-bit UUIDs).",
-          "type": "integer",
-          "enum": [
-            1,
-            2
-          ]
-        },
-        "information_data": {
-          "$comment": "I know this name is sort of generic, but that's the name used in the spec.",
-          "description": "List of handle and UUID (16 or 128) pairs.",
+        "handle_length_value_tuple_list": {
+          "description": "List of Handle Length Value Tuples, one per attribute being notified. Per spec the server shall not truncate a tuple.",
           "type": "array",
           "items": {
             "type": "object",
             "required": [
-              "handle",
-              "UUID"
+              "attribute_handle",
+              "value_length",
+              "value_hex_str"
             ],
             "properties": {
-              "handle": {
-                "description": "Handle number.",
+              "attribute_handle": {
+                "description": "The handle of the attribute being notified.",
                 "type": "integer",
                 "minimum": 0,
                 "maximum": 65535
               },
-              "UUID": {
-                "description": "UUID associated with the handle.",
-                "$ref": "BTIDES_base.json#/definitions/UUID"
-              }
-            }
-          }
-        }
-      }
-    },
-    "ATT_FIND_INFORMATION_RSP2": {
-      "type": "object",
-      "description": "Structure for ATT\\_FIND\\_INFORMATION\\_RSP packet, as single raw hex string.",
-      "required": [
-        "opcode",
-        "direction",
-        "full_pkt_hex_str"
-      ],
-      "properties": {
-        "std_optional_fields": {
-          "$ref": "BTIDES_base.json#/definitions/std_optional_fields"
-        },
-        "opcode_str": {
-          "description": "This optional field is just for if you don't care about json file size and you want more human-readable JSON output.",
-          "type": "string",
-          "const": "ATT_FIND_INFORMATION_RSP"
-        },
-        "opcode": {
-          "description": "ATT packet opcode.",
-          "const": 5
-        },
-        "direction": {
-          "$ref": "BTIDES_base.json#/definitions/direction"
-        },
-        "full_pkt_hex_str": {
-          "$ref": "BTIDES_base.json#/definitions/full_pkt_hex_str"
-        }
-      }
-    },
-    "ATT_READ_BY_TYPE_REQ": {
-      "type": "object",
-      "description": "Structure for ATT\\_READ\\_BY\\_TYPE\\_REQ packet.",
-      "required": [
-        "opcode",
-        "direction",
-        "start_handle",
-        "end_handle",
-        "attribute_uuid"
-      ],
-      "properties": {
-        "std_optional_fields": {
-          "$ref": "BTIDES_base.json#/definitions/std_optional_fields"
-        },
-        "opcode_str": {
-          "description": "This optional field is just for if you don't care about json file size and you want more human-readable JSON output.",
-          "type": "string",
-          "const": "ATT_READ_BY_TYPE_REQ"
-        },
-        "opcode": {
-          "description": "ATT packet opcode.",
-          "const": 8
-        },
-        "direction": {
-          "$ref": "BTIDES_base.json#/definitions/direction"
-        },
-        "start_handle": {
-          "description": "First requested handle number.",
-          "type": "integer",
-          "minimum": 0,
-          "maximum": 65535
-        },
-        "end_handle": {
-          "description": "Last requested handle number.",
-          "type": "integer",
-          "minimum": 0,
-          "maximum": 65535
-        },
-        "attribute_uuid": {
-          "description": "2-byte or 16-byte Attribute type UUID to find.",
-          "$ref": "BTIDES_base.json#/definitions/UUID"
-        }
-      }
-    },
-    "ATT_READ_BY_TYPE_RSP": {
-      "type": "object",
-      "description": "Structure for ATT\\_READ\\_BY\\_TYPE\\_RSP packet.",
-      "required": [
-        "opcode",
-        "direction",
-        "length",
-        "attribute_data_list"
-      ],
-      "properties": {
-        "std_optional_fields": {
-          "$ref": "BTIDES_base.json#/definitions/std_optional_fields"
-        },
-        "opcode_str": {
-          "description": "This optional field is just for if you don't care about json file size and you want more human-readable JSON output.",
-          "type": "string",
-          "const": "ATT_READ_BY_TYPE_RSP"
-        },
-        "opcode": {
-          "description": "ATT packet opcode.",
-          "const": 9
-        },
-        "direction": {
-          "$ref": "BTIDES_base.json#/definitions/direction"
-        },
-        "length": {
-          "description": "Size of each attribute handle-value pair",
-          "type": "integer",
-          "minimum": 0,
-          "maximum": 255
-        },
-        "attribute_data_list": {
-          "description": "List of attribute data.",
-          "type": "array",
-          "items": {
-            "type": "object",
-            "required": [
-              "handle",
-              "value"
-            ],
-            "properties": {
-              "attribute_handle": {
-                "description": "Attribute handle.",
+              "value_length": {
+                "description": "Length in octets of the Attribute Value field for this tuple.",
                 "type": "integer",
                 "minimum": 0,
                 "maximum": 65535
               },
               "value_hex_str": {
-                "description": "Attribute value as a hex string",
+                "description": "The current value of the attribute, as a hex string.",
                 "type": "string"
               },
               "utf8_str": {
-                "description": "This is an optional human-readable version of the read value of the attribute.",
+                "description": "This is an optional human-readable version of the value.",
                 "type": "string",
                 "minLength": 0,
-                "$comment": "I'm not sure if the max size here is the negotiated ATT_MTU or something else. Putting a sanity check on this just because.",
                 "maxLength": 255
               }
             }
@@ -538,41 +414,9 @@
         }
       }
     },
-    "ATT_READ_REQ": {
+    "0x23_ATT_MULTIPLE_HANDLE_VALUE_NTF2": {
       "type": "object",
-      "description": "Structure for ATT\\_READ\\_REQ packet.",
-      "required": [
-        "opcode",
-        "direction",
-        "handle"
-      ],
-      "properties": {
-        "std_optional_fields": {
-          "$ref": "BTIDES_base.json#/definitions/std_optional_fields"
-        },
-        "opcode_str": {
-          "description": "This optional field is just for if you don't care about json file size and you want more human-readable JSON output.",
-          "type": "string",
-          "const": "ATT_READ_REQ"
-        },
-        "direction": {
-          "$ref": "BTIDES_base.json#/definitions/direction"
-        },
-        "opcode": {
-          "description": "ATT packet opcode.",
-          "const": 10
-        },
-        "handle": {
-          "description": "Handle being read from.",
-          "type": "integer",
-          "minimum": 0,
-          "maximum": 65535
-        }
-      }
-    },
-    "ATT_READ_REQ2": {
-      "type": "object",
-      "description": "Structure for ATT\\_READ\\_REQ packet, as single raw hex string.",
+      "description": "Structure for ATT\\_MULTIPLE\\_HANDLE\\_VALUE\\_NTF packet, as single raw hex string.",
       "required": [
         "opcode",
         "direction",
@@ -585,11 +429,11 @@
         "opcode_str": {
           "description": "This optional field is just for if you don't care about json file size and you want more human-readable JSON output.",
           "type": "string",
-          "const": "ATT_READ_REQ"
+          "const": "ATT_MULTIPLE_HANDLE_VALUE_NTF"
         },
         "opcode": {
           "description": "ATT packet opcode.",
-          "const": 10
+          "const": 35
         },
         "direction": {
           "$ref": "BTIDES_base.json#/definitions/direction"
@@ -599,13 +443,13 @@
         }
       }
     },
-    "ATT_READ_RSP": {
+    "0x21_ATT_READ_MULTIPLE_VARIABLE_RSP": {
       "type": "object",
-      "description": "Structure for ATT\\_READ\\_RSP packet.",
+      "description": "Structure for ATT\\_READ\\_MULTIPLE\\_VARIABLE\\_RSP packet.",
       "required": [
         "opcode",
         "direction",
-        "handle"
+        "length_value_tuple_list"
       ],
       "properties": {
         "std_optional_fields": {
@@ -614,24 +458,239 @@
         "opcode_str": {
           "description": "This optional field is just for if you don't care about json file size and you want more human-readable JSON output.",
           "type": "string",
-          "const": "ATT_READ_RSP"
+          "const": "ATT_READ_MULTIPLE_VARIABLE_RSP"
+        },
+        "opcode": {
+          "description": "ATT packet opcode.",
+          "const": 33
         },
         "direction": {
           "$ref": "BTIDES_base.json#/definitions/direction"
         },
+        "length_value_tuple_list": {
+          "description": "List of Length Value Tuples, in the order corresponding to the handles in the request.",
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "value_length",
+              "value_hex_str"
+            ],
+            "properties": {
+              "value_length": {
+                "description": "Length in octets of the Attribute Value field for this tuple (the announced length, not necessarily the actual length received if the tuple list was truncated to fit the PDU).",
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 65535
+              },
+              "value_hex_str": {
+                "description": "The attribute value, as a hex string. If the tuple was truncated, the length of this string in octets may be less than value_length.",
+                "type": "string"
+              },
+              "utf8_str": {
+                "description": "This is an optional human-readable version of the value.",
+                "type": "string",
+                "minLength": 0,
+                "maxLength": 255
+              }
+            }
+          }
+        }
+      }
+    },
+    "0x21_ATT_READ_MULTIPLE_VARIABLE_RSP2": {
+      "type": "object",
+      "description": "Structure for ATT\\_READ\\_MULTIPLE\\_VARIABLE\\_RSP packet, as single raw hex string.",
+      "required": [
+        "opcode",
+        "direction",
+        "full_pkt_hex_str"
+      ],
+      "properties": {
+        "std_optional_fields": {
+          "$ref": "BTIDES_base.json#/definitions/std_optional_fields"
+        },
+        "opcode_str": {
+          "description": "This optional field is just for if you don't care about json file size and you want more human-readable JSON output.",
+          "type": "string",
+          "const": "ATT_READ_MULTIPLE_VARIABLE_RSP"
+        },
         "opcode": {
           "description": "ATT packet opcode.",
-          "const": 11
+          "const": 33
+        },
+        "direction": {
+          "$ref": "BTIDES_base.json#/definitions/direction"
+        },
+        "full_pkt_hex_str": {
+          "$ref": "BTIDES_base.json#/definitions/full_pkt_hex_str"
+        }
+      }
+    },
+    "0x20_ATT_READ_MULTIPLE_VARIABLE_REQ": {
+      "type": "object",
+      "description": "Structure for ATT\\_READ\\_MULTIPLE\\_VARIABLE\\_REQ packet.",
+      "required": [
+        "opcode",
+        "direction",
+        "set_of_handles"
+      ],
+      "properties": {
+        "std_optional_fields": {
+          "$ref": "BTIDES_base.json#/definitions/std_optional_fields"
+        },
+        "opcode_str": {
+          "description": "This optional field is just for if you don't care about json file size and you want more human-readable JSON output.",
+          "type": "string",
+          "const": "ATT_READ_MULTIPLE_VARIABLE_REQ"
+        },
+        "opcode": {
+          "description": "ATT packet opcode.",
+          "const": 32
+        },
+        "direction": {
+          "$ref": "BTIDES_base.json#/definitions/direction"
+        },
+        "set_of_handles": {
+          "description": "A set of two or more attribute handles. Handles are in the order in which their values are required in the response (not necessarily in attribute handle order).",
+          "type": "array",
+          "minItems": 2,
+          "items": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 65535
+          }
+        }
+      }
+    },
+    "0x20_ATT_READ_MULTIPLE_VARIABLE_REQ2": {
+      "type": "object",
+      "description": "Structure for ATT\\_READ\\_MULTIPLE\\_VARIABLE\\_REQ packet, as single raw hex string.",
+      "required": [
+        "opcode",
+        "direction",
+        "full_pkt_hex_str"
+      ],
+      "properties": {
+        "std_optional_fields": {
+          "$ref": "BTIDES_base.json#/definitions/std_optional_fields"
+        },
+        "opcode_str": {
+          "description": "This optional field is just for if you don't care about json file size and you want more human-readable JSON output.",
+          "type": "string",
+          "const": "ATT_READ_MULTIPLE_VARIABLE_REQ"
+        },
+        "opcode": {
+          "description": "ATT packet opcode.",
+          "const": 32
+        },
+        "direction": {
+          "$ref": "BTIDES_base.json#/definitions/direction"
+        },
+        "full_pkt_hex_str": {
+          "$ref": "BTIDES_base.json#/definitions/full_pkt_hex_str"
+        }
+      }
+    },
+    "0x1E_ATT_HANDLE_VALUE_CFM": {
+      "type": "object",
+      "description": "Structure for ATT\\_HANDLE\\_VALUE\\_CFM packet. Acknowledgement-only; no payload beyond the opcode.",
+      "required": [
+        "opcode",
+        "direction"
+      ],
+      "properties": {
+        "std_optional_fields": {
+          "$ref": "BTIDES_base.json#/definitions/std_optional_fields"
+        },
+        "opcode_str": {
+          "description": "This optional field is just for if you don't care about json file size and you want more human-readable JSON output.",
+          "type": "string",
+          "const": "ATT_HANDLE_VALUE_CFM"
+        },
+        "opcode": {
+          "description": "ATT packet opcode.",
+          "const": 30
+        },
+        "direction": {
+          "$ref": "BTIDES_base.json#/definitions/direction"
+        }
+      }
+    },
+    "0x1E_ATT_HANDLE_VALUE_CFM2": {
+      "type": "object",
+      "description": "Structure for ATT\\_HANDLE\\_VALUE\\_CFM packet, as single raw hex string.",
+      "required": [
+        "opcode",
+        "direction",
+        "full_pkt_hex_str"
+      ],
+      "properties": {
+        "std_optional_fields": {
+          "$ref": "BTIDES_base.json#/definitions/std_optional_fields"
+        },
+        "opcode_str": {
+          "description": "This optional field is just for if you don't care about json file size and you want more human-readable JSON output.",
+          "type": "string",
+          "const": "ATT_HANDLE_VALUE_CFM"
+        },
+        "opcode": {
+          "description": "ATT packet opcode.",
+          "const": 30
+        },
+        "direction": {
+          "$ref": "BTIDES_base.json#/definitions/direction"
+        },
+        "full_pkt_hex_str": {
+          "$ref": "BTIDES_base.json#/definitions/full_pkt_hex_str"
+        }
+      }
+    },
+    "0x1D_ATT_HANDLE_VALUE_IND": {
+      "type": "object",
+      "description": "Structure for ATT\\_HANDLE\\_VALUE\\_IND packet. Server-initiated indication of an attribute's value; the client shall confirm with ATT_HANDLE_VALUE_CFM.",
+      "required": [
+        "opcode",
+        "direction",
+        "attribute_handle"
+      ],
+      "properties": {
+        "std_optional_fields": {
+          "$ref": "BTIDES_base.json#/definitions/std_optional_fields"
+        },
+        "opcode_str": {
+          "description": "This optional field is just for if you don't care about json file size and you want more human-readable JSON output.",
+          "type": "string",
+          "const": "ATT_HANDLE_VALUE_IND"
+        },
+        "opcode": {
+          "description": "ATT packet opcode.",
+          "const": 29
+        },
+        "direction": {
+          "$ref": "BTIDES_base.json#/definitions/direction"
+        },
+        "attribute_handle": {
+          "description": "The handle of the attribute being indicated.",
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 65535
         },
         "value_hex_str": {
-          "description": "Value read from a handle, as a hex string.",
+          "description": "The current value of the attribute, as a hex string. May be 0 octets in length.",
           "type": "string"
+        },
+        "utf8_str": {
+          "description": "This is an optional human-readable version of the indicated value.",
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 255
         }
       }
     },
-    "ATT_READ_RSP2": {
+    "0x1D_ATT_HANDLE_VALUE_IND2": {
       "type": "object",
-      "description": "Structure for ATT\\_READ\\_RSP packet, as single raw hex string.",
+      "description": "Structure for ATT\\_HANDLE\\_VALUE\\_IND packet, as single raw hex string.",
       "required": [
         "opcode",
         "direction",
@@ -644,11 +703,11 @@
         "opcode_str": {
           "description": "This optional field is just for if you don't care about json file size and you want more human-readable JSON output.",
           "type": "string",
-          "const": "ATT_READ_RSP"
+          "const": "ATT_HANDLE_VALUE_IND"
         },
         "opcode": {
           "description": "ATT packet opcode.",
-          "const": 11
+          "const": 29
         },
         "direction": {
           "$ref": "BTIDES_base.json#/definitions/direction"
@@ -658,15 +717,13 @@
         }
       }
     },
-    "ATT_READ_BY_GROUP_TYPE_REQ": {
+    "0x1B_ATT_HANDLE_VALUE_NTF": {
       "type": "object",
-      "description": "Structure for ATT\\_READ\\_BY\\_GROUP\\_TYPE\\_REQ packet.",
+      "description": "Structure for ATT\\_HANDLE\\_VALUE\\_NTF packet. Server-initiated notification of an attribute's value; no confirmation expected.",
       "required": [
-        "direction",
         "opcode",
-        "start_handle",
-        "end_handle",
-        "group_type"
+        "direction",
+        "attribute_handle"
       ],
       "properties": {
         "std_optional_fields": {
@@ -675,39 +732,39 @@
         "opcode_str": {
           "description": "This optional field is just for if you don't care about json file size and you want more human-readable JSON output.",
           "type": "string",
-          "const": "ATT_READ_BY_GROUP_TYPE_REQ"
+          "const": "ATT_HANDLE_VALUE_NTF"
+        },
+        "opcode": {
+          "description": "ATT packet opcode.",
+          "const": 27
         },
         "direction": {
           "$ref": "BTIDES_base.json#/definitions/direction"
         },
-        "opcode": {
-          "description": "ATT packet opcode.",
-          "const": 16
-        },
-        "start_handle": {
-          "description": "First requested handle number.",
+        "attribute_handle": {
+          "description": "The handle of the attribute being notified.",
           "type": "integer",
           "minimum": 0,
           "maximum": 65535
         },
-        "end_handle": {
-          "description": "Last requested handle number.",
-          "type": "integer",
-          "minimum": 0,
-          "maximum": 65535
+        "value_hex_str": {
+          "description": "The current value of the attribute, as a hex string. May be 0 octets in length.",
+          "type": "string"
         },
-        "group_type": {
-          "description": "2-byte or 16-byte UUID to find.",
-          "$ref": "BTIDES_base.json#/definitions/UUID"
+        "utf8_str": {
+          "description": "This is an optional human-readable version of the notified value.",
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 255
         }
       }
     },
-    "ATT_READ_BY_GROUP_TYPE_REQ2": {
+    "0x1B_ATT_HANDLE_VALUE_NTF2": {
       "type": "object",
-      "description": "Structure for ATT\\_READ\\_BY\\_GROUP\\_TYPE\\_REQ packet, as single raw hex string.",
+      "description": "Structure for ATT\\_HANDLE\\_VALUE\\_NTF packet, as single raw hex string.",
       "required": [
-        "direction",
         "opcode",
+        "direction",
         "full_pkt_hex_str"
       ],
       "properties": {
@@ -717,21 +774,419 @@
         "opcode_str": {
           "description": "This optional field is just for if you don't care about json file size and you want more human-readable JSON output.",
           "type": "string",
-          "const": "ATT_READ_BY_GROUP_TYPE_REQ"
-        },
-        "direction": {
-          "$ref": "BTIDES_base.json#/definitions/direction"
+          "const": "ATT_HANDLE_VALUE_NTF"
         },
         "opcode": {
           "description": "ATT packet opcode.",
-          "const": 16
+          "const": 27
+        },
+        "direction": {
+          "$ref": "BTIDES_base.json#/definitions/direction"
         },
         "full_pkt_hex_str": {
           "$ref": "BTIDES_base.json#/definitions/full_pkt_hex_str"
         }
       }
     },
-    "ATT_READ_BY_GROUP_TYPE_RSP": {
+    "0x19_ATT_EXECUTE_WRITE_RSP": {
+      "type": "object",
+      "description": "Structure for ATT\\_EXECUTE\\_WRITE\\_RSP packet. Acknowledgement-only; no payload beyond the opcode.",
+      "required": [
+        "opcode",
+        "direction"
+      ],
+      "properties": {
+        "std_optional_fields": {
+          "$ref": "BTIDES_base.json#/definitions/std_optional_fields"
+        },
+        "opcode_str": {
+          "description": "This optional field is just for if you don't care about json file size and you want more human-readable JSON output.",
+          "type": "string",
+          "const": "ATT_EXECUTE_WRITE_RSP"
+        },
+        "opcode": {
+          "description": "ATT packet opcode.",
+          "const": 25
+        },
+        "direction": {
+          "$ref": "BTIDES_base.json#/definitions/direction"
+        }
+      }
+    },
+    "0x19_ATT_EXECUTE_WRITE_RSP2": {
+      "type": "object",
+      "description": "Structure for ATT\\_EXECUTE\\_WRITE\\_RSP packet, as single raw hex string.",
+      "required": [
+        "opcode",
+        "direction",
+        "full_pkt_hex_str"
+      ],
+      "properties": {
+        "std_optional_fields": {
+          "$ref": "BTIDES_base.json#/definitions/std_optional_fields"
+        },
+        "opcode_str": {
+          "description": "This optional field is just for if you don't care about json file size and you want more human-readable JSON output.",
+          "type": "string",
+          "const": "ATT_EXECUTE_WRITE_RSP"
+        },
+        "opcode": {
+          "description": "ATT packet opcode.",
+          "const": 25
+        },
+        "direction": {
+          "$ref": "BTIDES_base.json#/definitions/direction"
+        },
+        "full_pkt_hex_str": {
+          "$ref": "BTIDES_base.json#/definitions/full_pkt_hex_str"
+        }
+      }
+    },
+    "0x18_ATT_EXECUTE_WRITE_REQ": {
+      "type": "object",
+      "description": "Structure for ATT\\_EXECUTE\\_WRITE\\_REQ packet.",
+      "required": [
+        "opcode",
+        "direction",
+        "flags"
+      ],
+      "properties": {
+        "std_optional_fields": {
+          "$ref": "BTIDES_base.json#/definitions/std_optional_fields"
+        },
+        "opcode_str": {
+          "description": "This optional field is just for if you don't care about json file size and you want more human-readable JSON output.",
+          "type": "string",
+          "const": "ATT_EXECUTE_WRITE_REQ"
+        },
+        "opcode": {
+          "description": "ATT packet opcode.",
+          "const": 24
+        },
+        "direction": {
+          "$ref": "BTIDES_base.json#/definitions/direction"
+        },
+        "flags": {
+          "description": "0x00 = Cancel all prepared writes; 0x01 = Immediately write all pending prepared values.",
+          "type": "integer",
+          "enum": [
+            0,
+            1
+          ]
+        }
+      }
+    },
+    "0x18_ATT_EXECUTE_WRITE_REQ2": {
+      "type": "object",
+      "description": "Structure for ATT\\_EXECUTE\\_WRITE\\_REQ packet, as single raw hex string.",
+      "required": [
+        "opcode",
+        "direction",
+        "full_pkt_hex_str"
+      ],
+      "properties": {
+        "std_optional_fields": {
+          "$ref": "BTIDES_base.json#/definitions/std_optional_fields"
+        },
+        "opcode_str": {
+          "description": "This optional field is just for if you don't care about json file size and you want more human-readable JSON output.",
+          "type": "string",
+          "const": "ATT_EXECUTE_WRITE_REQ"
+        },
+        "opcode": {
+          "description": "ATT packet opcode.",
+          "const": 24
+        },
+        "direction": {
+          "$ref": "BTIDES_base.json#/definitions/direction"
+        },
+        "full_pkt_hex_str": {
+          "$ref": "BTIDES_base.json#/definitions/full_pkt_hex_str"
+        }
+      }
+    },
+    "0x17_ATT_PREPARE_WRITE_RSP": {
+      "type": "object",
+      "description": "Structure for ATT\\_PREPARE\\_WRITE\\_RSP packet. Echoes the contents of the corresponding ATT_PREPARE_WRITE_REQ.",
+      "required": [
+        "opcode",
+        "direction",
+        "attribute_handle",
+        "value_offset"
+      ],
+      "properties": {
+        "std_optional_fields": {
+          "$ref": "BTIDES_base.json#/definitions/std_optional_fields"
+        },
+        "opcode_str": {
+          "description": "This optional field is just for if you don't care about json file size and you want more human-readable JSON output.",
+          "type": "string",
+          "const": "ATT_PREPARE_WRITE_RSP"
+        },
+        "opcode": {
+          "description": "ATT packet opcode.",
+          "const": 23
+        },
+        "direction": {
+          "$ref": "BTIDES_base.json#/definitions/direction"
+        },
+        "attribute_handle": {
+          "description": "Same handle as in the corresponding ATT_PREPARE_WRITE_REQ.",
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 65535
+        },
+        "value_offset": {
+          "description": "Same value offset as in the corresponding ATT_PREPARE_WRITE_REQ.",
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 65535
+        },
+        "value_hex_str": {
+          "description": "Same partial attribute value as in the corresponding ATT_PREPARE_WRITE_REQ, as a hex string.",
+          "type": "string"
+        },
+        "utf8_str": {
+          "description": "This is an optional human-readable version of the partial value being echoed.",
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 255
+        }
+      }
+    },
+    "0x17_ATT_PREPARE_WRITE_RSP2": {
+      "type": "object",
+      "description": "Structure for ATT\\_PREPARE\\_WRITE\\_RSP packet, as single raw hex string.",
+      "required": [
+        "opcode",
+        "direction",
+        "full_pkt_hex_str"
+      ],
+      "properties": {
+        "std_optional_fields": {
+          "$ref": "BTIDES_base.json#/definitions/std_optional_fields"
+        },
+        "opcode_str": {
+          "description": "This optional field is just for if you don't care about json file size and you want more human-readable JSON output.",
+          "type": "string",
+          "const": "ATT_PREPARE_WRITE_RSP"
+        },
+        "opcode": {
+          "description": "ATT packet opcode.",
+          "const": 23
+        },
+        "direction": {
+          "$ref": "BTIDES_base.json#/definitions/direction"
+        },
+        "full_pkt_hex_str": {
+          "$ref": "BTIDES_base.json#/definitions/full_pkt_hex_str"
+        }
+      }
+    },
+    "0x16_ATT_PREPARE_WRITE_REQ": {
+      "type": "object",
+      "description": "Structure for ATT\\_PREPARE\\_WRITE\\_REQ packet.",
+      "required": [
+        "opcode",
+        "direction",
+        "attribute_handle",
+        "value_offset"
+      ],
+      "properties": {
+        "std_optional_fields": {
+          "$ref": "BTIDES_base.json#/definitions/std_optional_fields"
+        },
+        "opcode_str": {
+          "description": "This optional field is just for if you don't care about json file size and you want more human-readable JSON output.",
+          "type": "string",
+          "const": "ATT_PREPARE_WRITE_REQ"
+        },
+        "opcode": {
+          "description": "ATT packet opcode.",
+          "const": 22
+        },
+        "direction": {
+          "$ref": "BTIDES_base.json#/definitions/direction"
+        },
+        "attribute_handle": {
+          "description": "The handle of the attribute to be written.",
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 65535
+        },
+        "value_offset": {
+          "description": "The offset (0-based) of the first octet of value_hex_str within the full attribute value.",
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 65535
+        },
+        "value_hex_str": {
+          "description": "Part of the attribute value to be written. Queued in the prepare queue on the server until an ATT_EXECUTE_WRITE_REQ commits it. As a hex string; may be 0 octets in length.",
+          "type": "string"
+        },
+        "utf8_str": {
+          "description": "This is an optional human-readable version of the partial value being written.",
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 255
+        }
+      }
+    },
+    "0x16_ATT_PREPARE_WRITE_REQ2": {
+      "type": "object",
+      "description": "Structure for ATT\\_PREPARE\\_WRITE\\_REQ packet, as single raw hex string.",
+      "required": [
+        "opcode",
+        "direction",
+        "full_pkt_hex_str"
+      ],
+      "properties": {
+        "std_optional_fields": {
+          "$ref": "BTIDES_base.json#/definitions/std_optional_fields"
+        },
+        "opcode_str": {
+          "description": "This optional field is just for if you don't care about json file size and you want more human-readable JSON output.",
+          "type": "string",
+          "const": "ATT_PREPARE_WRITE_REQ"
+        },
+        "opcode": {
+          "description": "ATT packet opcode.",
+          "const": 22
+        },
+        "direction": {
+          "$ref": "BTIDES_base.json#/definitions/direction"
+        },
+        "full_pkt_hex_str": {
+          "$ref": "BTIDES_base.json#/definitions/full_pkt_hex_str"
+        }
+      }
+    },
+    "0x13_ATT_WRITE_RSP": {
+      "type": "object",
+      "description": "Structure for ATT\\_WRITE\\_RSP packet. Acknowledgement-only; no payload beyond the opcode.",
+      "required": [
+        "opcode",
+        "direction"
+      ],
+      "properties": {
+        "std_optional_fields": {
+          "$ref": "BTIDES_base.json#/definitions/std_optional_fields"
+        },
+        "opcode_str": {
+          "description": "This optional field is just for if you don't care about json file size and you want more human-readable JSON output.",
+          "type": "string",
+          "const": "ATT_WRITE_RSP"
+        },
+        "opcode": {
+          "description": "ATT packet opcode.",
+          "const": 19
+        },
+        "direction": {
+          "$ref": "BTIDES_base.json#/definitions/direction"
+        }
+      }
+    },
+    "0x13_ATT_WRITE_RSP2": {
+      "type": "object",
+      "description": "Structure for ATT\\_WRITE\\_RSP packet, as single raw hex string.",
+      "required": [
+        "opcode",
+        "direction",
+        "full_pkt_hex_str"
+      ],
+      "properties": {
+        "std_optional_fields": {
+          "$ref": "BTIDES_base.json#/definitions/std_optional_fields"
+        },
+        "opcode_str": {
+          "description": "This optional field is just for if you don't care about json file size and you want more human-readable JSON output.",
+          "type": "string",
+          "const": "ATT_WRITE_RSP"
+        },
+        "opcode": {
+          "description": "ATT packet opcode.",
+          "const": 19
+        },
+        "direction": {
+          "$ref": "BTIDES_base.json#/definitions/direction"
+        },
+        "full_pkt_hex_str": {
+          "$ref": "BTIDES_base.json#/definitions/full_pkt_hex_str"
+        }
+      }
+    },
+    "0x12_ATT_WRITE_REQ": {
+      "type": "object",
+      "description": "Structure for ATT\\_WRITE\\_REQ packet.",
+      "required": [
+        "opcode",
+        "direction",
+        "attribute_handle"
+      ],
+      "properties": {
+        "std_optional_fields": {
+          "$ref": "BTIDES_base.json#/definitions/std_optional_fields"
+        },
+        "opcode_str": {
+          "description": "This optional field is just for if you don't care about json file size and you want more human-readable JSON output.",
+          "type": "string",
+          "const": "ATT_WRITE_REQ"
+        },
+        "opcode": {
+          "description": "ATT packet opcode.",
+          "const": 18
+        },
+        "direction": {
+          "$ref": "BTIDES_base.json#/definitions/direction"
+        },
+        "attribute_handle": {
+          "description": "The handle of the attribute to be written.",
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 65535
+        },
+        "value_hex_str": {
+          "description": "The value to be written to the attribute, as a hex string. May be 0 octets in length.",
+          "type": "string"
+        },
+        "utf8_str": {
+          "description": "This is an optional human-readable version of the value being written.",
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 255
+        }
+      }
+    },
+    "0x12_ATT_WRITE_REQ2": {
+      "type": "object",
+      "description": "Structure for ATT\\_WRITE\\_REQ packet, as single raw hex string.",
+      "required": [
+        "opcode",
+        "direction",
+        "full_pkt_hex_str"
+      ],
+      "properties": {
+        "std_optional_fields": {
+          "$ref": "BTIDES_base.json#/definitions/std_optional_fields"
+        },
+        "opcode_str": {
+          "description": "This optional field is just for if you don't care about json file size and you want more human-readable JSON output.",
+          "type": "string",
+          "const": "ATT_WRITE_REQ"
+        },
+        "opcode": {
+          "description": "ATT packet opcode.",
+          "const": 18
+        },
+        "direction": {
+          "$ref": "BTIDES_base.json#/definitions/direction"
+        },
+        "full_pkt_hex_str": {
+          "$ref": "BTIDES_base.json#/definitions/full_pkt_hex_str"
+        }
+      }
+    },
+    "0x11_ATT_READ_BY_GROUP_TYPE_RSP": {
       "type": "object",
       "description": "Structure for ATT\\_READ\\_BY\\_GROUP\\_TYPE\\_RSP packet.",
       "required": [
@@ -794,13 +1249,12 @@
         }
       }
     },
-    "ATT_READ_BY_GROUP_TYPE_RSP2": {
+    "0x11_ATT_READ_BY_GROUP_TYPE_RSP2": {
       "type": "object",
       "description": "Structure for ATT\\_READ\\_BY\\_GROUP\\_TYPE\\_RSP packet, as single raw hex string.",
       "required": [
-        "direction",
         "opcode",
-        "length",
+        "direction",
         "full_pkt_hex_str"
       ],
       "properties": {
@@ -819,14 +1273,1179 @@
           "description": "ATT packet opcode.",
           "const": 17
         },
+        "full_pkt_hex_str": {
+          "$ref": "BTIDES_base.json#/definitions/full_pkt_hex_str"
+        }
+      }
+    },
+    "0x10_ATT_READ_BY_GROUP_TYPE_REQ": {
+      "type": "object",
+      "description": "Structure for ATT\\_READ\\_BY\\_GROUP\\_TYPE\\_REQ packet.",
+      "required": [
+        "direction",
+        "opcode",
+        "start_handle",
+        "end_handle",
+        "group_type"
+      ],
+      "properties": {
+        "std_optional_fields": {
+          "$ref": "BTIDES_base.json#/definitions/std_optional_fields"
+        },
+        "opcode_str": {
+          "description": "This optional field is just for if you don't care about json file size and you want more human-readable JSON output.",
+          "type": "string",
+          "const": "ATT_READ_BY_GROUP_TYPE_REQ"
+        },
+        "direction": {
+          "$ref": "BTIDES_base.json#/definitions/direction"
+        },
+        "opcode": {
+          "description": "ATT packet opcode.",
+          "const": 16
+        },
+        "start_handle": {
+          "description": "First requested handle number.",
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 65535
+        },
+        "end_handle": {
+          "description": "Last requested handle number.",
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 65535
+        },
+        "group_type": {
+          "description": "2-byte or 16-byte UUID to find.",
+          "$ref": "BTIDES_base.json#/definitions/UUID"
+        }
+      }
+    },
+    "0x10_ATT_READ_BY_GROUP_TYPE_REQ2": {
+      "type": "object",
+      "description": "Structure for ATT\\_READ\\_BY\\_GROUP\\_TYPE\\_REQ packet, as single raw hex string.",
+      "required": [
+        "direction",
+        "opcode",
+        "full_pkt_hex_str"
+      ],
+      "properties": {
+        "std_optional_fields": {
+          "$ref": "BTIDES_base.json#/definitions/std_optional_fields"
+        },
+        "opcode_str": {
+          "description": "This optional field is just for if you don't care about json file size and you want more human-readable JSON output.",
+          "type": "string",
+          "const": "ATT_READ_BY_GROUP_TYPE_REQ"
+        },
+        "direction": {
+          "$ref": "BTIDES_base.json#/definitions/direction"
+        },
+        "opcode": {
+          "description": "ATT packet opcode.",
+          "const": 16
+        },
+        "full_pkt_hex_str": {
+          "$ref": "BTIDES_base.json#/definitions/full_pkt_hex_str"
+        }
+      }
+    },
+    "0x0F_ATT_READ_MULTIPLE_RSP": {
+      "type": "object",
+      "description": "Structure for ATT\\_READ\\_MULTIPLE\\_RSP packet.",
+      "required": [
+        "opcode",
+        "direction"
+      ],
+      "properties": {
+        "std_optional_fields": {
+          "$ref": "BTIDES_base.json#/definitions/std_optional_fields"
+        },
+        "opcode_str": {
+          "description": "This optional field is just for if you don't care about json file size and you want more human-readable JSON output.",
+          "type": "string",
+          "const": "ATT_READ_MULTIPLE_RSP"
+        },
+        "opcode": {
+          "description": "ATT packet opcode.",
+          "const": 15
+        },
+        "direction": {
+          "$ref": "BTIDES_base.json#/definitions/direction"
+        },
+        "set_of_values_hex_str": {
+          "$comment": "The ATT protocol does not delimit boundaries between concatenated values here; the client must know each attribute's fixed size (except the last, which may be variable). So we store the concatenated raw bytes as a single hex string.",
+          "description": "Concatenation of attribute values for each handle in the corresponding ATT_READ_MULTIPLE_REQ, in the order requested, as a single hex string.",
+          "type": "string"
+        }
+      }
+    },
+    "0x0F_ATT_READ_MULTIPLE_RSP2": {
+      "type": "object",
+      "description": "Structure for ATT\\_READ\\_MULTIPLE\\_RSP packet, as single raw hex string.",
+      "required": [
+        "opcode",
+        "direction",
+        "full_pkt_hex_str"
+      ],
+      "properties": {
+        "std_optional_fields": {
+          "$ref": "BTIDES_base.json#/definitions/std_optional_fields"
+        },
+        "opcode_str": {
+          "description": "This optional field is just for if you don't care about json file size and you want more human-readable JSON output.",
+          "type": "string",
+          "const": "ATT_READ_MULTIPLE_RSP"
+        },
+        "opcode": {
+          "description": "ATT packet opcode.",
+          "const": 15
+        },
+        "direction": {
+          "$ref": "BTIDES_base.json#/definitions/direction"
+        },
+        "full_pkt_hex_str": {
+          "$ref": "BTIDES_base.json#/definitions/full_pkt_hex_str"
+        }
+      }
+    },
+    "0x0E_ATT_READ_MULTIPLE_REQ": {
+      "type": "object",
+      "description": "Structure for ATT\\_READ\\_MULTIPLE\\_REQ packet.",
+      "required": [
+        "opcode",
+        "direction",
+        "set_of_handles"
+      ],
+      "properties": {
+        "std_optional_fields": {
+          "$ref": "BTIDES_base.json#/definitions/std_optional_fields"
+        },
+        "opcode_str": {
+          "description": "This optional field is just for if you don't care about json file size and you want more human-readable JSON output.",
+          "type": "string",
+          "const": "ATT_READ_MULTIPLE_REQ"
+        },
+        "opcode": {
+          "description": "ATT packet opcode.",
+          "const": 14
+        },
+        "direction": {
+          "$ref": "BTIDES_base.json#/definitions/direction"
+        },
+        "set_of_handles": {
+          "description": "A set of two or more attribute handles. Handles are in the order in which their values are required in the response (not necessarily in attribute handle order).",
+          "type": "array",
+          "minItems": 2,
+          "items": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 65535
+          }
+        }
+      }
+    },
+    "0x0E_ATT_READ_MULTIPLE_REQ2": {
+      "type": "object",
+      "description": "Structure for ATT\\_READ\\_MULTIPLE\\_REQ packet, as single raw hex string.",
+      "required": [
+        "opcode",
+        "direction",
+        "full_pkt_hex_str"
+      ],
+      "properties": {
+        "std_optional_fields": {
+          "$ref": "BTIDES_base.json#/definitions/std_optional_fields"
+        },
+        "opcode_str": {
+          "description": "This optional field is just for if you don't care about json file size and you want more human-readable JSON output.",
+          "type": "string",
+          "const": "ATT_READ_MULTIPLE_REQ"
+        },
+        "opcode": {
+          "description": "ATT packet opcode.",
+          "const": 14
+        },
+        "direction": {
+          "$ref": "BTIDES_base.json#/definitions/direction"
+        },
+        "full_pkt_hex_str": {
+          "$ref": "BTIDES_base.json#/definitions/full_pkt_hex_str"
+        }
+      }
+    },
+    "0x0D_ATT_READ_BLOB_RSP": {
+      "type": "object",
+      "description": "Structure for ATT\\_READ\\_BLOB\\_RSP packet.",
+      "required": [
+        "opcode",
+        "direction"
+      ],
+      "properties": {
+        "std_optional_fields": {
+          "$ref": "BTIDES_base.json#/definitions/std_optional_fields"
+        },
+        "opcode_str": {
+          "description": "This optional field is just for if you don't care about json file size and you want more human-readable JSON output.",
+          "type": "string",
+          "const": "ATT_READ_BLOB_RSP"
+        },
+        "opcode": {
+          "description": "ATT packet opcode.",
+          "const": 13
+        },
+        "direction": {
+          "$ref": "BTIDES_base.json#/definitions/direction"
+        },
+        "value_hex_str": {
+          "description": "Part of the attribute value, starting at the value_offset given in the corresponding ATT_READ_BLOB_REQ. As a hex string. May be 0 octets in length (when the value_offset equals the length of the attribute value).",
+          "type": "string"
+        },
+        "utf8_str": {
+          "description": "This is an optional human-readable version of the partial value read.",
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 255
+        }
+      }
+    },
+    "0x0D_ATT_READ_BLOB_RSP2": {
+      "type": "object",
+      "description": "Structure for ATT\\_READ\\_BLOB\\_RSP packet, as single raw hex string.",
+      "required": [
+        "opcode",
+        "direction",
+        "full_pkt_hex_str"
+      ],
+      "properties": {
+        "std_optional_fields": {
+          "$ref": "BTIDES_base.json#/definitions/std_optional_fields"
+        },
+        "opcode_str": {
+          "description": "This optional field is just for if you don't care about json file size and you want more human-readable JSON output.",
+          "type": "string",
+          "const": "ATT_READ_BLOB_RSP"
+        },
+        "opcode": {
+          "description": "ATT packet opcode.",
+          "const": 13
+        },
+        "direction": {
+          "$ref": "BTIDES_base.json#/definitions/direction"
+        },
+        "full_pkt_hex_str": {
+          "$ref": "BTIDES_base.json#/definitions/full_pkt_hex_str"
+        }
+      }
+    },
+    "0x0C_ATT_READ_BLOB_REQ": {
+      "type": "object",
+      "description": "Structure for ATT\\_READ\\_BLOB\\_REQ packet.",
+      "required": [
+        "opcode",
+        "direction",
+        "attribute_handle",
+        "value_offset"
+      ],
+      "properties": {
+        "std_optional_fields": {
+          "$ref": "BTIDES_base.json#/definitions/std_optional_fields"
+        },
+        "opcode_str": {
+          "description": "This optional field is just for if you don't care about json file size and you want more human-readable JSON output.",
+          "type": "string",
+          "const": "ATT_READ_BLOB_REQ"
+        },
+        "opcode": {
+          "description": "ATT packet opcode.",
+          "const": 12
+        },
+        "direction": {
+          "$ref": "BTIDES_base.json#/definitions/direction"
+        },
+        "attribute_handle": {
+          "description": "The handle of the attribute to be read.",
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 65535
+        },
+        "value_offset": {
+          "description": "The offset (0-based) of the first octet to be read.",
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 65535
+        }
+      }
+    },
+    "0x0C_ATT_READ_BLOB_REQ2": {
+      "type": "object",
+      "description": "Structure for ATT\\_READ\\_BLOB\\_REQ packet, as single raw hex string.",
+      "required": [
+        "opcode",
+        "direction",
+        "full_pkt_hex_str"
+      ],
+      "properties": {
+        "std_optional_fields": {
+          "$ref": "BTIDES_base.json#/definitions/std_optional_fields"
+        },
+        "opcode_str": {
+          "description": "This optional field is just for if you don't care about json file size and you want more human-readable JSON output.",
+          "type": "string",
+          "const": "ATT_READ_BLOB_REQ"
+        },
+        "opcode": {
+          "description": "ATT packet opcode.",
+          "const": 12
+        },
+        "direction": {
+          "$ref": "BTIDES_base.json#/definitions/direction"
+        },
+        "full_pkt_hex_str": {
+          "$ref": "BTIDES_base.json#/definitions/full_pkt_hex_str"
+        }
+      }
+    },
+    "0x0B_ATT_READ_RSP": {
+      "type": "object",
+      "description": "Structure for ATT\\_READ\\_RSP packet.",
+      "required": [
+        "opcode",
+        "direction",
+        "handle"
+      ],
+      "properties": {
+        "std_optional_fields": {
+          "$ref": "BTIDES_base.json#/definitions/std_optional_fields"
+        },
+        "opcode_str": {
+          "description": "This optional field is just for if you don't care about json file size and you want more human-readable JSON output.",
+          "type": "string",
+          "const": "ATT_READ_RSP"
+        },
+        "direction": {
+          "$ref": "BTIDES_base.json#/definitions/direction"
+        },
+        "opcode": {
+          "description": "ATT packet opcode.",
+          "const": 11
+        },
+        "value_hex_str": {
+          "description": "Value read from a handle, as a hex string.",
+          "type": "string"
+        }
+      }
+    },
+    "0x0B_ATT_READ_RSP2": {
+      "type": "object",
+      "description": "Structure for ATT\\_READ\\_RSP packet, as single raw hex string.",
+      "required": [
+        "opcode",
+        "direction",
+        "full_pkt_hex_str"
+      ],
+      "properties": {
+        "std_optional_fields": {
+          "$ref": "BTIDES_base.json#/definitions/std_optional_fields"
+        },
+        "opcode_str": {
+          "description": "This optional field is just for if you don't care about json file size and you want more human-readable JSON output.",
+          "type": "string",
+          "const": "ATT_READ_RSP"
+        },
+        "opcode": {
+          "description": "ATT packet opcode.",
+          "const": 11
+        },
+        "direction": {
+          "$ref": "BTIDES_base.json#/definitions/direction"
+        },
+        "full_pkt_hex_str": {
+          "$ref": "BTIDES_base.json#/definitions/full_pkt_hex_str"
+        }
+      }
+    },
+    "0x0A_ATT_READ_REQ": {
+      "type": "object",
+      "description": "Structure for ATT\\_READ\\_REQ packet.",
+      "required": [
+        "opcode",
+        "direction",
+        "handle"
+      ],
+      "properties": {
+        "std_optional_fields": {
+          "$ref": "BTIDES_base.json#/definitions/std_optional_fields"
+        },
+        "opcode_str": {
+          "description": "This optional field is just for if you don't care about json file size and you want more human-readable JSON output.",
+          "type": "string",
+          "const": "ATT_READ_REQ"
+        },
+        "direction": {
+          "$ref": "BTIDES_base.json#/definitions/direction"
+        },
+        "opcode": {
+          "description": "ATT packet opcode.",
+          "const": 10
+        },
+        "handle": {
+          "description": "Handle being read from.",
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 65535
+        }
+      }
+    },
+    "0x0A_ATT_READ_REQ2": {
+      "type": "object",
+      "description": "Structure for ATT\\_READ\\_REQ packet, as single raw hex string.",
+      "required": [
+        "opcode",
+        "direction",
+        "full_pkt_hex_str"
+      ],
+      "properties": {
+        "std_optional_fields": {
+          "$ref": "BTIDES_base.json#/definitions/std_optional_fields"
+        },
+        "opcode_str": {
+          "description": "This optional field is just for if you don't care about json file size and you want more human-readable JSON output.",
+          "type": "string",
+          "const": "ATT_READ_REQ"
+        },
+        "opcode": {
+          "description": "ATT packet opcode.",
+          "const": 10
+        },
+        "direction": {
+          "$ref": "BTIDES_base.json#/definitions/direction"
+        },
+        "full_pkt_hex_str": {
+          "$ref": "BTIDES_base.json#/definitions/full_pkt_hex_str"
+        }
+      }
+    },
+    "0x09_ATT_READ_BY_TYPE_RSP": {
+      "type": "object",
+      "description": "Structure for ATT\\_READ\\_BY\\_TYPE\\_RSP packet.",
+      "required": [
+        "opcode",
+        "direction",
+        "length",
+        "attribute_data_list"
+      ],
+      "properties": {
+        "std_optional_fields": {
+          "$ref": "BTIDES_base.json#/definitions/std_optional_fields"
+        },
+        "opcode_str": {
+          "description": "This optional field is just for if you don't care about json file size and you want more human-readable JSON output.",
+          "type": "string",
+          "const": "ATT_READ_BY_TYPE_RSP"
+        },
+        "opcode": {
+          "description": "ATT packet opcode.",
+          "const": 9
+        },
+        "direction": {
+          "$ref": "BTIDES_base.json#/definitions/direction"
+        },
         "length": {
-          "description": "Size of each attribute data.",
+          "description": "Size of each attribute handle-value pair",
           "type": "integer",
           "minimum": 0,
           "maximum": 255
         },
+        "attribute_data_list": {
+          "description": "List of attribute data.",
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "attribute_handle",
+              "value_hex_str"
+            ],
+            "properties": {
+              "attribute_handle": {
+                "description": "Attribute handle.",
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 65535
+              },
+              "value_hex_str": {
+                "description": "Attribute value as a hex string",
+                "type": "string"
+              },
+              "utf8_str": {
+                "description": "This is an optional human-readable version of the read value of the attribute.",
+                "type": "string",
+                "minLength": 0,
+                "$comment": "I'm not sure if the max size here is the negotiated ATT_MTU or something else. Putting a sanity check on this just because.",
+                "maxLength": 255
+              }
+            }
+          }
+        }
+      }
+    },
+    "0x09_ATT_READ_BY_TYPE_RSP2": {
+      "type": "object",
+      "description": "Structure for ATT\\_READ\\_BY\\_TYPE\\_RSP packet, as single raw hex string.",
+      "required": [
+        "opcode",
+        "direction",
+        "full_pkt_hex_str"
+      ],
+      "properties": {
+        "std_optional_fields": {
+          "$ref": "BTIDES_base.json#/definitions/std_optional_fields"
+        },
+        "opcode_str": {
+          "description": "This optional field is just for if you don't care about json file size and you want more human-readable JSON output.",
+          "type": "string",
+          "const": "ATT_READ_BY_TYPE_RSP"
+        },
+        "opcode": {
+          "description": "ATT packet opcode.",
+          "const": 9
+        },
+        "direction": {
+          "$ref": "BTIDES_base.json#/definitions/direction"
+        },
         "full_pkt_hex_str": {
           "$ref": "BTIDES_base.json#/definitions/full_pkt_hex_str"
+        }
+      }
+    },
+    "0x08_ATT_READ_BY_TYPE_REQ": {
+      "type": "object",
+      "description": "Structure for ATT\\_READ\\_BY\\_TYPE\\_REQ packet.",
+      "required": [
+        "opcode",
+        "direction",
+        "start_handle",
+        "end_handle",
+        "attribute_uuid"
+      ],
+      "properties": {
+        "std_optional_fields": {
+          "$ref": "BTIDES_base.json#/definitions/std_optional_fields"
+        },
+        "opcode_str": {
+          "description": "This optional field is just for if you don't care about json file size and you want more human-readable JSON output.",
+          "type": "string",
+          "const": "ATT_READ_BY_TYPE_REQ"
+        },
+        "opcode": {
+          "description": "ATT packet opcode.",
+          "const": 8
+        },
+        "direction": {
+          "$ref": "BTIDES_base.json#/definitions/direction"
+        },
+        "start_handle": {
+          "description": "First requested handle number.",
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 65535
+        },
+        "end_handle": {
+          "description": "Last requested handle number.",
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 65535
+        },
+        "attribute_uuid": {
+          "description": "2-byte or 16-byte Attribute type UUID to find.",
+          "$ref": "BTIDES_base.json#/definitions/UUID"
+        }
+      }
+    },
+    "0x08_ATT_READ_BY_TYPE_REQ2": {
+      "type": "object",
+      "description": "Structure for ATT\\_READ\\_BY\\_TYPE\\_REQ packet, as single raw hex string.",
+      "required": [
+        "opcode",
+        "direction",
+        "full_pkt_hex_str"
+      ],
+      "properties": {
+        "std_optional_fields": {
+          "$ref": "BTIDES_base.json#/definitions/std_optional_fields"
+        },
+        "opcode_str": {
+          "description": "This optional field is just for if you don't care about json file size and you want more human-readable JSON output.",
+          "type": "string",
+          "const": "ATT_READ_BY_TYPE_REQ"
+        },
+        "opcode": {
+          "description": "ATT packet opcode.",
+          "const": 8
+        },
+        "direction": {
+          "$ref": "BTIDES_base.json#/definitions/direction"
+        },
+        "full_pkt_hex_str": {
+          "$ref": "BTIDES_base.json#/definitions/full_pkt_hex_str"
+        }
+      }
+    },
+    "0x07_ATT_FIND_BY_TYPE_VALUE_RSP": {
+      "type": "object",
+      "description": "Structure for ATT\\_FIND\\_BY\\_TYPE\\_VALUE\\_RSP packet.",
+      "required": [
+        "opcode",
+        "direction",
+        "handles_information_list"
+      ],
+      "properties": {
+        "std_optional_fields": {
+          "$ref": "BTIDES_base.json#/definitions/std_optional_fields"
+        },
+        "opcode_str": {
+          "description": "This optional field is just for if you don't care about json file size and you want more human-readable JSON output.",
+          "type": "string",
+          "const": "ATT_FIND_BY_TYPE_VALUE_RSP"
+        },
+        "opcode": {
+          "description": "ATT packet opcode.",
+          "const": 7
+        },
+        "direction": {
+          "$ref": "BTIDES_base.json#/definitions/direction"
+        },
+        "handles_information_list": {
+          "description": "List of Handles Information entries. Each entry is an attribute handle range that matched the request.",
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "found_attribute_handle",
+              "group_end_handle"
+            ],
+            "properties": {
+              "found_attribute_handle": {
+                "description": "Handle of the attribute that matched the requested type and value.",
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 65535
+              },
+              "group_end_handle": {
+                "description": "End-of-group handle for a grouping attribute, as defined by the higher layer specification. For non-grouping attributes this equals found_attribute_handle.",
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 65535
+              }
+            }
+          }
+        }
+      }
+    },
+    "0x07_ATT_FIND_BY_TYPE_VALUE_RSP2": {
+      "type": "object",
+      "description": "Structure for ATT\\_FIND\\_BY\\_TYPE\\_VALUE\\_RSP packet, as single raw hex string.",
+      "required": [
+        "opcode",
+        "direction",
+        "full_pkt_hex_str"
+      ],
+      "properties": {
+        "std_optional_fields": {
+          "$ref": "BTIDES_base.json#/definitions/std_optional_fields"
+        },
+        "opcode_str": {
+          "description": "This optional field is just for if you don't care about json file size and you want more human-readable JSON output.",
+          "type": "string",
+          "const": "ATT_FIND_BY_TYPE_VALUE_RSP"
+        },
+        "opcode": {
+          "description": "ATT packet opcode.",
+          "const": 7
+        },
+        "direction": {
+          "$ref": "BTIDES_base.json#/definitions/direction"
+        },
+        "full_pkt_hex_str": {
+          "$ref": "BTIDES_base.json#/definitions/full_pkt_hex_str"
+        }
+      }
+    },
+    "0x06_ATT_FIND_BY_TYPE_VALUE_REQ": {
+      "type": "object",
+      "description": "Structure for ATT\\_FIND\\_BY\\_TYPE\\_VALUE\\_REQ packet.",
+      "required": [
+        "opcode",
+        "direction",
+        "start_handle",
+        "end_handle",
+        "attribute_type",
+        "value_hex_str"
+      ],
+      "properties": {
+        "std_optional_fields": {
+          "$ref": "BTIDES_base.json#/definitions/std_optional_fields"
+        },
+        "opcode_str": {
+          "description": "This optional field is just for if you don't care about json file size and you want more human-readable JSON output.",
+          "type": "string",
+          "const": "ATT_FIND_BY_TYPE_VALUE_REQ"
+        },
+        "opcode": {
+          "description": "ATT packet opcode.",
+          "const": 6
+        },
+        "direction": {
+          "$ref": "BTIDES_base.json#/definitions/direction"
+        },
+        "start_handle": {
+          "description": "First requested handle number.",
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 65535
+        },
+        "end_handle": {
+          "description": "Last requested handle number.",
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 65535
+        },
+        "attribute_type": {
+          "description": "2-byte Attribute type UUID to find. (Per spec this field is always a 16-bit Bluetooth UUID.)",
+          "$ref": "BTIDES_base.json#/definitions/UUID16_hex_str"
+        },
+        "value_hex_str": {
+          "description": "Attribute value to find, as a hex string.",
+          "type": "string"
+        },
+        "utf8_str": {
+          "description": "This is an optional human-readable version of the attribute value being searched for.",
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 255
+        }
+      }
+    },
+    "0x06_ATT_FIND_BY_TYPE_VALUE_REQ2": {
+      "type": "object",
+      "description": "Structure for ATT\\_FIND\\_BY\\_TYPE\\_VALUE\\_REQ packet, as single raw hex string.",
+      "required": [
+        "opcode",
+        "direction",
+        "full_pkt_hex_str"
+      ],
+      "properties": {
+        "std_optional_fields": {
+          "$ref": "BTIDES_base.json#/definitions/std_optional_fields"
+        },
+        "opcode_str": {
+          "description": "This optional field is just for if you don't care about json file size and you want more human-readable JSON output.",
+          "type": "string",
+          "const": "ATT_FIND_BY_TYPE_VALUE_REQ"
+        },
+        "opcode": {
+          "description": "ATT packet opcode.",
+          "const": 6
+        },
+        "direction": {
+          "$ref": "BTIDES_base.json#/definitions/direction"
+        },
+        "full_pkt_hex_str": {
+          "$ref": "BTIDES_base.json#/definitions/full_pkt_hex_str"
+        }
+      }
+    },
+    "0x05_ATT_FIND_INFORMATION_RSP": {
+      "type": "object",
+      "description": "Structure for ATT\\_FIND\\_INFORMATION\\_RSP packet.",
+      "required": [
+        "opcode",
+        "direction",
+        "format",
+        "information_data"
+      ],
+      "properties": {
+        "std_optional_fields": {
+          "$ref": "BTIDES_base.json#/definitions/std_optional_fields"
+        },
+        "opcode_str": {
+          "description": "This optional field is just for if you don't care about json file size and you want more human-readable JSON output.",
+          "type": "string",
+          "const": "ATT_FIND_INFORMATION_RSP"
+        },
+        "opcode": {
+          "description": "ATT packet opcode.",
+          "const": 5
+        },
+        "direction": {
+          "$ref": "BTIDES_base.json#/definitions/direction"
+        },
+        "format": {
+          "description": "Format of the information data (1 = handles and 16-bit UUIDs, 2 = handles and 128-bit UUIDs).",
+          "type": "integer",
+          "enum": [
+            1,
+            2
+          ]
+        },
+        "information_data": {
+          "$comment": "I know this name is sort of generic, but that's the name used in the spec.",
+          "description": "List of handle and UUID (16 or 128) pairs.",
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "handle",
+              "UUID"
+            ],
+            "properties": {
+              "handle": {
+                "description": "Handle number.",
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 65535
+              },
+              "UUID": {
+                "description": "UUID associated with the handle.",
+                "$ref": "BTIDES_base.json#/definitions/UUID"
+              }
+            }
+          }
+        }
+      }
+    },
+    "0x05_ATT_FIND_INFORMATION_RSP2": {
+      "type": "object",
+      "description": "Structure for ATT\\_FIND\\_INFORMATION\\_RSP packet, as single raw hex string.",
+      "required": [
+        "opcode",
+        "direction",
+        "full_pkt_hex_str"
+      ],
+      "properties": {
+        "std_optional_fields": {
+          "$ref": "BTIDES_base.json#/definitions/std_optional_fields"
+        },
+        "opcode_str": {
+          "description": "This optional field is just for if you don't care about json file size and you want more human-readable JSON output.",
+          "type": "string",
+          "const": "ATT_FIND_INFORMATION_RSP"
+        },
+        "opcode": {
+          "description": "ATT packet opcode.",
+          "const": 5
+        },
+        "direction": {
+          "$ref": "BTIDES_base.json#/definitions/direction"
+        },
+        "full_pkt_hex_str": {
+          "$ref": "BTIDES_base.json#/definitions/full_pkt_hex_str"
+        }
+      }
+    },
+    "0x04_ATT_FIND_INFORMATION_REQ": {
+      "type": "object",
+      "description": "Structure for ATT\\_FIND\\_INFORMATION\\_REQ packet.",
+      "required": [
+        "opcode",
+        "direction",
+        "start_handle",
+        "end_handle"
+      ],
+      "properties": {
+        "std_optional_fields": {
+          "$ref": "BTIDES_base.json#/definitions/std_optional_fields"
+        },
+        "opcode_str": {
+          "description": "This optional field is just for if you don't care about json file size and you want more human-readable JSON output.",
+          "type": "string",
+          "const": "ATT_FIND_INFORMATION_REQ"
+        },
+        "opcode": {
+          "description": "ATT packet opcode.",
+          "const": 4
+        },
+        "direction": {
+          "$ref": "BTIDES_base.json#/definitions/direction"
+        },
+        "start_handle": {
+          "description": "First requested handle number.",
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 65535
+        },
+        "end_handle": {
+          "description": "Last requested handle number.",
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 65535
+        }
+      }
+    },
+    "0x04_ATT_FIND_INFORMATION_REQ2": {
+      "type": "object",
+      "description": "Structure for ATT\\_FIND\\_INFORMATION\\_REQ packet, as single raw hex string.",
+      "required": [
+        "opcode",
+        "direction",
+        "full_pkt_hex_str"
+      ],
+      "properties": {
+        "std_optional_fields": {
+          "$ref": "BTIDES_base.json#/definitions/std_optional_fields"
+        },
+        "opcode_str": {
+          "description": "This optional field is just for if you don't care about json file size and you want more human-readable JSON output.",
+          "type": "string",
+          "const": "ATT_FIND_INFORMATION_REQ"
+        },
+        "opcode": {
+          "description": "ATT packet opcode.",
+          "const": 4
+        },
+        "direction": {
+          "$ref": "BTIDES_base.json#/definitions/direction"
+        },
+        "full_pkt_hex_str": {
+          "$ref": "BTIDES_base.json#/definitions/full_pkt_hex_str"
+        }
+      }
+    },
+    "0x03_ATT_EXCHANGE_MTU_RSP": {
+      "type": "object",
+      "description": "Structure for ATT\\_EXCHANGE\\_MTU\\_RSP packet.",
+      "required": [
+        "opcode",
+        "direction",
+        "server_rx_mtu"
+      ],
+      "properties": {
+        "std_optional_fields": {
+          "$ref": "BTIDES_base.json#/definitions/std_optional_fields"
+        },
+        "opcode_str": {
+          "description": "This optional field is just for if you don't care about json file size and you want more human-readable JSON output.",
+          "type": "string",
+          "const": "ATT_EXCHANGE_MTU_RSP"
+        },
+        "opcode": {
+          "description": "ATT packet opcode.",
+          "const": 3
+        },
+        "direction": {
+          "$ref": "BTIDES_base.json#/definitions/direction"
+        },
+        "server_rx_mtu": {
+          "description": "2-byte \"Server Rx MTU\" from spec. Maximum number of bytes the ATT Server can receive via ATT.",
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 65535
+        }
+      }
+    },
+    "0x03_ATT_EXCHANGE_MTU_RSP2": {
+      "type": "object",
+      "description": "Structure for ATT\\_EXCHANGE\\_MTU\\_RSP packet, as single raw hex string.",
+      "required": [
+        "opcode",
+        "direction",
+        "full_pkt_hex_str"
+      ],
+      "properties": {
+        "std_optional_fields": {
+          "$ref": "BTIDES_base.json#/definitions/std_optional_fields"
+        },
+        "opcode_str": {
+          "description": "This optional field is just for if you don't care about json file size and you want more human-readable JSON output.",
+          "type": "string",
+          "const": "ATT_EXCHANGE_MTU_RSP"
+        },
+        "opcode": {
+          "description": "Optional field just if you don't want to look up the opcode for this packet type.",
+          "const": 3
+        },
+        "direction": {
+          "$ref": "BTIDES_base.json#/definitions/direction"
+        },
+        "full_pkt_hex_str": {
+          "$ref": "BTIDES_base.json#/definitions/full_pkt_hex_str"
+        }
+      }
+    },
+    "0x02_ATT_EXCHANGE_MTU_REQ": {
+      "type": "object",
+      "description": "Structure for ATT\\_EXCHANGE\\_MTU\\_REQ packet.",
+      "required": [
+        "opcode",
+        "direction",
+        "client_rx_mtu"
+      ],
+      "properties": {
+        "std_optional_fields": {
+          "$ref": "BTIDES_base.json#/definitions/std_optional_fields"
+        },
+        "opcode_str": {
+          "description": "This optional field is just for if you don't care about json file size and you want more human-readable JSON output.",
+          "type": "string",
+          "const": "ATT_EXCHANGE_MTU_REQ"
+        },
+        "opcode": {
+          "description": "ATT packet opcode.",
+          "const": 2
+        },
+        "direction": {
+          "$ref": "BTIDES_base.json#/definitions/direction"
+        },
+        "client_rx_mtu": {
+          "description": "2-byte \"Client Rx MTU\" from spec. Maximum number of bytes the ATT Client can receive via ATT.",
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 65535
+        }
+      }
+    },
+    "0x02_ATT_EXCHANGE_MTU_REQ2": {
+      "type": "object",
+      "description": "Structure for ATT\\_EXCHANGE\\_MTU\\_REQ packet, as single raw hex string.",
+      "required": [
+        "opcode",
+        "direction",
+        "full_pkt_hex_str"
+      ],
+      "properties": {
+        "std_optional_fields": {
+          "$ref": "BTIDES_base.json#/definitions/std_optional_fields"
+        },
+        "opcode_str": {
+          "description": "This optional field is just for if you don't care about json file size and you want more human-readable JSON output.",
+          "type": "string",
+          "const": "ATT_EXCHANGE_MTU_REQ"
+        },
+        "opcode": {
+          "description": "ATT packet opcode.",
+          "const": 2
+        },
+        "direction": {
+          "$ref": "BTIDES_base.json#/definitions/direction"
+        },
+        "full_pkt_hex_str": {
+          "$ref": "BTIDES_base.json#/definitions/full_pkt_hex_str"
+        }
+      }
+    },
+    "0x01_ATT_ERROR_RSP": {
+      "type": "object",
+      "description": "Structure for ATT\\_ERROR\\_RSP packet.",
+      "required": [
+        "opcode",
+        "direction",
+        "request_opcode_in_error",
+        "attribute_handle_in_error",
+        "error_code"
+      ],
+      "properties": {
+        "std_optional_fields": {
+          "$ref": "BTIDES_base.json#/definitions/std_optional_fields"
+        },
+        "error_str": {
+          "description": "Optional field for a human-readable error string.",
+          "type": "string"
+        },
+        "opcode_str": {
+          "description": "This optional field is just for if you don't care about json file size and you want more human-readable JSON output.",
+          "type": "string",
+          "const": "ATT_ERROR_RSP"
+        },
+        "opcode": {
+          "description": "ATT packet opcode.",
+          "const": 1
+        },
+        "direction": {
+          "$ref": "BTIDES_base.json#/definitions/direction"
+        },
+        "request_opcode_in_error": {
+          "description": "Opcode of the request that generated this error response.",
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 255
+        },
+        "attribute_handle_in_error": {
+          "description": "Handle of the attribute that generated this error response.",
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 65535
+        },
+        "error_code": {
+          "description": "Error code indicating the nature of the error.",
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 255
+        }
+      }
+    },
+    "0x01_ATT_ERROR_RSP2": {
+      "type": "object",
+      "description": "Structure for ATT\\_ERROR\\_RSP packet, as single raw hex string.",
+      "required": [
+        "opcode",
+        "direction",
+        "full_pkt_hex_str"
+      ],
+      "properties": {
+        "std_optional_fields": {
+          "$ref": "BTIDES_base.json#/definitions/std_optional_fields"
+        },
+        "opcode_str": {
+          "description": "This optional field is just for if you don't care about json file size and you want more human-readable JSON output.",
+          "type": "string",
+          "const": "ATT_ERROR_RSP"
+        },
+        "opcode": {
+          "description": "ATT packet opcode.",
+          "const": 1
+        },
+        "direction": {
+          "$ref": "BTIDES_base.json#/definitions/direction"
+        },
+        "full_pkt_hex_str": {
+          "$ref": "BTIDES_base.json#/definitions/full_pkt_hex_str"
+        }
+      }
+    },
+    "handle_entry": {
+      "type": "object",
+      "description": "Structure for ATT enumeration array.",
+      "required": [
+        "handle",
+        "UUID"
+      ],
+      "properties": {
+        "handle": {
+          "description": "2-byte ATT handle number. (Handle 0 is invalid.)",
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 65535
+        },
+        "UUID": {
+          "$ref": "BTIDES_base.json#/definitions/UUID"
+        }
+      }
+    },
+    "ATT_handle_enumeration": {
+      "$comment": "Leaving out time and RSSI for now, because this is done over many packets, so one would need to mandate a beginning time/RSSI or ending time/RSSI, and I'm not sure I want to spec that out yet.",
+      "description": "An array of all known ATT handle number/UUID pairs.",
+      "type": "object",
+      "required": [
+        "ATT_handle_enumeration"
+      ],
+      "properties": {
+        "ATT_handle_enumeration": {
+          "description": "Each entry is a handle and UUID",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/handle_entry"
+          }
         }
       }
     }
