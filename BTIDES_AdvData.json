@@ -21,28 +21,40 @@
           "$ref": "BTIDES_base.json#/definitions/std_optional_fields"
         },
         "type": {
-          "description": "What kind of advertisement or response this data appeared in. \n 0 = ADV\\_IND\n 1 = ADV\\_DIRECT\\_IND\n 2 = ADV\\_NONCONN\\_IND\n 3 = ADV\\_SCAN\\_IND\n 10 = AUX\\_ADV\\_IND\n 20 = SCAN\\_RSP\n 21 = AUX\\_SCAN\\_RSP\n 50 = Extended Inquiry Response",
+          "description": "What kind of advertisement or response this data appeared in. Per Core Spec v6.2 [Vol 6] Part B, Section 2.3.1 \"Advertising PDUs\".\n 0 = ADV\\_IND (legacy primary)\n 1 = ADV\\_DIRECT\\_IND (legacy primary)\n 2 = ADV\\_NONCONN\\_IND (legacy primary)\n 3 = ADV\\_SCAN\\_IND (legacy primary)\n 4 = ADV\\_EXT\\_IND (extended primary)\n 5 = ADV\\_DECISION\\_IND (extended primary, decision PDU; BT 6.0+)\n 10 = AUX\\_ADV\\_IND (extended secondary)\n 11 = AUX\\_CHAIN\\_IND (extended secondary/periodic)\n 12 = AUX\\_SYNC\\_IND (periodic)\n 13 = AUX\\_SYNC\\_SUBEVENT\\_IND (PAwR periodic; BT 5.4+)\n 14 = AUX\\_SYNC\\_SUBEVENT\\_RSP (PAwR periodic; BT 5.4+)\n 20 = SCAN\\_RSP\n 21 = AUX\\_SCAN\\_RSP\n 50 = Extended Inquiry Response",
           "type": "integer",
           "enum": [
             0,
             1,
             2,
             3,
+            4,
+            5,
             10,
+            11,
+            12,
+            13,
+            14,
             20,
             21,
             50
           ]
         },
         "type_str": {
-          "description": "What kind of advertisement or response this data appeared in, as a string.\n ADV\\_IND\n ADV\\_DIRECT\\_IND\n ADV\\_NONCONN\\_IND\n ADV\\_SCAN\\_IND\n AUX\\_ADV\\_IND\n SCAN\\_RSP\n AUX\\_SCAN\\_RSP\n EIR",
+          "description": "What kind of advertisement or response this data appeared in, as a string. Per Core Spec v6.2 [Vol 6] Part B, Section 2.3.1 \"Advertising PDUs\".\n ADV\\_IND\n ADV\\_DIRECT\\_IND\n ADV\\_NONCONN\\_IND\n ADV\\_SCAN\\_IND\n ADV\\_EXT\\_IND\n ADV\\_DECISION\\_IND\n AUX\\_ADV\\_IND\n AUX\\_CHAIN\\_IND\n AUX\\_SYNC\\_IND\n AUX\\_SYNC\\_SUBEVENT\\_IND\n AUX\\_SYNC\\_SUBEVENT\\_RSP\n SCAN\\_RSP\n AUX\\_SCAN\\_RSP\n EIR",
           "type": "string",
           "enum": [
             "ADV_IND",
             "ADV_DIRECT_IND",
             "ADV_NONCONN_IND",
             "ADV_SCAN_IND",
+            "ADV_EXT_IND",
+            "ADV_DECISION_IND",
             "AUX_ADV_IND",
+            "AUX_CHAIN_IND",
+            "AUX_SYNC_IND",
+            "AUX_SYNC_SUBEVENT_IND",
+            "AUX_SYNC_SUBEVENT_RSP",
             "SCAN_RSP",
             "AUX_SCAN_RSP",
             "EIR"
